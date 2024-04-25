@@ -1,0 +1,218 @@
+:root {
+  --main-color: #008dde;
+  --second-color: #006ba8;
+  --border-radius: 15px;
+  --main-padding: 15px 30px;
+  --transition-duration: 0.3s;
+  --text-placeholder: rgb(150, 150, 150);
+}
+/* Start Main Rules */
+body {
+  background-color: #f4f4f4;
+  /* When Use Arabic File */
+  /* direction: rtl; */
+}
+/* End Main Rules */
+
+/* Start Gloabal Customization */
+.warning {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 100px auto;
+  text-align: center;
+  background: var(--main-color);
+  width: fit-content;
+  padding: var(--main-padding);
+  border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
+}
+
+.alert {
+  margin: 10px auto;
+  font-size: 18px;
+  max-width: 600px;
+}
+
+.error {
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  margin: auto;
+  text-align: center;
+  background: #dc3545;
+  width: fit-content;
+  padding: var(--main-padding);
+  border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
+}
+
+.success {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+  background: #28a745;
+  width: fit-content;
+  padding: var(--main-padding);
+  border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
+}
+/* End Gloabal Customization */
+
+/* Start Login Form */
+.login {
+  width: 350px;
+  margin: 200px auto;
+}
+
+.login .form-control {
+  background-color: #e5e5e5;
+}
+.login h3 {
+  color: var(--main-color);
+  font-weight: bold;
+}
+.login input#username::placeholder,
+.login input#password::placeholder {
+  color: var(--text-placeholder);
+}
+.login .btn {
+  background-color: var(--main-color);
+}
+.login .btn:hover {
+  background-color: var(--second-color);
+}
+/* End Login Form */
+
+/* Start Custom Bootstrap */
+/* Start navbar */
+
+a.navbar-brand {
+  color: var(--main-color);
+  font-weight: bold;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+a.navbar-brand:hover {
+  color: var(--second-color);
+}
+
+div.collapse {
+  justify-content: space-between;
+}
+.nav-item a {
+  padding: 5px;
+  margin-right: 5px;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+.nav-item:hover a {
+  background-color: var(--main-color);
+  color: #fff;
+}
+li.dropdown {
+  margin-right: 40px;
+}
+
+.navbar-nav a.user_name {
+  color: #008dde !important;
+  transition: all var(--transition-duration) ease-in-out;
+  font-weight: bold;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+
+.navbar-nav a.user_name:hover {
+  /* color: var(--second-color); */
+  color: var(--second-color) !important;
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+    top: 48px;
+    margin: 0;
+  }
+}
+ul.user_ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul .user_ul li {
+  margin: 0;
+  padding: 0;
+}
+.user_ul li .user_options {
+  transition: all var(--transition-duration) ease-in-out;
+  padding: 5px 10px;
+  color: var(--main-color);
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+.user_ul li .user_options:hover {
+  color: #fff;
+  background-color: var(--main-color);
+}
+/* End navbar */
+
+/* Start Members Page */
+h1 {
+  color: #008dde;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  padding: 50px;
+}
+.edit-container,
+.add-container {
+  max-width: 800px;
+}
+
+form div input#password::placeholder,
+form div input#email::placeholder,
+form div input#username::placeholder,
+form div input#fullname::placeholder {
+  font-size: 14px;
+  color: var(--text-placeholder);
+}
+/* End Member Page */
+
+.input-wrapper,
+.input-container {
+  position: relative;
+}
+.asterisk {
+  position: absolute;
+  top: 50%;
+  /* Edit It In Arabic Style */
+  right: 10px;
+  transform: translateY(-40%);
+  color: red;
+  font-size: 25px;
+  -webkit-transform: translateY(-40%);
+  -moz-transform: translateY(-40%);
+  -ms-transform: translateY(-40%);
+  -o-transform: translateY(-40%);
+}
+/* End Custom Bootstrap */

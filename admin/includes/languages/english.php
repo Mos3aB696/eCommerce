@@ -33,7 +33,9 @@ function lang($phrase)
   'PASS_MESSAGE' => 'Leave It Empty If You Don\'t Want To Change The Password',
   'EDIT_EMAIL' => 'Email',
   'EDIT_FULL_NAME' => 'Full Name',
-  'EDIT_BTN' => 'Update',
+  'EDIT_BTN' => 'Edit',
+  'UPDATE_BTN' => 'Update',
+  'DELETE_BTN' => 'Delete',
 
   // Validation Phrases [Errors]
   'USERNAME_EMPTY' => 'Username Can\'t Be Empty',
@@ -64,11 +66,30 @@ function lang($phrase)
 
   // Inserting Phrases
   'INSERT_MEMBER' => 'Insert Member',
+  'INSERT_SUCCESS_MESSAGE' => 'Inserted Successfully',
+  'USER_EXIST' => 'This Username Is Already Exist',
+
+  // Manage Members Phrases
+  'MANAGE_MEMBERS' => 'Manage Members',
+  'ID_MANAGE' => 'ID',
+  'USERNAME_MANAGE' => 'Username',
+  'EMAIL_MANAGE' => 'Email',
+  'FULLNAME_MANAGE' => 'Full Name',
+  'DATE_MANAGE' => 'Registered Date',
+  'CONTROL_MANAGE' => 'Control',
+
+  // Delete Member Phrases
+  'DELETE_MEMBER' => 'Delete Member',
+  'DELETE_MEMBER_CONFIRMATION' => 'Are You Sure You Want To Delete This Member?',
+  'DELETE_MEMBER_SUCCESS' => 'Member Deleted Successfully',
+  'DELETE_MEMBER_FAIL' => 'Member Not Deleted Successfully',
+
+
 
   // Warning Phrases
-  'ID_NOT_FOUND_WARNING' => 'This UserID is not found, Redirecting...',
-  'UPDATE_PAGE_WARNING' => 'This page is not found, Redirecting...',
-  'DASHBOARD_DIRECT_WARNING' => 'You can not access this page directly, Redirecting...',
+  'ID_NOT_FOUND_WARNING' => 'This UserID is not found',
+  'UPDATE_PAGE_WARNING' => 'You can not access this page directly',
+  'DASHBOARD_DIRECT_WARNING' => 'You can not access this page directly',
   );
 
   return $lang[$phrase];

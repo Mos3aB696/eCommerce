@@ -15,7 +15,7 @@ function lang($phrase)
   'ADMIN_PASS' => 'Password',
   'LOG_BTN' => 'Login',
 
-  // Dashboard Phrases
+  // Navbar Phrases
   'HOME_ADMIN' => 'Admin',
   'SECTIONS' => 'Sections',
   'ITEMS' => 'Items',
@@ -25,6 +25,15 @@ function lang($phrase)
   'EDIT_PROFILE' => 'Edit Profile',
   'SETTINGS' => 'Settings',
   'LOGOUT' => 'Logout',
+
+  // Dashboard Phrases
+  'DASHBOARD_TITLE' => 'Dashboard',
+  'TOTLE_MEMBERS' => 'Total Members',
+  'PENDING_MEMBERS' => 'Pending Members',
+  'TOTLE_ITEMS' => 'Total Items',
+  'TOTLE_COMMENTS' => 'Total Comments',
+  'LATEST_MEMBERS' => 'Latest Members',
+  'LATEST_ITEMS' => 'Latest Items',
 
   // Edit Page Phrases
   'EDIT_MEMBER' => 'Edit Member',
@@ -50,6 +59,7 @@ function lang($phrase)
   'UPDATE_PASS_SUCCESS' => 'Password Updated Successfully',
   'UPDATE_EMAIL_SUCCESS' => 'Email Updated Successfully',
   'UPDATE_FULLNAME_SUCCESS' => 'Full Name Updated Successfully',
+  'UPDATE_REDIRECT' => 'You Will Be Redirected To Members Page After 5 Seconds.',
 
   // Add Members Phrases
   'ADD_MEMBER' => 'Add Member',
@@ -68,6 +78,7 @@ function lang($phrase)
   'INSERT_MEMBER' => 'Insert Member',
   'INSERT_SUCCESS_MESSAGE' => 'Inserted Successfully',
   'USER_EXIST' => 'This Username Is Already Exist',
+  'INSERT_PAGE_WARNING' => 'You Can\'t Access This Page Directly',
 
   // Manage Members Phrases
   'MANAGE_MEMBERS' => 'Manage Members',
@@ -77,14 +88,18 @@ function lang($phrase)
   'FULLNAME_MANAGE' => 'Full Name',
   'DATE_MANAGE' => 'Registered Date',
   'CONTROL_MANAGE' => 'Control',
+  'ACTIVATE_MEMBER_CONFIRMATION' => 'Are You Sure You Want To Activate This Member?',
+  'ACTIVATE_BTN' => 'Activate',
 
   // Delete Member Phrases
   'DELETE_MEMBER' => 'Delete Member',
   'DELETE_MEMBER_CONFIRMATION' => 'Are You Sure You Want To Delete This Member?',
-  'DELETE_MEMBER_SUCCESS' => 'Member Deleted Successfully',
+  'DELETE_MEMBER_SUCCESS' => 'Deleted Successfully',
   'DELETE_MEMBER_FAIL' => 'Member Not Deleted Successfully',
 
-
+  // Activate Member Phrases
+  'ACTIVATE_MEMBER' => 'Activate Member',
+  'ACTIVATE_MEMBER_SUCCESS' => 'Activated Successfully',
 
   // Warning Phrases
   'ID_NOT_FOUND_WARNING' => 'This UserID is not found',

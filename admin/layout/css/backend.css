@@ -15,7 +15,7 @@ body {
 /* End Main Rules */
 
 /* Start Gloabal Customization */
-.warning {
+/* .warning {
   color: #fff;
   font-weight: bold;
   font-size: 20px;
@@ -67,7 +67,7 @@ body {
   -moz-border-radius: var(--border-radius);
   -ms-border-radius: var(--border-radius);
   -o-border-radius: var(--border-radius);
-}
+} */
 /* End Gloabal Customization */
 
 /* Start Login Form */
@@ -123,10 +123,10 @@ div.collapse {
   -ms-transition: all var(--transition-duration) ease-in-out;
   -o-transition: all var(--transition-duration) ease-in-out;
 }
-.nav-item:hover a {
+/* .nav-item:hover a {
   background-color: var(--main-color);
   color: #fff;
-}
+} */
 li.dropdown {
   margin-right: 40px;
 }
@@ -176,11 +176,80 @@ ul .user_ul li {
 }
 /* End navbar */
 
+/* Start Dashboard */
+.home-stat .row .stat {
+  padding: 20px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
+  box-shadow: 0 3px 12px #ccc;
+}
+
+.home-stat .row .st-members {
+  /* background-color: #16a085; */
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+/* .home-stat .row .st-members:hover {
+  background-color: #1abc9c;
+} */
+.home-stat .row .st-pending {
+  /* background-color: #27ae60; */
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+/* .home-stat .row .st-pending:hover {
+  background-color: #2ecc71;
+}
+.home-stat .row .st-items {
+  background-color: #e05c00;
+}
+.home-stat .row .st-comments {
+  background-color: #9152b0;
+} */
+
+.home-stat .row .stat span {
+  display: block;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.home-stat .row .stat span a {
+  text-decoration: none;
+  cursor: pointer;
+  /* color: #fff; */
+}
+
+.latest .row .panel {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
+  box-shadow: 0 3px 12px #ccc;
+}
+
+/* End Dashboard */
+
 /* Start Members Page */
 h1 {
   color: #008dde;
   font-weight: bold;
   margin: 0;
+  font-size: 50px;
   text-align: center;
   padding: 50px;
 }
@@ -215,4 +284,25 @@ form div input#fullname::placeholder {
   -ms-transform: translateY(-40%);
   -o-transform: translateY(-40%);
 }
+
+/* Start Manage Page */
+
+.main-table {
+  box-shadow: 0 3px 12px #ccc;
+}
+.main-table .btn {
+  padding: 3px 10px;
+  color: #fff;
+}
+
+.main-table thead tr td {
+  background-color: var(--main-color);
+  color: #fff;
+  font-weight: bold;
+}
+
+.control_field {
+  font-size: 14px;
+}
+/* End Manage Page */
 /* End Custom Bootstrap */

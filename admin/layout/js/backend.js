@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     input.addEventListener("focus", () => {
       input.placeholder = "";
     });
-
     input.addEventListener("blur", () => {
       if (input.value === "") {
         input.placeholder = originalPlaceholder;
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   mangePlaceholder(password);
   mangePlaceholder(email);
   mangePlaceholder(fullName);
-
   // Add Asterisk To Required Fields
   function addAsterisk() {
     let requiredFields = document.querySelectorAll("input[required]");
@@ -36,4 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   addAsterisk();
+  // Make Display Of Form None When Click On Delete Button
+  function hideForm() {
+    let btn = document.getElementById("deleteBtn");
+    let form = document.getElementById("hidding");
+    console.log(btn);
+    console.log(form);
+    btn.addEventListener("click", () => {
+      form.classList.remove("show");
+      form.classList.add("hide");
+    });
+  }
+  hideForm();
 });

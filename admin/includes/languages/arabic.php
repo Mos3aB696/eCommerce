@@ -18,7 +18,7 @@ function lang($phrase)
 
   // Navbar Phrases
   'HOME_ADMIN' => 'لوحه التحكم',
-  'SECTIONS' => 'الاقسام',
+  'CATEGORIES' => 'الاقسام',
   'ITEMS' => 'المنتجات',
   'MEMBERS' => 'الاعضاء',
   'STATISTICS' => 'الاحصائيات',
@@ -27,7 +27,8 @@ function lang($phrase)
   'SETTINGS' => 'الاعدادات',
   'LOGOUT' => 'تسجيل الخروج',
 
-  // Dashboard Phrases
+
+  // Start Dashboard Phrases
   'DASHBOARD_TITLE' => 'لوحه التحكم',
   'TOTLE_MEMBERS' => 'اجمالي الاعضاء',
   'PENDING_MEMBERS' => 'الاعضاء المعلقين',
@@ -35,7 +36,9 @@ function lang($phrase)
   'TOTLE_COMMENTS' => 'اجمالي التعليقات',
   'LATEST_MEMBERS' => 'اخر الاعضاء',
   'LATEST_ITEMS' => 'اخر المنتجات',
+  // End Dashboard Phrases
 
+  // Start Members Phrases
   // Edit Page Phrases
   'EDIT_MEMBER' => 'تعديل العضو',
   'EDIT_USER' => 'اسم المستخدم',
@@ -68,7 +71,7 @@ function lang($phrase)
   'ADD_PASS' => 'كلمه المرور',
   'ADD_EMAIL' => 'البريد الالكتروني',
   'ADD_FULL_NAME' => 'الاسم الكامل',
-  'ADD_BTN' => 'اضافه عضو',
+  'ADD_MEMBER_BTN' => 'اضافه عضو',
   // Adding Placeholders Phrases
   'ADD_USER_PLACEHOLDER' => 'اسم المستخدم يجب ان يكون فريد',
   'ADD_PASS_PLACEHOLDER' => 'كلمه المرور يجب ان تكون صعبه ومعقده',
@@ -101,6 +104,21 @@ function lang($phrase)
   // Activate Member Phrases
   'ACTIVATE_MEMBER' => 'تفعيل العضو',
   'ACTIVATE_MEMBER_SUCCESS' => 'تم تفعيل العضو بنجاح',
+
+  // End Members Phrases
+
+  // Start Categories Phrases
+  // Add Page Phrases
+  'ADD_CAT_PAGE' => 'اضافه قسم جديد',
+  
+
+
+
+
+
+
+
+  // End Categories Phrases
 
 
 

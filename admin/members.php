@@ -7,6 +7,7 @@
   ================================================
 */
 
+ob_start(); // Output Buffering Start
 session_start();
 $pageTitle = 'Members';
 // Check If The User Is Logged In
@@ -82,7 +83,7 @@ if (isset($_SESSION['user_name'])):
         <div class="mb-3">
           <label for="username" class="form-label"><?php echo lang("ADD_USER") ?></label>
           <div class="input-wrapper">
-            <input type="text" class="form-control" id="username" name="username" autocomplete="off " required
+            <input type="text" class="form-control" id="username" name="username" autocomplete="off" required
               placeholder="<?php echo lang("ADD_USER_PLACEHOLDER") ?>">
           </div>
         </div>
@@ -114,7 +115,8 @@ if (isset($_SESSION['user_name'])):
           </div>
         </div>
         <!-- End Full Name -->
-        <button type="submit" class="btn btn-primary "><?php echo lang("ADD_BTN") ?></button> <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary "> <i class='fa fa-plus'>
+          </i> <?php echo lang("ADD_MEMBER_BTN") ?></button> <!-- Submit Button -->
 
       </form>
     </div>
@@ -123,11 +125,11 @@ if (isset($_SESSION['user_name'])):
   elseif ($do == "Insert"):
     if ($_SERVER['REQUEST_METHOD'] == 'POST'):
       echo "<h1>" . lang("INSERT_MEMBER") . "</h1>";
-      // Get The Variables From The Form
-      $username = $_POST['username'];
+      // Get The Variables From The Form && Make Sanitize For The Data For Security Reasons
+      $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
       $password = $_POST['password'];
-      $email = $_POST['email'];
-      $fullname = $_POST['fullname'];
+      $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+      $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
       $hashPassword = sha1($password);
 
       // Check Form Validation
@@ -250,9 +252,9 @@ if (isset($_SESSION['user_name'])):
       echo "<h1>" . lang("UPDATE_MEMBER") . "</h1>";
       // Get The Variables From The Form
       $userid = $_POST['userid'];
-      $username = $_POST['username'];
-      $email = $_POST['email'];
-      $fullname = $_POST['fullname'];
+      $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+      $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+      $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
 
       // Password Trick
       $pass = empty($_POST['newpassword']) ? $_POST['oldpassword'] : sha1($_POST['newpassword']);
@@ -278,7 +280,7 @@ if (isset($_SESSION['user_name'])):
 
       // Loop Into Errors Array And Echo It
       foreach ($formErrors as $error):
-        echo "<div class='alert alert-danger'>" . $error . "</div>";
+        redirectFuncError($error, 'back', 5);
       endforeach;
 
       // If Thers Is No Errors Edit The Member In Database
@@ -368,7 +370,7 @@ if (isset($_SESSION['user_name'])):
       // Get The User ID
       $stmt = $connect->prepare('UPDATE users SET reg_status = 1 WHERE user_id = ?'); // Prepare The Update Query
       $stmt->execute(array($userid)); // Execute The Query
-      redirectFuncSuccess(getUsername($userid) . ' ' . lang("ACTIVATE_MEMBER_SUCCESS"), 'back', 5);
+      redirectFuncSuccess(getUsername($userid) . ' ' . lang("ACTIVATE_MEMBER_SUCCESS"), 'back');
     else:
       redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'members.php', 5);
     endif;
@@ -384,3 +386,4 @@ else:
   header('Location: index.php');
   exit();
 endif;
+ob_end_flush(); // Release The Output

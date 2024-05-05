@@ -152,3 +152,22 @@ function getUsername($id)
   $stmt->execute(array($id));
   return $stmt->fetchColumn();
 }
+
+/**
+ * [v.1.0]
+ * getLatest Function => Get Latest Items From Database
+ * Return Latest Items
+ * $column = The Column You Want To Select
+ * $table = The Table You Want To Select From
+ * $order = The Column You Want To Order By
+ * $limit = Number Of Items You Want To Get
+ * Example: getLatest('user_name', 'users', 'user_id', 5)
+ */
+
+function getLatest($column, $table, $order, $limit = 5)
+{
+  global $connect;
+  $stmt = $connect->prepare("SELECT $column FROM $table ORDER BY $order DESC LIMIT $limit");
+  $stmt->execute();
+  return $stmt->fetchAll();
+}

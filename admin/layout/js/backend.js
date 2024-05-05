@@ -1,49 +1,39 @@
-// Get LogIn Inputs
-let username = document.getElementById("username");
-let password = document.getElementById("password");
-let email = document.getElementById("email");
-let fullName = document.getElementById("fullname");
-
 // Make Document Load Before Run JS Code
 document.addEventListener("DOMContentLoaded", function () {
-  // Mange Placeholder Function [Hide Placeholder When Focus & Show When Blur]
-  function mangePlaceholder(input) {
+  /**
+   * Mange Placeholder [Hide Placeholder When Focus & Show When Blur]
+   * Get All Inputs In Page And Store Them In inputs Array
+   * Loop Over Inputs And Add Event Listener For Focus And Blur For Each Input
+   * When Input Is Focused, Remove Placeholder
+   * When Input Is Blurred, Add Placeholder
+   */
+  let inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
     let originalPlaceholder = input.placeholder;
     input.addEventListener("focus", () => {
       input.placeholder = "";
     });
     input.addEventListener("blur", () => {
-      if (input.value === "") {
-        input.placeholder = originalPlaceholder;
-      }
+      input.placeholder = originalPlaceholder;
     });
-  }
-  mangePlaceholder(username);
-  mangePlaceholder(password);
-  mangePlaceholder(email);
-  mangePlaceholder(fullName);
-  // Add Asterisk To Required Fields
-  function addAsterisk() {
-    let requiredFields = document.querySelectorAll("input[required]");
-    requiredFields.forEach((field) => {
-      let span = document.createElement("span");
-      let asterisk = document.createTextNode("*");
-      span.appendChild(asterisk);
-      span.classList.add("asterisk");
-      field.parentElement.appendChild(span);
-    });
-  }
-  addAsterisk();
-  // Make Display Of Form None When Click On Delete Button
-  function hideForm() {
-    let btn = document.getElementById("deleteBtn");
-    let form = document.getElementById("hidding");
-    console.log(btn);
-    console.log(form);
-    btn.addEventListener("click", () => {
-      form.classList.remove("show");
-      form.classList.add("hide");
-    });
-  }
-  hideForm();
+  });
+  /**
+   * Add Asterisk To Required Fields
+   * Get All Inputs With Required Attribute And Store Them In requiredFields Variable
+   * Loop Over requiredFields And Add Asterisk Span Element After Each Required Field
+   * Create Span Element And Text Node With Asterisk And Append Text Node To Span Element
+   * Add Class Asterisk To Span Element
+   * Append Span Element To Required Field Parent Element
+   * Required Field Parent Element Is The Div That Contains The Input Field
+   * So The Asterisk Will Be Added After The Input Field
+   * Asterisk Will Be Added After The Input Field
+   */
+  let requiredFields = document.querySelectorAll("input[required]");
+  requiredFields.forEach((field) => {
+    let span = document.createElement("span");
+    let asterisk = document.createTextNode("*");
+    span.appendChild(asterisk);
+    span.classList.add("asterisk");
+    field.parentElement.appendChild(span);
+  });
 });

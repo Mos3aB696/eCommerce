@@ -17,7 +17,7 @@ function lang($phrase)
 
   // Navbar Phrases
   'HOME_ADMIN' => 'Admin',
-  'SECTIONS' => 'Sections',
+  'CATEGORIES' => 'Categories',
   'ITEMS' => 'Items',
   'MEMBERS' => 'Members',
   'STATISTICS' => 'Statistics',
@@ -26,15 +26,17 @@ function lang($phrase)
   'SETTINGS' => 'Settings',
   'LOGOUT' => 'Logout',
 
-  // Dashboard Phrases
+  // Start Dashboard Phrases
   'DASHBOARD_TITLE' => 'Dashboard',
   'TOTLE_MEMBERS' => 'Total Members',
   'PENDING_MEMBERS' => 'Pending Members',
   'TOTLE_ITEMS' => 'Total Items',
   'TOTLE_COMMENTS' => 'Total Comments',
-  'LATEST_MEMBERS' => 'Latest Members',
+  'LATEST' => 'Latest',
   'LATEST_ITEMS' => 'Latest Items',
+  // End Dashboard Phrases
 
+  // Start Members Phrases
   // Edit Page Phrases
   'EDIT_MEMBER' => 'Edit Member',
   'EDIT_USER' => 'Username',
@@ -67,7 +69,7 @@ function lang($phrase)
   'ADD_PASS' => 'Password',
   'ADD_EMAIL' => 'Email',
   'ADD_FULL_NAME' => 'Full Name',
-  'ADD_BTN' => 'Add Member',
+  'ADD_MEMBER_BTN' => 'Add Member',
   // Adding Placeholders Phrases
   'ADD_USER_PLACEHOLDER' => 'Username Must Be Unique',
   'ADD_PASS_PLACEHOLDER' => 'Password Must Be Hard & Complex',
@@ -100,6 +102,53 @@ function lang($phrase)
   // Activate Member Phrases
   'ACTIVATE_MEMBER' => 'Activate Member',
   'ACTIVATE_MEMBER_SUCCESS' => 'Activated Successfully',
+  // End Members Phrases
+
+  // Start Categories Phrases
+
+  // Manage Categories Phrases
+  'MANAGE_CAT' => 'Manage Categories',
+  'MANAGE_CAT_NAME' => 'Name',
+  'MANAGE_CAT_DESC' => 'Description',
+  'MANAGE_CAT_ORDER' => 'Order',
+  'MANAGE_CAT_VISABLE' => 'Visable',
+  'MANAGE_CAT_COMMENT' => 'Comment',
+  'MANAGE_CAT_ADS' => 'Ads',
+  'MANAGE_CONTROL_CAT' => 'Control',
+
+
+  // Add Categories Phrases
+  'ADD_CAT_PAGE' => 'Add Category',
+  'CAT_NAME' => 'Category Name',
+  'CAT_NAME_PLACEHOLDER' => 'Category Name Must Be Unique',
+  'CAT_DESCRIPTION' => 'Category Description',
+  'CAT_DESC_PLACEHOLDER' => 'Category Description Must Be Real',
+  'CAT_ORDER' => 'Category Order',
+  'CAT_ORDER_PLACEHOLDER' => 'Category Order Must Be A Number',
+  'CAT_VISABLE' => 'Category Visable',
+  'VIS_YES' => 'Yes',
+  'VIS_NO' => 'No',
+  'CAT_COMMENT' => 'Category Comment',
+  'COM_YES' => 'Yes',
+  'COM_NO' => 'No',
+  'CAT_ADS' => 'Category Ads',
+  'ADS_YES' => 'Yes',
+  'ADS_NO' => 'No',
+  'ADD_CAT_BTN' => 'Add Category',
+  'INSERT_CAT' => 'Insert Category',
+  'INSERT_CAT_SUCCESS' => 'Category Inserted Successfully',
+  'CAT_EXISTS' => 'This Category Is Already Exist',
+  'VISIBILITY_ON' => 'Visable',
+  'VISIBILITY_OFF' => 'Hidden',
+  'COMMENT_ON' => 'Allow',
+  'COMMENT_OFF' => 'Disallow',
+  'ADS_ON' => 'Allow',
+  'ADS_OFF' => 'Disallow',
+  'NO_ORDER' => 'Unset',
+
+
+
+  // End Categories Phrases
 
   // Warning Phrases
   'ID_NOT_FOUND_WARNING' => 'This UserID is not found',

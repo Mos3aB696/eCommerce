@@ -4,7 +4,6 @@
   --border-radius: 15px;
   --main-padding: 15px 30px;
   --transition-duration: 0.3s;
-  --text-placeholder: rgb(150, 150, 150);
 }
 /* Start Main Rules */
 body {
@@ -82,10 +81,6 @@ body {
 .login h3 {
   color: var(--main-color);
   font-weight: bold;
-}
-.login input#username::placeholder,
-.login input#password::placeholder {
-  color: var(--text-placeholder);
 }
 .login .btn {
   background-color: var(--main-color);
@@ -232,7 +227,7 @@ ul .user_ul li {
 
 .latest .row .panel {
   background-color: #fff;
-  padding: 20px;
+  /* padding: 20px; */
   margin: 10px;
   border-radius: var(--border-radius);
   -webkit-border-radius: var(--border-radius);
@@ -242,7 +237,79 @@ ul .user_ul li {
   box-shadow: 0 3px 12px #ccc;
 }
 
+.latest .row .panel .panel-heading {
+  background: #f5f5f5;
+  padding: 10px 20px;
+}
+
+.latest .row .panel .panel-body {
+  padding: 5px 20px;
+}
+
+.list-group .list-items {
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+
+.list-group .list-items:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
 /* End Dashboard */
+
+/* Start Categories Page */
+
+.cat-container .row .custom-btn button {
+  padding: 3px 10px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cat-container .category-description {
+  width: 350px;
+}
+
+.cat-container tbody tr span {
+  color: white;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  user-select: none;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.cat-container tbody tr span.cat-on {
+  background-color: #2ecc71;
+}
+.cat-container tbody tr span.cat-on:hover {
+  background-color: #27ae60;
+}
+.cat-container tbody tr span.cat-off {
+  background-color: #e74c3c;
+}
+.cat-container tbody tr span.cat-off:hover {
+  background-color: #c0392b;
+}
+.cat-container tbody tr span.order-unset {
+  background-color: #e67e22;
+}
+.cat-container tbody tr span.order-unset:hover {
+  background-color: #d35400;
+}
+
+/* End Categories Page */
 
 /* Start Members Page */
 h1 {
@@ -258,17 +325,12 @@ h1 {
   max-width: 800px;
 }
 
-form div input#password::placeholder,
-form div input#email::placeholder,
-form div input#username::placeholder,
-form div input#fullname::placeholder {
+input::placeholder {
   font-size: 14px;
-  color: var(--text-placeholder);
 }
 /* End Member Page */
 
-.input-wrapper,
-.input-container {
+.input-wrapper {
   position: relative;
 }
 .asterisk {
@@ -293,6 +355,8 @@ form div input#fullname::placeholder {
 .main-table .btn {
   padding: 3px 10px;
   color: #fff;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .main-table thead tr td {

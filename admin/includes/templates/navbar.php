@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo lang("SECTIONS") ?></a>
+          <a class="nav-link" href="categories.php"><?php echo lang("CATEGORIES") ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><?php echo lang("ITEMS") ?></a>

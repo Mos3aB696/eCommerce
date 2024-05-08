@@ -67,6 +67,19 @@ body {
   -ms-border-radius: var(--border-radius);
   -o-border-radius: var(--border-radius);
 } */
+.asterisk {
+  position: absolute;
+  top: 50%;
+  /* Edit It In Arabic Style */
+  right: 10px;
+  transform: translateY(-40%);
+  color: red;
+  font-size: 18px;
+  -webkit-transform: translateY(-40%);
+  -moz-transform: translateY(-40%);
+  -ms-transform: translateY(-40%);
+  -o-transform: translateY(-40%);
+}
 /* End Gloabal Customization */
 
 /* Start Login Form */
@@ -257,6 +270,7 @@ ul .user_ul li {
 .list-group .list-items:hover {
   background-color: var(--main-color);
   color: #fff;
+  margin-left: 5px;
 }
 /* End Dashboard */
 
@@ -332,19 +346,6 @@ input::placeholder {
 
 .input-wrapper {
   position: relative;
-}
-.asterisk {
-  position: absolute;
-  top: 50%;
-  /* Edit It In Arabic Style */
-  right: 10px;
-  transform: translateY(-40%);
-  color: red;
-  font-size: 25px;
-  -webkit-transform: translateY(-40%);
-  -moz-transform: translateY(-40%);
-  -ms-transform: translateY(-40%);
-  -o-transform: translateY(-40%);
 }
 
 /* Start Manage Page */

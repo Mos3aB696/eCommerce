@@ -117,7 +117,6 @@ if (isset($_SESSION['user_name'])):
         <!-- End Full Name -->
         <button type="submit" class="btn btn-primary "> <i class='fa fa-plus'>
           </i> <?php echo lang("ADD_MEMBER_BTN") ?></button> <!-- Submit Button -->
-
       </form>
     </div>
     <?php
@@ -135,6 +134,10 @@ if (isset($_SESSION['user_name'])):
       // Check Form Validation
       $formErrors = array();
       // Check Username
+      $check = checkItem('user_name', 'users', $username);
+      if ($check > 0):
+        $formErrors[] = lang('USER_EXIST');
+      endif;
       if (empty($username)):
         $formErrors[] = lang("USERNAME_EMPTY");
       elseif (strlen($username) < 4):
@@ -155,32 +158,22 @@ if (isset($_SESSION['user_name'])):
         $formErrors[] = lang("FULLNAME_EMPTY");
       endif;
 
-      // Loop Into Errors Array And Echo It
-      foreach ($formErrors as $error):
-        echo "<div class='alert alert-danger'>" . $error . "</div>";
-      endforeach;
 
       // If Thers Is No Errors Edit The Member In Database
-      if (empty($formErrors)):
-
-        // Check If The User Is Exist In Database
-        $check = checkItem('user_name', 'users', $username);
-
-        if ($check > 0):
-          redirectFuncError(lang("USER_EXIST"), 'back');
-        else:
-          // Prepare The Insert Query
-          $stmt = $connect->prepare("INSERT INTO
+      if (!empty($formErrors)):
+        redirectFuncError($formErrors, 'back', 5);
+      else:
+        // Prepare The Insert Query
+        $stmt = $connect->prepare("INSERT INTO
         users (user_name, pass, email, full_name, reg_status,date)
         VALUES (?, ?, ?, ?, 1,now())");
-          // Execute The Query
-          $stmt->execute(array($username, $hashPassword, $email, $fullname));
-          // Echo Success Message
-          redirectFuncSuccess(($username . ' ' . lang("INSERT_SUCCESS_MESSAGE")), 'members.php');
-        endif;
+        // Execute The Query
+        $stmt->execute(array($username, $hashPassword, $email, $fullname));
+        // Echo Success Message
+        redirectFuncSuccess(($username . ' ' . lang("INSERT_SUCCESS_MESSAGE")), 'members.php');
       endif;
     else:
-      redirectFuncError(lang("INSERT_PAGE_WARNING"), 'members.php', 5);
+      redirectFuncError(lang("DIRECT_LINK"), 'members.php', 5);
     endif;
 
   elseif ($do == 'Edit'): // Edit Page 
@@ -189,7 +182,6 @@ if (isset($_SESSION['user_name'])):
     $userid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
     // Prepare The Statement To Execute It [1]
     $stmt = $connect->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
-
     $stmt->execute(array($userid)); // Execute The Statement [2]
     $row = $stmt->fetch(); // Fetch The Data [3]
     $rowCount = $stmt->rowCount(); // Get The Count Of The Rows [4]
@@ -251,7 +243,7 @@ if (isset($_SESSION['user_name'])):
     if ($_SERVER['REQUEST_METHOD'] == 'POST'):
       echo "<h1>" . lang("UPDATE_MEMBER") . "</h1>";
       // Get The Variables From The Form
-      $userid = $_POST['userid'];
+      $userid = $_POST['userid']; // The Id Sanitized In Line 190
       $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
       $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
       $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
@@ -261,9 +253,13 @@ if (isset($_SESSION['user_name'])):
 
       // Check Form Validation
       $formErrors = array();
+      // Check If Username Is Exist In Database Or Not
+      $check = editCheck('user_name', 'users', $username, 'user_id', $userid);
       // Check Username
       if (empty($username)):
         $formErrors[] = lang("USERNAME_EMPTY");
+      elseif ($check > 0):
+        $formErrors[] = lang("USER_EXIST");
       elseif (strlen($username) < 4):
         $formErrors[] = lang("USERNAME_LESS");
       elseif (strlen($username) > 20):
@@ -278,17 +274,9 @@ if (isset($_SESSION['user_name'])):
         $formErrors[] = lang("FULLNAME_EMPTY");
       endif;
 
-      // Loop Into Errors Array And Echo It
-      foreach ($formErrors as $error):
-        redirectFuncError($error, 'back', 5);
-      endforeach;
-
-      // If Thers Is No Errors Edit The Member In Database
-      if (empty($formErrors)):
-
-        // Prepare The Update Query
-        $stmt = $connect->prepare('UPDATE users SET user_name = ?, email = ?, full_name = ?, pass = ? WHERE user_id = ?');
-
+      if (!empty($formErrors)):
+        redirectFuncError($formErrors, 'back', 5);
+      else:
         // Get Old Data To Compare It With The New Data To Check If The User Change The Username Or Email, etc...
         $oldValues = $connect->prepare('SELECT user_name, pass ,email, full_name FROM users WHERE user_id = ?');
         $oldValues->execute(array($userid));
@@ -317,43 +305,39 @@ if (isset($_SESSION['user_name'])):
           $successMessages[] = lang("UPDATE_FULLNAME_SUCCESS");
         endif;
 
-
+        // Prepare The Update Query
+        $stmt = $connect->prepare('UPDATE users SET user_name = ?, email = ?, full_name = ?, pass = ? WHERE user_id = ?');
         // Execute The Query
         $stmt->execute(array($username, $email, $fullname, $pass, $userid));
         // Echo Success Message
 
-        foreach ($successMessages as $message):
-          echo "<div class='alert alert-success'>" . $message . "</div>";
-        endforeach;
-        echo "<div class='alert alert-info'>" . lang("UPDATE_REDIRECT") . "</div>";
-        header("refresh:5;url=members.php");
+        redirectFuncSuccess($successMessages, 'members.php');
 
       endif;
 
     else:
-      redirectFuncError(lang("UPDATE_PAGE_WARNING"), 'members.php', 5);
+      redirectFuncError(lang("DIRECT_LINK"), 'members.php', 5);
     endif;
 
   elseif ($do == 'Delete'): // Delete Page
 
+    echo "<div class='container'>";
     // Check If Get Request userid Is Numeric & Get The Integer Value Of It
     $userid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
 
     $check = checkItem('user_id', 'users', $userid);
 
     if ($check > 0):
-      echo "<div class='container'>";
       echo '<h1>' . lang("DELETE_MEMBER") . '</h1>';
-      echo '</div>';
-
-      $username = getUsername($userid);
-      // Get The User ID
+      // Get The Username Of The User
+      $username = getName('user_name', 'users', 'user_id', $userid);
       $stmt = $connect->prepare('DELETE FROM users WHERE user_id = ?'); // Prepare The Delete Query
       $stmt->execute(array($userid)); // Execute The Query
-      redirectFuncSuccess($username . ' ' . lang("DELETE_MEMBER_SUCCESS"), 'members.php', 5);
+      redirectFuncSuccess($username . ' ' . lang("DELETE_MEMBER_SUCCESS"), 'members.php');
     else:
-      redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'members.php', 5);
+      redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'members.php');
     endif;
+    echo "</div>";
   elseif ($do == 'Activate'): // Activate Page
 
 
@@ -370,9 +354,9 @@ if (isset($_SESSION['user_name'])):
       // Get The User ID
       $stmt = $connect->prepare('UPDATE users SET reg_status = 1 WHERE user_id = ?'); // Prepare The Update Query
       $stmt->execute(array($userid)); // Execute The Query
-      redirectFuncSuccess(getUsername($userid) . ' ' . lang("ACTIVATE_MEMBER_SUCCESS"), 'back');
+      redirectFuncSuccess(getName('user_name', 'users', 'user_id', $userid) . ' ' . lang("ACTIVATE_MEMBER_SUCCESS"));
     else:
-      redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'members.php', 5);
+      redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'members.php');
     endif;
 
   endif;

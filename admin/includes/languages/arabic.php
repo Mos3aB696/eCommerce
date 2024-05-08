@@ -82,8 +82,6 @@ function lang($phrase)
   'INSERT_MEMBER' => 'اضافه عضو',
   'INSERT_SUCCESS_MESSAGE' => 'تم اضافه العضو بنجاح',
   'USER_EXIST' => 'اسم المستخدم موجود بالفعل',
-  'INSERT_PAGE_WARNING' => 'لا يمكنك الوصول الى هذه الصفحه مباشره',
-
   // Manage Members Phrases
   'MANAGE_MEMBERS' => 'اداره الاعضاء',
   'ID_MANAGE' => 'الرقم التعريفي',
@@ -108,24 +106,75 @@ function lang($phrase)
   // End Members Phrases
 
   // Start Categories Phrases
+
+  // Manage Categories Phrases
+  'MANAGE_CAT' => 'اداره الاقسام',
+  'MANAGE_CAT_ID' => 'الرقم التعريفي',
+  'MANAGE_CAT_NAME' => 'الاسم',
+  'MANAGE_CAT_DESC' => 'الوصف',
+  'MANAGE_CAT_ORDER' => 'الترتيب',
+  'MANAGE_CAT_VISABLE' => 'الظهور',
+  'MANAGE_CAT_COMMENT' => 'التعليقات',
+  'MANAGE_CAT_ADS' => 'الاعلانات',
+  'MANAGE_CONTROL_CAT' => 'التحكم',
+  'ADD_CATEGORY' => 'اضافه قسم',
+
   // Add Page Phrases
   'ADD_CAT_PAGE' => 'اضافه قسم جديد',
-  
+  'CAT_NAME' => 'اسم القسم',
+  'CAT_NAME_PLACEHOLDER' => 'اسم القسم يجب ان يكون فريد',
+  'CAT_DESCRIPTION' => 'وصف القسم',
+  'CAT_DESC_PLACEHOLDER' => 'وصف القسم يجب ان يكون حقيقي',
+  'CAT_ORDER' => 'ترتيب القسم',
+  'CAT_ORDER_PLACEHOLDER' => 'ترتيب القسم يجب ان يكون رقم',
+  'CAT_VISABLE' => 'ظهور القسم',
+  'VIS_YES' => 'نعم',
+  'VIS_NO' => 'لا',
+  'CAT_COMMENT' => 'التعليقات',
+  'COM_YES' => 'نعم',
+  'COM_NO' => 'لا',
+  'CAT_ADS' => 'الاعلانات',
+  'ADS_YES' => 'نعم',
+  'ADS_NO' => 'لا',
+  'ADD_CAT_BTN' => 'اضافه قسم',
 
+  // Insert Category Phrases
+  'INSERT_CAT' => 'اضافه قسم',
+  'INSERT_CAT_SUCCESS' => 'تم اضافه القسم بنجاح',
+  'CAT_EXISTS' => 'هذا القسم موجود بالفعل',
+  'VISIBILITY_ON' => 'ظاهر',
+  'VISIBILITY_OFF' => 'مخفي',
+  'COMMENT_ON' => 'مفتوح',
+  'COMMENT_OFF' => 'مغلق',
+  'ADS_ON' => 'مفتوح',
+  'ADS_OFF' => 'مغلق',
+  'NO_ORDER' => 'غير محدد',
 
+  // Edit Category Phrases
+  'EDIT_CAT' => 'تعديل القسم',
 
+  // Update Category Phrases
+  'UPDATE_CAT_PAGE' => 'تحديث القسم',
+  'CAT_NAME_EMPTY' => 'اسم القسم لا يمكن ان يكون فارغ',
+  'CAT_NAME_LESS' => 'اسم القسم لا يمكن ان يكون اقل من 4 احرف',
+  'CAT_NAME_MORE' => 'اسم القسم لا يمكن ان يكون اكثر من 30 حرف',
+  'CAT_DESC_EMPTY' => 'وصف القسم لا يمكن ان يكون فارغ',
+  'UPDATE_CAT_NAME' => 'تم تحديث اسم القسم بنجاح',
+  'UPDATE_CAT_DESC' => 'تم تحديث وصف القسم بنجاح',
+  'UPDATE_CAT_ORDER' => 'تم تحديث ترتيب القسم بنجاح',
+  'UPDATE_CAT_VISIBILITY' => 'تم تحديث ظهور القسم بنجاح',
+  'UPDATE_CAT_COMMENT' => 'تم تحديث التعليقات بنجاح',
+  'UPDATE_CAT_ADS' => 'تم تحديث الاعلانات بنجاح',
 
-
-
+  // Delete Category Phrases
+  'DELETE_CAT' => 'حذف القسم',
+  'DELETE_CAT_CONFIRMATION' => 'هل  انت متاكد  من    حذف هذا القسم؟',
+  'DELETE_CAT_SUCCESS' => 'تم حذف القسم بنجاح',
 
   // End Categories Phrases
-
-
-
   // Warning Phrases
   'ID_NOT_FOUND_WARNING' => 'هذا المستخدم غير موجود',
-  'UPDATE_PAGE_WARNING' => 'هذه الصفحه غير موجوده',
-  'DASHBOARD_DIRECT_WARNING' => 'لا يمكنك الوصول الى هذه الصفحه مباشره',
+  'DIRECT_LINK' => 'لا يمكنك الوصول الى هذه الصفحه مباشره',
   );
 
   return $lang[$phrase];

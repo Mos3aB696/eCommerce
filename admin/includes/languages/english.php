@@ -80,7 +80,6 @@ function lang($phrase)
   'INSERT_MEMBER' => 'Insert Member',
   'INSERT_SUCCESS_MESSAGE' => 'Inserted Successfully',
   'USER_EXIST' => 'This Username Is Already Exist',
-  'INSERT_PAGE_WARNING' => 'You Can\'t Access This Page Directly',
 
   // Manage Members Phrases
   'MANAGE_MEMBERS' => 'Manage Members',
@@ -108,6 +107,7 @@ function lang($phrase)
 
   // Manage Categories Phrases
   'MANAGE_CAT' => 'Manage Categories',
+  'MANAGE_CAT_ID' => 'ID',
   'MANAGE_CAT_NAME' => 'Name',
   'MANAGE_CAT_DESC' => 'Description',
   'MANAGE_CAT_ORDER' => 'Order',
@@ -115,7 +115,7 @@ function lang($phrase)
   'MANAGE_CAT_COMMENT' => 'Comment',
   'MANAGE_CAT_ADS' => 'Ads',
   'MANAGE_CONTROL_CAT' => 'Control',
-
+  'ADD_CATEGORY' => 'Add Category',
 
   // Add Categories Phrases
   'ADD_CAT_PAGE' => 'Add Category',
@@ -135,6 +135,8 @@ function lang($phrase)
   'ADS_YES' => 'Yes',
   'ADS_NO' => 'No',
   'ADD_CAT_BTN' => 'Add Category',
+
+  // Insert Category Phrases
   'INSERT_CAT' => 'Insert Category',
   'INSERT_CAT_SUCCESS' => 'Category Inserted Successfully',
   'CAT_EXISTS' => 'This Category Is Already Exist',
@@ -146,14 +148,32 @@ function lang($phrase)
   'ADS_OFF' => 'Disallow',
   'NO_ORDER' => 'Unset',
 
+  // Edit Categories Phrases
+  'EDIT_CAT' => 'Edit Category',
 
+  // Update Categories Phrases
+  'UPDATE_CAT_PAGE' => 'Update Category',
+  'CAT_NAME_EMPTY' => 'Category Name Can\'t Be Empty',
+  'CAT_NAME_LESS' => 'Category Name Can\'t Be Less Than 4 Characters',
+  'CAT_NAME_MORE' => 'Category Name Can\'t Be More Than 30 Characters',
+  'CAT_DESC_EMPTY' => 'Category Description Can\'t Be Empty',
+  'UPDATE_CAT_NAME' => 'Category Name Updated Successfully',
+  'UPDATE_CAT_DESC' => 'Category Description Updated Successfully',
+  'UPDATE_CAT_ORDER' => 'Category Order Updated Successfully',
+  'UPDATE_CAT_VISIBILITY' => 'Category Visibility Updated Successfully',
+  'UPDATE_CAT_COMMENT' => 'Category Comment Updated Successfully',
+  'UPDATE_CAT_ADS' => 'Category Ads Updated Successfully',
+
+  // Delete Categories Phrases
+  'DELETE_CAT' => 'Delete Category',
+  'DELETE_CAT_CONFIRMATION' => 'Are You Sure You Want To Delete This Category?',
+  'DELETE_CAT_SUCCESS' => 'Category Deleted Successfully',
 
   // End Categories Phrases
 
   // Warning Phrases
+  'DIRECT_LINK' => 'You can not access this page directly',
   'ID_NOT_FOUND_WARNING' => 'This UserID is not found',
-  'UPDATE_PAGE_WARNING' => 'You can not access this page directly',
-  'DASHBOARD_DIRECT_WARNING' => 'You can not access this page directly',
   );
 
   return $lang[$phrase];

@@ -36,17 +36,45 @@ function checkItem($column, $table, $value)
 
   return $stmt->rowCount();
 }
+/**
+ * [v.1.0]
+ * editCheck Function => Check If Item Exists In Database Except The Current One
+ * Return Count Of The Item If Exists
+ * Return 0 If Not Exists
+ * $column = The Column You Want To Select
+ * $table = The Table You Want To Select From
+ * $value = The Value You Want To Select
+ * $idName = The ID Column Name
+ * $id = The ID You Want To Exclude
+ * Example: editCheck('user_name', 'users', 'Ahmed', 'user_id', 1)
+ */
+function editCheck($column, $table, $value, $idName, $id)
+{
+  global $connect;
+  $stmt = $connect->prepare("SELECT $column FROM $table WHERE $column = ? AND $idName != ?");
+  $stmt->execute(array($value, $id));
+
+  return $stmt->rowCount();
+}
 
 /**
- * [v.2.0]
- * redirectFuncError => Make Redirect To Specific Page With Error Message
- * $msg = Echo The Message
+ * [v.3.0]
+ * redirectFuncError => Make Redirect To Specific Page With Error/s Message/s
+ * $error = Echo The Error Message
  * $url = The Link You Want To Redirect To
  * $seconds = Seconds Before Redirecting
  */
 
-function redirectFuncError($msg, $url = 'dashboard.php', $seconds = 3)
+function redirectFuncError($error, $url = 'dashboard.php', $seconds = 3)
 {
+  // Set Array Of Errors
+  global $formErrors;
+  // Check If $error Is Array, If Not => Convert It To An Array
+  if (!is_array($error)):
+    $error = array($error);
+  endif;
+  $formErrors = $error; // Store All Errors In formErrors Array
+
   $basename = basename($url, '.php');
 
   // Check If The Link Is Back
@@ -67,16 +95,22 @@ function redirectFuncError($msg, $url = 'dashboard.php', $seconds = 3)
   else:
     $frindlyUrl = ucfirst($basename);
   endif;
-  echo "<div class='container'>";
-  echo "<div class='alert alert-danger'>$msg</div>";
+
+  echo "<div class='container m-5'>";
+  // Make Loop On All Errors [1]
+  foreach ($formErrors as $err):
+    echo "<div class='alert alert-danger'>$err</div>";
+  endforeach;
+  // Display The Redirection Time [2]
   echo "<div class='alert alert-info'>You Will Be Redirected To $frindlyUrl Page After $seconds Seconds.</div>";
   echo "</div>";
+  // Redirect After Display All Messages [3]
   header("refresh:$seconds;url=$url");
   exit();
 }
 
 /**
- * [v.2.0]
+ * [v.3.0]
  * redirectFuncSuccess => Make Redirect To Specific Page With Success Message 
  * $msg = Echo The Message
  * $url = The Link You Want To Redirect To
@@ -85,6 +119,14 @@ function redirectFuncError($msg, $url = 'dashboard.php', $seconds = 3)
 
 function redirectFuncSuccess($msg, $url = 'dashboard.php', $seconds = 3)
 {
+  global $successMsg;
+
+  if (!is_array($msg)):
+    $msg = array($msg);
+  endif;
+
+  $successMsg = $msg;
+
   $basename = basename($url, '.php');
 
   // Check If The Link Is Back
@@ -106,7 +148,9 @@ function redirectFuncSuccess($msg, $url = 'dashboard.php', $seconds = 3)
     $frindlyUrl = ucfirst($basename);
   endif;
   echo "<div class='container'>";
-  echo "<div class='alert alert-success'>$msg</div>";
+  foreach ($successMsg as $msg):
+    echo "<div class='alert alert-success'>$msg</div>";
+  endforeach;
   echo "<div class='alert alert-info'>You Will Be Redirected To $frindlyUrl Page After $seconds Seconds.</div>";
   echo "</div>";
   header("refresh:$seconds;url=$url");
@@ -138,17 +182,20 @@ function countItem($item, $table, $val = 'all')
 }
 
 /**
- * [v.1.0]
- * getUsername Function => Get Username From Database
- * Return Username
+ * [v.2.0]
+ * getName Function => Get Column Name From Database
+ * Return Name From Database
+ * $column = The Column You Want To Select
+ * $table = The Table You Want To Select From
+ * $colId = The Column ID You Want To Select
  * $id = The ID You Want To Get The Username
- * Example: getUsername($id)
+ * Example: getName('user_name', 'users', 'user_id', 1)
  */
 
-function getUsername($id)
+function getName($column, $table, $colId, $id)
 {
   global $connect;
-  $stmt = $connect->prepare("SELECT user_name FROM users WHERE user_id = ?");
+  $stmt = $connect->prepare("SELECT $column FROM $table WHERE $colId = ?");
   $stmt->execute(array($id));
   return $stmt->fetchColumn();
 }

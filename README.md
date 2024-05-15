@@ -55,4 +55,4 @@ Contributions to improve the system are welcome. Please submit a pull request de
 ## LinkedIn:
 
 - [Amira's LinkedIn](https://www.linkedin.com/in/amira-metwally-16b3731b4)
-- [Mosaab's LinkedIn](https://www.linkedin.com/in/mosaab-abdelkawy-4a402)
+- [Mosaab's LinkedIn](https://www.linkedin.com/in/mosaab-abdelkawy-4a4021241/)

@@ -1,7 +1,7 @@
 <!-- Use Bootstrap Component To Create Navbar ودي اول واخر مره استخدم ابن الجزمه دا تاني طلع عين اهلي لو عملته انا ما كنت خدت ربع الوقت -->
 <nav class="navbar navbar-expand-lg bg-body">
   <div class="container">
-    <a class="navbar-brand" href="dashboard.php"><?php echo lang("HOME_ADMIN") ?></a>
+    <a class="navbar-brand" href="dashboard.php"><?= lang("HOME_ADMIN") ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,35 +9,49 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="categories.php"><?php echo lang("CATEGORIES") ?></a>
+          <!-- 
+          Check If The Current URL Is Equal To The Categories Page URL
+            * parse_url => To Get The Path Of The URL
+            * $_SERVER["REQUEST_URI"] => To Get The Current URL
+            * PHP_URL_PATH => To Get The Path Of The URL
+          -->
+          <a class="nav-link <?= (parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == '/categories.php' ? ' active' : '') ?>"
+            href="categories.php"><?= lang("CATEGORIES") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo lang("ITEMS") ?></a>
+          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/items.php' ? 'active' : '') ?>"
+            href="items.php"><?= lang("ITEMS") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="members.php"><?php echo lang("MEMBERS") ?></a>
+          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/members.php' ? 'active' : '') ?>"
+            href="members.php"><?= lang("MEMBERS") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo lang("STATISTICS") ?></a>
+          <a class="nav-link" href="#"><?= lang("STATISTICS") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?php echo lang("LOGS") ?></a>
+          <a class="nav-link" href="#"><?= lang("LOGS") ?></a>
         </li>
       </ul>
       <li class="navbar-nav dropdown">
         <a class="nav-link dropdown-toggle active user_name" href="#" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
           <!-- To Display Admin Name If There Are More Than One Admin -->
-          <?php echo $_SESSION['user_name']; ?>
+          <?= $_SESSION['user_name']; ?>
         </a>
         <ul class="dropdown-menu user_ul">
           <li><a class="dropdown-item user_options"
-              href="members.php?do=Edit&id=<?php echo $_SESSION['user_id'] ?>"><?php echo lang("EDIT_PROFILE") ?></a>
+              href="members.php?do=Edit&id=<?= $_SESSION['user_id'] ?>"><?= lang("EDIT_PROFILE") ?></a>
           </li>
-          <li><a class="dropdown-item user_options" href="#"><?php echo lang("SETTINGS") ?></a></li>
-          <li><a class="dropdown-item user_options" href="logout.php"><?php echo lang("LOGOUT") ?></a></li>
+          <li><a class="dropdown-item user_options" href="#"><?= lang("SETTINGS") ?></a></li>
+          <li><a class="dropdown-item user_options" href="logout.php"><?= lang("LOGOUT") ?></a></li>
         </ul>
       </li>
     </div>
   </div>
 </nav>
+
+<?php
+// echo '<pre>';
+// print_r(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
+// echo '</pre>';

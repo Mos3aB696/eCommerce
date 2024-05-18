@@ -42,17 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
     header('Location: dashboard.php'); // Redirect To Dashboard Page
     exit();
   endif;
-
 endif;
-
 ?>
 
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" class="login d-grid gap-2">
-  <h3 class="text-center"><?php echo lang("ADMIN_LOGIN") ?></h3>
-  <input class="form-control" id="username" type="text" name="username" placeholder="<?php echo lang("ADMIN_USER") ?>"
+<form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" class="login d-grid gap-2">
+  <h3 class="text-center"><?= lang("ADMIN_LOGIN") ?></h3>
+  <input class="form-control" id="username" type="text" name="username" placeholder="<?= lang("ADMIN_USER") ?>"
     autocomplete="off">
-  <input class="form-control" id="password" type="password" name="password"
-    placeholder="<?php echo lang("ADMIN_PASS") ?>" autocomplete=" new-password">
-  <input class="btn btn-primary btn-block" type="submit" value="<?php echo lang('LOG_BTN') ?>" />
+  <input class="form-control" id="password" type="password" name="password" placeholder="<?= lang("ADMIN_PASS") ?>"
+    autocomplete=" new-password">
+  <input class="btn btn-primary btn-block" type="submit" value="<?= lang('LOG_BTN') ?>" />
 </form>
 <?php include $temp . ('footer.php'); ?>

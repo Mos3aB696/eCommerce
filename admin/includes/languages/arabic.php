@@ -34,7 +34,7 @@ function lang($phrase)
   'PENDING_MEMBERS' => 'الاعضاء المعلقين',
   'TOTLE_ITEMS' => 'اجمالي المنتجات',
   'TOTLE_COMMENTS' => 'اجمالي التعليقات',
-  'LATEST_MEMBERS' => 'اخر الاعضاء',
+  'LATEST' => 'اخر',
   'LATEST_ITEMS' => 'اخر المنتجات',
   // End Dashboard Phrases
 
@@ -84,7 +84,7 @@ function lang($phrase)
   'USER_EXIST' => 'اسم المستخدم موجود بالفعل',
   // Manage Members Phrases
   'MANAGE_MEMBERS' => 'اداره الاعضاء',
-  'ID_MANAGE' => 'الرقم التعريفي',
+  'ID_MANAGE' => 'ID',
   'USERNAME_MANAGE' => 'اسم المستخدم',
   'EMAIL_MANAGE' => 'البريد الالكتروني',
   'FULLNAME_MANAGE' => 'الاسم الكامل',
@@ -109,7 +109,7 @@ function lang($phrase)
 
   // Manage Categories Phrases
   'MANAGE_CAT' => 'اداره الاقسام',
-  'MANAGE_CAT_ID' => 'الرقم التعريفي',
+  'MANAGE_CAT_ID' => 'ID',
   'MANAGE_CAT_NAME' => 'الاسم',
   'MANAGE_CAT_DESC' => 'الوصف',
   'MANAGE_CAT_ORDER' => 'الترتيب',
@@ -118,6 +118,9 @@ function lang($phrase)
   'MANAGE_CAT_ADS' => 'الاعلانات',
   'MANAGE_CONTROL_CAT' => 'التحكم',
   'ADD_CATEGORY' => 'اضافه قسم',
+  'SORT_ASC' => 'تصاعدي',
+  'SORT_DESC' => 'تنازلي',
+  'SORT_BTN' => 'ترتيب',
 
   // Add Page Phrases
   'ADD_CAT_PAGE' => 'اضافه قسم جديد',
@@ -172,6 +175,74 @@ function lang($phrase)
   'DELETE_CAT_SUCCESS' => 'تم حذف القسم بنجاح',
 
   // End Categories Phrases
+
+  /* Start Items Phrases */
+  // Manage Items Phrases
+  'MANAGE_ITEMS' => 'اداره المنتجات',
+  'ITEM_ID' => 'ID',
+  'MANAGE_ITEM_NAME' => 'اسم المنتج',
+  'MANAGE_ITEM_DESC' => 'الوصف',
+  'MANAGE_ITEM_PRICE' => 'السعر',
+  'MANAGE_ITEM_DATE' => 'تاريخ الاضافه',
+  'MANAGE_ITEM_CAT' => 'القسم',
+  'MANAGE_ITEM_MEMBER' => 'المستخدم',
+  'MANAGE_ITEM_CONTROL' => 'التحكم',
+  'ADD_ITEM' => 'اضافه منتج',
+
+  // Add Items Phrases
+  'ADD_ITEMS_PAGE' => 'اضافه منتج جديد',
+  'ITEM_NAME' => 'اسم المنتج',
+  'ITEM_NAME_PLACEHOLDER' => 'اسم المنتج يجب ان يكون فريد',
+  'ITEM_DESCRIPTION' => 'وصف المنتج',
+  'ITEM_DESC_PLACEHOLDER' => 'وصف المنتج يجب ان يكون حقيقي',
+  'ITEM_PRICE' => 'سعر المنتج',
+  'ITEM_PRICE_PLACEHOLDER' => 'سعر المنتج يجب ان يكون رقم',
+  'ITEM_COUNTRY' => 'بلد المنتج',
+  'ITEM_COUNTRY_PLACEHOLDER' => 'بلد المنتج',
+  'ITEM_STATUS' => 'حاله المنتج',
+  'NEW_OPT' => 'جديد',
+  'LIKE_NEW_OPT' => 'كالجديد',
+  'USED_OPT' => 'مستعمل',
+  'OLD_OPT' => 'قديم',
+  'CHOOSE_MEMBER' => 'اختر العضو',
+  'CHOOSE_CATEGORY' => 'اختر القسم',
+
+  // Insert Items Phrases
+  'INSERT_ITEM' => 'اضافه منتج',
+  'MEMBER_EMPTY' => 'العضو لا يمكن ان يكون فارغ',
+  'CATEGORY_EMPTY' => 'القسم لا يمكن ان يكون فارغ',
+  'ITEM_NAME_EMPTY' => 'اسم المنتج لا يمكن ان يكون فارغ',
+  'ITEM_NAME_LESS' => 'اسم المنتج لا يمكن ان يكون اقل من 4 احرف',
+  'ITEM_NAME_MORE' => 'اسم المنتج لا يمكن ان يكون اكثر من 30 حرف',
+  'ITEM_DESC_EMPTY' => 'وصف المنتج لا يمكن ان يكون فارغ',
+  'ITEM_PRICE_EMPTY' => 'سعر المنتج لا يمكن ان يكون فارغ',
+  'ITEM_COUNTRY_EMPTY' => 'اختر بلد المنتج',
+  'ITEM_STATUS_EMPTY' => 'اختر حاله المنتج',
+  'INSERT_ITEM_SUCCESS' => 'تم اضافه المنتج بنجاح',
+
+  // Update Items Phrases
+  'UPDATE_ITEM' => 'تحديث المنتج',
+  'UPDATE_ITEM_NAME_SUCCESS' => 'تم تحديث اسم المنتج بنجاح',
+  'UPDATE_DESCRIPTION_SUCCESS' => 'تم تحديث وصف المنتج بنجاح',
+  'UPDATE_PRICE_SUCCESS' => 'تم تحديث سعر المنتج بنجاح',
+  'UPDATE_COUNTRY_SUCCESS' => 'تم تحديث بلد المنتج بنجاح',
+  'UPDATE_STATUS_SUCCESS' => 'تم تحديث حاله المنتج بنجاح',
+  'UPDATE_MEMBER_SUCCESS' => 'تم تحديث العضو بنجاح',
+  'UPDATE_CATEGORY_SUCCESS' => 'تم تحديث القسم بنجاح',
+
+  // Delete Items Phrases
+  'DELETE_ITEM' => 'حذف المنتج',
+  'DELETE_ITEM_CONFIRMATION' => 'هل  انت متاكد  من    حذف هذا المنتج؟',
+  'DELETE_ITEM_SUCCESS' => 'تم حذف المنتج بنجاح',
+
+  // Approve Items Phrases
+  'APPROVE_MEMBER_CONFIRMATION' => 'هل  انت متاكد  من    تفعيل هذا المنتج؟',
+  'APPROVE_BTN' => 'تفعيل',
+  'APPROVE_ITEM' => 'تفعيل المنتج',
+  'APPROVE_ITEM_SUCCESS' => 'تم تفعيل المنتج بنجاح',
+  /* End Items Phrases */
+
+
   // Warning Phrases
   'ID_NOT_FOUND_WARNING' => 'هذا المستخدم غير موجود',
   'DIRECT_LINK' => 'لا يمكنك الوصول الى هذه الصفحه مباشره',

@@ -32,17 +32,17 @@ if (isset($_SESSION['user_name'])):
     $rows = $stmt->fetchAll();
     ?>
     <div class="container">
-      <h1><?php echo lang("MANAGE_MEMBERS") ?></h1>
+      <h1><?= lang("MANAGE_MEMBERS") ?></h1>
       <div class="table-responsive">
         <table class="main-table text-center table table-striped table-hover table-bordered">
           <thead>
             <tr>
-              <td><?php echo lang("ID_MANAGE") ?></td>
-              <td><?php echo lang("USERNAME_MANAGE") ?></td>
-              <td><?php echo lang("EMAIL_MANAGE") ?></td>
-              <td><?php echo lang("FULLNAME_MANAGE") ?></td>
-              <td><?php echo lang("DATE_MANAGE") ?></td>
-              <td><?php echo lang("CONTROL_MANAGE") ?></td>
+              <td><?= lang("ID_MANAGE") ?></td>
+              <td><?= lang("USERNAME_MANAGE") ?></td>
+              <td><?= lang("EMAIL_MANAGE") ?></td>
+              <td><?= lang("FULLNAME_MANAGE") ?></td>
+              <td><?= lang("DATE_MANAGE") ?></td>
+              <td><?= lang("CONTROL_MANAGE") ?></td>
             </tr>
           </thead>
           <tbody>
@@ -55,15 +55,14 @@ if (isset($_SESSION['user_name'])):
               echo "<td>" . $row['full_name'] . "</td>";
               echo "<td>" . $row['date'] . "</td>";
               echo "<td>
-                        <a href='?do=Edit&id=" . $row['user_id'] . "' class='btn btn-success control_field'> <i class='fa fa-edit'></i> " . lang("EDIT_BTN") . "</a>
+                        <a href='?do=Edit&id=" . $row['user_id'] . "' class='btn btn-success control_field'> <i class='fa fa-edit'></i> </a>
                         <a href='?do=Delete&id=" . $row['user_id'] . "'
                           onclick='return confirm(\"" . lang("DELETE_MEMBER_CONFIRMATION") . "\")'
-                          class='btn btn-danger control_field'> <i class='fa fa-trash'></i> " . lang("DELETE_BTN") . " </a> ";
+                          class='btn btn-danger control_field'> <i class='fa fa-trash'></i></a> ";
               if ($row['reg_status'] == 0):
                 echo "<a href='?do=Activate&id=" . $row['user_id'] . "'
                             onclick='return confirm(\"" . lang("ACTIVATE_MEMBER_CONFIRMATION") . "\")'
-                            class='btn btn-info control_field'> <i class='fa fa-check'></i> " . lang("ACTIVATE_BTN") . " </a>";
-
+                            class='btn btn-info control_field'> <i class='fa fa-check'></i></a>";
               endif;
               echo "</td>";
               echo "</tr>";
@@ -72,51 +71,51 @@ if (isset($_SESSION['user_name'])):
           </tbody>
         </table>
       </div>
-      <a href='?do=Add' class='btn btn-primary mb-5'> <i class="fa fa-plus"> </i> <?php echo lang(("ADD_MEMBER")) ?> </a>
+      <a href='?do=Add' class='btn btn-primary mb-5  '> <i class="fa fa-plus"> </i> <?= lang(("ADD_MEMBER")) ?> </a>
     </div>
 
   <?php elseif ($do == 'Add'): // Add Page ?>
     <div class="container add-container">
-      <h1><?php echo lang("ADD_MEMBER") ?></h1>
+      <h1><?= lang("ADD_MEMBER") ?></h1>
       <form action="members.php?do=Insert" method="POST">
         <!-- Start Username -->
         <div class="mb-3">
-          <label for="username" class="form-label"><?php echo lang("ADD_USER") ?></label>
+          <label for="username" class="form-label"><?= lang("ADD_USER") ?></label>
           <div class="input-wrapper">
             <input type="text" class="form-control" id="username" name="username" autocomplete="off" required
-              placeholder="<?php echo lang("ADD_USER_PLACEHOLDER") ?>">
+              placeholder="<?= lang("ADD_USER_PLACEHOLDER") ?>">
           </div>
         </div>
         <!-- End Username -->
         <!-- Start Password -->
         <div class="mb-3">
-          <label for="password" class="form-label"><?php echo lang("ADD_PASS") ?></label>
+          <label for="password" class="form-label"><?= lang("ADD_PASS") ?></label>
           <div class="input-wrapper">
             <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" required
-              placeholder="<?php echo lang("ADD_PASS_PLACEHOLDER") ?>">
+              placeholder="<?= lang("ADD_PASS_PLACEHOLDER") ?>">
           </div>
         </div>
         <!-- End Password -->
         <!-- Start Email -->
         <div class="mb-3 input-container">
-          <label for="email" class="form-label"><?php echo lang("ADD_EMAIL") ?></label>
+          <label for="email" class="form-label"><?= lang("ADD_EMAIL") ?></label>
           <div class="input-wrapper">
             <input type="email" class="form-control" id="email" name="email" autocomplete="off" required
-              placeholder="<?php echo lang("ADD_EMAIL_PLACEHOLDER") ?>">
+              placeholder="<?= lang("ADD_EMAIL_PLACEHOLDER") ?>">
           </div>
         </div>
         <!-- End Email -->
         <!-- Start Full Name -->
         <div class="mb-3">
-          <label for="fullname" class="form-label"><?php echo lang("ADD_FULL_NAME") ?></label>
+          <label for="fullname" class="form-label"><?= lang("ADD_FULL_NAME") ?></label>
           <div class="input-wrapper">
             <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off" required
-              placeholder="<?php echo lang("ADD_FULL_PLACEHOLDER") ?>">
+              placeholder="<?= lang("ADD_FULL_PLACEHOLDER") ?>">
           </div>
         </div>
         <!-- End Full Name -->
-        <button type="submit" class="btn btn-primary "> <i class='fa fa-plus'>
-          </i> <?php echo lang("ADD_MEMBER_BTN") ?></button> <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary  "> <i class='fa fa-plus'>
+          </i> <?= lang("ADD_MEMBER_BTN") ?></button> <!-- Submit Button -->
       </form>
     </div>
     <?php
@@ -189,45 +188,45 @@ if (isset($_SESSION['user_name'])):
     if ($rowCount > 0): ?>
 
       <div class="container edit-container">
-        <h1><?php echo lang("EDIT_MEMBER") ?></h1>
+        <h1><?= lang("EDIT_MEMBER") ?></h1>
         <form action="?do=Update" method="POST">
-          <input type="hidden" name="userid" value="<?php echo $userid ?>">
+          <input type="hidden" name="userid" value="<?= $userid ?>">
           <!-- Start Username -->
           <div class="mb-3">
-            <label for="username" class="form-label"><?php echo lang("EDIT_USER") ?></label>
+            <label for="username" class="form-label"><?= lang("EDIT_USER") ?></label>
             <div class="input-wrapper">
               <input type="text" class="form-control" id="username" name="username" autocomplete="off"
-                value="<?php echo $row['user_name'] ?>" Required>
+                value="<?= $row['user_name'] ?>" Required>
             </div>
           </div>
           <!-- End Username -->
           <!-- Start Password -->
           <div class="mb-3">
-            <label for="password" class="form-label"><?php echo lang("EDIT_PASS") ?></label>
-            <input type="hidden" name="oldpassword" class="form-control" value="<?php echo $row['pass'] ?>">
+            <label for="password" class="form-label"><?= lang("EDIT_PASS") ?></label>
+            <input type="hidden" name="oldpassword" class="form-control" value="<?= $row['pass'] ?>">
             <input type="password" class="form-control" id="password" name="newpassword" autocomplete="new-password"
-              placeholder="<?php echo lang("PASS_MESSAGE") ?>">
+              placeholder="<?= lang("PASS_MESSAGE") ?>">
           </div>
           <!-- End Password -->
           <!-- Start Email -->
           <div class="mb-3 input-container">
-            <label for="email" class="form-label"><?php echo lang("EDIT_EMAIL") ?></label>
+            <label for="email" class="form-label"><?= lang("EDIT_EMAIL") ?></label>
             <div class="input-wrapper">
-              <input type="email" class="form-control" id="email" name="email" autocomplete="off"
-                value="<?php echo $row['email'] ?>" Required>
+              <input type="email" class="form-control" id="email" name="email" autocomplete="off" value="<?= $row['email'] ?>"
+                Required>
             </div>
           </div>
           <!-- End Email -->
           <!-- Start Full Name -->
           <div class="mb-3">
-            <label for="fullname" class="form-label"><?php echo lang("EDIT_FULL_NAME") ?></label>
+            <label for="fullname" class="form-label"><?= lang("EDIT_FULL_NAME") ?></label>
             <div class="input-wrapper">
               <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off"
-                value="<?php echo $row['full_name'] ?>" Required>
+                value="<?= $row['full_name'] ?>" Required>
             </div>
           </div>
           <!-- End Full Name -->
-          <button type="submit" class="btn btn-primary "> <i class='fa fa-edit'></i> <?php echo lang("UPDATE_BTN") ?></button>
+          <button type="submit" class="btn btn-primary  "> <i class='fa fa-edit'></i> <?= lang("UPDATE_BTN") ?></button>
           <!-- Submit Button -->
 
         </form>
@@ -320,7 +319,6 @@ if (isset($_SESSION['user_name'])):
     endif;
 
   elseif ($do == 'Delete'): // Delete Page
-
     echo "<div class='container'>";
     // Check If Get Request userid Is Numeric & Get The Integer Value Of It
     $userid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
@@ -339,8 +337,6 @@ if (isset($_SESSION['user_name'])):
     endif;
     echo "</div>";
   elseif ($do == 'Activate'): // Activate Page
-
-
     // Check If Get Request userid Is Numeric & Get The Integer Value Of It
     $userid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
 

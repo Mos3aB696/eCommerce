@@ -75,7 +75,7 @@ function redirectFuncError($error, $url = 'dashboard.php', $seconds = 3)
   endif;
   $formErrors = $error; // Store All Errors In formErrors Array
 
-  $basename = basename($url, '.php');
+  $basename = basename($url, '.php'); // 'members.php' => 'members'
 
   // Check If The Link Is Back
   if ($url == 'back'):
@@ -96,7 +96,7 @@ function redirectFuncError($error, $url = 'dashboard.php', $seconds = 3)
     $frindlyUrl = ucfirst($basename);
   endif;
 
-  echo "<div class='container m-5'>";
+  echo "<div class='container mt-5'>";
   // Make Loop On All Errors [1]
   foreach ($formErrors as $err):
     echo "<div class='alert alert-danger'>$err</div>";

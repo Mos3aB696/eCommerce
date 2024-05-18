@@ -8,65 +8,13 @@
 /* Start Main Rules */
 body {
   background-color: #f4f4f4;
-  /* When Use Arabic File */
+  /* Arabic File */
   /* direction: rtl; */
 }
 /* End Main Rules */
 
 /* Start Gloabal Customization */
-/* .warning {
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 100px auto;
-  text-align: center;
-  background: var(--main-color);
-  width: fit-content;
-  padding: var(--main-padding);
-  border-radius: var(--border-radius);
-  -webkit-border-radius: var(--border-radius);
-  -moz-border-radius: var(--border-radius);
-  -ms-border-radius: var(--border-radius);
-  -o-border-radius: var(--border-radius);
-}
-
-.alert {
-  margin: 10px auto;
-  font-size: 18px;
-  max-width: 600px;
-}
-
-.error {
-  color: #fff;
-  font-weight: bold;
-  font-size: 18px;
-  margin: auto;
-  text-align: center;
-  background: #dc3545;
-  width: fit-content;
-  padding: var(--main-padding);
-  border-radius: var(--border-radius);
-  -webkit-border-radius: var(--border-radius);
-  -moz-border-radius: var(--border-radius);
-  -ms-border-radius: var(--border-radius);
-  -o-border-radius: var(--border-radius);
-}
-
-.success {
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-  margin: auto;
-  text-align: center;
-  background: #28a745;
-  width: fit-content;
-  padding: var(--main-padding);
-  border-radius: var(--border-radius);
-  -webkit-border-radius: var(--border-radius);
-  -moz-border-radius: var(--border-radius);
-  -ms-border-radius: var(--border-radius);
-  -o-border-radius: var(--border-radius);
-} */
+/* Arabic File */
 .asterisk {
   position: absolute;
   top: 50%;
@@ -79,6 +27,13 @@ body {
   -moz-transform: translateY(-40%);
   -ms-transform: translateY(-40%);
   -o-transform: translateY(-40%);
+}
+.table > thead {
+  user-select: none;
+}
+i.fa {
+  /* Arabic File */
+  margin-right: 3px;
 }
 /* End Gloabal Customization */
 
@@ -130,6 +85,12 @@ div.collapse {
   -moz-transition: all var(--transition-duration) ease-in-out;
   -ms-transition: all var(--transition-duration) ease-in-out;
   -o-transition: all var(--transition-duration) ease-in-out;
+}
+
+.nav-item a.active {
+  background-color: var(--main-color);
+  color: #fff !important;
+  font-weight: bold;
 }
 /* .nav-item:hover a {
   background-color: var(--main-color);
@@ -332,7 +293,7 @@ h1 {
   margin: 0;
   font-size: 50px;
   text-align: center;
-  padding: 50px;
+  padding: 30px;
 }
 .edit-container,
 .add-container {
@@ -354,10 +315,21 @@ input::placeholder {
   box-shadow: 0 3px 12px #ccc;
 }
 .main-table .btn {
-  padding: 3px 10px;
   color: #fff;
-  font-size: 14px;
-  font-weight: bold;
+  padding: 3px 10px;
+}
+.main-table .btn i {
+  /* margin-right: 3px; */
+  font-size: 16px;
+  width: 16px;
+}
+.main-table .btn i.fa {
+  margin: 0;
+}
+@media (max-width: 991px) {
+  .main-table .btn:not(:last-child) {
+    margin-bottom: 2px;
+  }
 }
 
 .main-table thead tr td {
@@ -366,8 +338,5 @@ input::placeholder {
   font-weight: bold;
 }
 
-.control_field {
-  font-size: 14px;
-}
 /* End Manage Page */
 /* End Custom Bootstrap */

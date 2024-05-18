@@ -39,50 +39,62 @@ if (isset($_SESSION['user_name'])):
     $rows = $stmt->fetchAll();
     ?>
     <div class="container cat-container">
-      <h1><?php echo lang("MANAGE_CAT") ?></h1>
+      <h1><?= lang("MANAGE_CAT") ?></h1>
       <div class="container ">
         <!-- Start Sorting Form -->
         <form action="categories.php" method='GET'>
           <div class="row mb-4">
             <div class="col-md-5">
               <select name="sort_col" class='form-select'>
-                <option value="cat_id" <?php echo ($sort_col == 'cat_id') ? 'selected' : ''; ?>>ID</option>
-                <option value="cat_name" <?php echo ($sort_col == 'cat_name') ? 'selected' : ''; ?>>Name</option>
-                <option value="cat_description" <?php echo ($sort_col == 'cat_description') ? 'selected' : ''; ?>>
-                  Description
+                <option value="cat_id" <?= ($sort_col == 'cat_id') ? 'selected' : ''; ?>><?= lang('MANAGE_CAT_ID') ?>
                 </option>
-                <option value="ordering" <?php echo ($sort_col == 'ordering') ? 'selected' : ''; ?>>Order</option>
-                <option value="visibility" <?php echo ($sort_col == 'visibility') ? 'selected' : ''; ?>>Visibility</option>
-                <option value="allow_comment" <?php echo ($sort_col == 'allow_comment') ? 'selected' : ''; ?>>Comment
+                <option value="cat_name" <?= ($sort_col == 'cat_name') ? 'selected' : ''; ?>>
+                  <?= lang('MANAGE_CAT_NAME') ?>
                 </option>
-                <option value="allow_ads" <?php echo ($sort_col == 'allow_ads') ? 'selected' : ''; ?>>Ads</option>
+                <option value="cat_description" <?= ($sort_col == 'cat_description') ? 'selected' : ''; ?>>
+                  <?= lang('MANAGE_CAT_DESC') ?>
+                </option>
+                <option value="ordering" <?= ($sort_col == 'ordering') ? 'selected' : ''; ?>>
+                  <?= lang('MANAGE_CAT_ORDER') ?>
+                </option>
+                <option value="visibility" <?= ($sort_col == 'visibility') ? 'selected' : ''; ?>>
+                  <?= lang('MANAGE_CAT_VISABLE') ?>
+                </option>
+                <option value="allow_comment" <?= ($sort_col == 'allow_comment') ? 'selected' : ''; ?>>
+                  <?= lang('MANAGE_CAT_COMMENT') ?>
+                </option>
+                <option value="allow_ads" <?= ($sort_col == 'allow_ads') ? 'selected' : ''; ?>>
+                  <?= lang('MANAGE_CAT_ADS') ?>
+                </option>
               </select>
             </div>
             <div class="col-md-5">
               <select name="sort_order" class="form-select">
-                <option value="ASC" <?php echo ($sort_order == 'ASC') ? 'selected' : ''; ?>>ASC</option>
-                <option value="DESC" <?php echo ($sort_order == 'DESC') ? 'selected' : ''; ?>>DESC</option>
+                <option value="ASC" <?= ($sort_order == 'ASC') ? 'selected' : ''; ?>><?= lang('SORT_ASC') ?>
+                </option>
+                <option value="DESC" <?= ($sort_order == 'DESC') ? 'selected' : ''; ?>><?= lang('SORT_DESC') ?>
+                </option>
               </select>
             </div>
             <div class="col-md-2 custom-btn">
-              <button type="submit" class="btn btn-primary">Sort</button>
+              <button type="submit" class="btn btn-primary"><?= lang("SORT_BTN") ?></button>
             </div>
           </div>
         </form>
         <!-- End Sorting Form -->
       </div>
       <div class="table-responsive">
-        <table class="table main-table table-bordered text-center">
+        <table class="table main-table table-bordered text-center table-striped table-hover">
           <thead>
             <tr>
               <td><?= lang('MANAGE_CAT_ID') ?></td>
-              <td><?php echo lang('MANAGE_CAT_NAME') ?></td>
-              <td><?php echo lang('MANAGE_CAT_DESC') ?></td>
-              <td><?php echo lang('MANAGE_CAT_ORDER') ?></td>
-              <td><?php echo lang('MANAGE_CAT_VISABLE') ?></td>
-              <td><?php echo lang('MANAGE_CAT_COMMENT') ?></td>
-              <td><?php echo lang('MANAGE_CAT_ADS') ?></td>
-              <td><?php echo lang('MANAGE_CONTROL_CAT') ?></td>
+              <td><?= lang('MANAGE_CAT_NAME') ?></td>
+              <td><?= lang('MANAGE_CAT_DESC') ?></td>
+              <td><?= lang('MANAGE_CAT_ORDER') ?></td>
+              <td><?= lang('MANAGE_CAT_VISABLE') ?></td>
+              <td><?= lang('MANAGE_CAT_COMMENT') ?></td>
+              <td><?= lang('MANAGE_CAT_ADS') ?></td>
+              <td><?= lang('MANAGE_CONTROL_CAT') ?></td>
             </tr>
           </thead>
           <tbody>
@@ -106,11 +118,11 @@ if (isset($_SESSION['user_name'])):
                 : '<td><span class="cat-off">' . lang("ADS_OFF") . '</span></td>');
               echo '<td>
                     <a href="categories.php?do=Edit&id=' . $row['cat_id'] .
-                '" class="btn btn-success"> <i class="fa fa-edit"></i> ' . lang('EDIT_BTN') . '</a>
+                '" class="btn btn-success"> <i class="fa fa-edit"></i> </a>
                     <a href="categories.php?do=Delete&id=' . $row['cat_id'] .
                 '" class="btn btn-danger"
                 onclick="return confirm(\'' . lang('DELETE_CAT_CONFIRMATION') . '\')"
-                > <i class="fa fa-trash"></i> ' . lang('DELETE_BTN') . '</a>
+                > <i class="fa fa-trash"></i> </a>
                   </td>';
               echo '</tr>';
             endforeach;
@@ -118,7 +130,7 @@ if (isset($_SESSION['user_name'])):
           </tbody>
         </table>
       </div>
-      <a href="?do=Add" class='btn btn-primary'><i class='fa fa-plus'></i> <?= lang("ADD_CATEGORY") ?></a>
+      <a href="?do=Add" class='btn btn-primary '><i class='fa fa-plus'></i> <?= lang("ADD_CATEGORY") ?></a>
     </div>
 
 
@@ -127,51 +139,51 @@ if (isset($_SESSION['user_name'])):
   elseif ($do == 'Add'): // Add Categories Page ?>
 
     <div class="container add-container">
-      <h1><?php echo lang('ADD_CAT_PAGE') ?></h1>
+      <h1><?= lang('ADD_CAT_PAGE') ?></h1>
       <form action="categories.php?do=Insert" method='POST'>
         <div class="mb-3">
-          <label class="form-label" for="category-name"><?php echo lang('CAT_NAME') ?></label>
+          <label class="form-label" for="category-name"><?= lang('CAT_NAME') ?></label>
           <div class="input-wrapper">
             <input type="text" class="form-control" id="category-name" name="category-name"
-              placeholder="<?php echo lang('CAT_NAME_PLACEHOLDER') ?>" required autocomplete='off'>
+              placeholder="<?= lang('CAT_NAME_PLACEHOLDER') ?>" required>
           </div>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="category-description"><?php echo lang('CAT_DESCRIPTION') ?></label>
+          <label class="form-label" for="category-description"><?= lang('CAT_DESCRIPTION') ?></label>
           <div class="input-wrapper">
             <input type="text" class="form-control" id="category-description" name="category-description"
-              placeholder="<?php echo lang('CAT_DESC_PLACEHOLDER') ?>" required autocomplete='off'>
+              placeholder="<?= lang('CAT_DESC_PLACEHOLDER') ?>" required>
           </div>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="category-order"><?php echo lang('CAT_ORDER') ?></label>
+          <label class="form-label" for="category-order"><?= lang('CAT_ORDER') ?></label>
           <div class="input-wrapper">
             <input type="number" class="form-control" id="category-order" name="category-order"
-              placeholder="<?php echo lang('CAT_ORDER_PLACEHOLDER') ?>">
+              placeholder="<?= lang('CAT_ORDER_PLACEHOLDER') ?>">
           </div>
         </div>
         <div class="mb-3">
-          <label for="category-visable" class='form-label'> <?php echo lang("CAT_VISABLE") ?> </label>
+          <label for="category-visable" class='form-label'> <?= lang("CAT_VISABLE") ?> </label>
           <select class="form-select" id="category-visable" name="category-visable">
-            <option value="0" selected> <?php echo lang("VIS_YES") ?> </option>
-            <option value="1"> <?php echo lang("VIS_NO") ?> </option>
+            <option value="0" selected> <?= lang("VIS_YES") ?> </option>
+            <option value="1"> <?= lang("VIS_NO") ?> </option>
           </select>
         </div>
         <div class="mb-3">
-          <label for="category-comment" class='form-label'> <?php echo lang("CAT_COMMENT") ?> </label>
+          <label for="category-comment" class='form-label'> <?= lang("CAT_COMMENT") ?> </label>
           <select class="form-select" id="category-comment" name="category-comment">
-            <option value="0" selected> <?php echo lang("COM_YES") ?> </option>
-            <option value="1"> <?php echo lang("COM_NO") ?> </option>
+            <option value="0" selected> <?= lang("COM_YES") ?> </option>
+            <option value="1"> <?= lang("COM_NO") ?> </option>
           </select>
         </div>
         <div class="mb-3">
-          <label for="category-ads" class='form-label'> <?php echo lang("CAT_ADS") ?> </label>
+          <label for="category-ads" class='form-label'> <?= lang("CAT_ADS") ?> </label>
           <select class="form-select" id="category-ads" name="category-ads">
-            <option value="0" selected> <?php echo lang("ADS_YES") ?> </option>
-            <option value="1"> <?php echo lang("ADS_NO") ?> </option>
+            <option value="0" selected> <?= lang("ADS_YES") ?> </option>
+            <option value="1"> <?= lang("ADS_NO") ?> </option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary"> <i class="fa fa-plus"></i> <?php echo lang('ADD_CAT_BTN') ?></button>
+        <button type="submit" class="btn btn-primary  "> <i class="fa fa-plus"></i> <?= lang('ADD_CAT_BTN') ?></button>
       </form>
     </div>
     <?php
@@ -192,10 +204,27 @@ if (isset($_SESSION['user_name'])):
       $categoryAds = filter_input(INPUT_POST, 'category-ads', FILTER_SANITIZE_NUMBER_INT);
 
       // Check If Category Name Is Exist In Database Or Not
+      $formErrors = array();
       $check = checkItem('cat_name', 'categories', $categoryName);
 
+      // Check Data Validation
+      if (empty($categoryName)):
+        $formErrors[] = lang("CAT_NAME_EMPTY");
+      elseif (strlen($categoryName) < 4):
+        $formErrors[] = lang("CAT_NAME_LESS");
+      elseif (strlen($categoryName) > 30):
+        $formErrors[] = lang("CAT_NAME_MORE");
+      endif;
       if ($check > 0):
-        redirectFuncError(lang("CAT_EXISTS"), 'back');
+        $formErrors[] = lang("CAT_EXISTS");
+      endif;
+      if (empty($categoryDesc)):
+        $formErrors[] = lang("CAT_DESC_EMPTY");
+      endif;
+
+
+      if (!empty($formErrors)):
+        redirectFuncError($formErrors, 'back', 5);
       else:
         // Check If Category Order Is Empty
         if ($categoryOrder == '') {
@@ -227,30 +256,29 @@ if (isset($_SESSION['user_name'])):
     if ($rowCount > 0): ?>
 
       <div class="container edit-container">
-        <h1><?php echo lang("EDIT_CAT") ?></h1>
+        <h1><?= lang("EDIT_CAT") ?></h1>
         <form action="?do=Update" method='POST'>
-          <input type="hidden" name="catid" value="<?php echo $catId ?>">
+          <input type="hidden" name="catid" value="<?= $catId ?>">
           <div class="mb-3">
-            <label class="form-label" for="category-name"><?php echo lang('CAT_NAME') ?></label>
+            <label class="form-label" for="category-name"><?= lang('CAT_NAME') ?></label>
             <div class="input-wrapper">
-              <input type="text" class="form-control" id="category-name" name="category-name"
-                value="<?php echo $row['cat_name'] ?>" required autocomplete='off'
-                placeholder='<?= lang("CAT_NAME_PLACEHOLDER") ?>'>
+              <input type="text" class="form-control" id="category-name" name="category-name" value="<?= $row['cat_name'] ?>"
+                required autocomplete='off' placeholder='<?= lang("CAT_NAME_PLACEHOLDER") ?>'>
             </div>
           </div>
           <div class="mb-3">
-            <label class="form-label" for="category-description"><?php echo lang('CAT_DESCRIPTION') ?></label>
+            <label class="form-label" for="category-description"><?= lang('CAT_DESCRIPTION') ?></label>
             <div class="input-wrapper">
               <input type="text" class="form-control" id="category-description" name="category-description"
-                value="<?php echo $row['cat_description'] ?>" required autocomplete='off'
+                value="<?= $row['cat_description'] ?>" required autocomplete='off'
                 placeholder="<?= lang("CAT_DESC_PLACEHOLDER") ?>">
             </div>
           </div>
           <div class="mb-3">
-            <label class="form-label" for="category-order"><?php echo lang('CAT_ORDER') ?></label>
+            <label class="form-label" for="category-order"><?= lang('CAT_ORDER') ?></label>
             <div class="input-wrapper">
               <input type="number" class="form-control" id="category-order" name="category-order"
-                value="<?php echo $row['ordering'] ?>" placeholder="<?= lang('CAT_ORDER_PLACEHOLDER') ?>">
+                value="<?= $row['ordering'] ?>" placeholder="<?= lang('CAT_ORDER_PLACEHOLDER') ?>">
             </div>
           </div>
           <div class="mb-3">
@@ -274,13 +302,13 @@ if (isset($_SESSION['user_name'])):
               <option value="1" <?= ($row['allow_ads'] == 1) ? 'selected' : ''; ?>><?= lang("ADS_NO") ?></option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary"><i class='fa fa-edit'></i> <?= lang("UPDATE_BTN") ?> </button>
+          <button type="submit" class="btn btn-primary  "><i class='fa fa-edit'></i> <?= lang("UPDATE_BTN") ?> </button>
         </form>
       </div>
 
       <?php
     else:
-      redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'categories.php');
+      redirectFuncError(lang("ID_NOT_FOUND_WARNING"));
     endif;
 
     // End Edit Page
@@ -392,7 +420,7 @@ if (isset($_SESSION['user_name'])):
       $stmt->execute(array($catId));
       redirectFuncSuccess(getName("cat_name", "categories", "cat_id", $catId) . ' ' . lang('DELETE_CAT_SUCCESS'), 'categories.php');
     else:
-      redirectFuncError(lang('ID_NOT_FOUND_WARNING'), 'categories.php');
+      redirectFuncError(lang('ID_NOT_FOUND_WARNING'));
     endif;
     echo '</div>';
 

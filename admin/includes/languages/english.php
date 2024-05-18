@@ -26,7 +26,7 @@ function lang($phrase)
   'SETTINGS' => 'Settings',
   'LOGOUT' => 'Logout',
 
-  // Start Dashboard Phrases
+  /* Start Dashboard Phrases */
   'DASHBOARD_TITLE' => 'Dashboard',
   'TOTLE_MEMBERS' => 'Total Members',
   'PENDING_MEMBERS' => 'Pending Members',
@@ -34,9 +34,9 @@ function lang($phrase)
   'TOTLE_COMMENTS' => 'Total Comments',
   'LATEST' => 'Latest',
   'LATEST_ITEMS' => 'Latest Items',
-  // End Dashboard Phrases
+  /* End Dashboard Phrases */
 
-  // Start Members Phrases
+  /* Start Members Phrases */
   // Edit Page Phrases
   'EDIT_MEMBER' => 'Edit Member',
   'EDIT_USER' => 'Username',
@@ -87,7 +87,7 @@ function lang($phrase)
   'USERNAME_MANAGE' => 'Username',
   'EMAIL_MANAGE' => 'Email',
   'FULLNAME_MANAGE' => 'Full Name',
-  'DATE_MANAGE' => 'Registered Date',
+  'DATE_MANAGE' => 'Registered',
   'CONTROL_MANAGE' => 'Control',
   'ACTIVATE_MEMBER_CONFIRMATION' => 'Are You Sure You Want To Activate This Member?',
   'ACTIVATE_BTN' => 'Activate',
@@ -101,9 +101,11 @@ function lang($phrase)
   // Activate Member Phrases
   'ACTIVATE_MEMBER' => 'Activate Member',
   'ACTIVATE_MEMBER_SUCCESS' => 'Activated Successfully',
-  // End Members Phrases
+  /* End Members Phrases */
 
-  // Start Categories Phrases
+  /* Start Categories Phrases */
+
+  'CATEGORIES_TITLE' => 'Categories',
 
   // Manage Categories Phrases
   'MANAGE_CAT' => 'Manage Categories',
@@ -116,6 +118,9 @@ function lang($phrase)
   'MANAGE_CAT_ADS' => 'Ads',
   'MANAGE_CONTROL_CAT' => 'Control',
   'ADD_CATEGORY' => 'Add Category',
+  'SORT_ASC' => 'Ascending',
+  'SORT_DESC' => 'Descending',
+  'SORT_BTN' => 'Sort',
 
   // Add Categories Phrases
   'ADD_CAT_PAGE' => 'Add Category',
@@ -169,11 +174,85 @@ function lang($phrase)
   'DELETE_CAT_CONFIRMATION' => 'Are You Sure You Want To Delete This Category?',
   'DELETE_CAT_SUCCESS' => 'Category Deleted Successfully',
 
-  // End Categories Phrases
+  /* End Categories Phrases */
+
+  /* Start Items Phrases */
+
+  'ITEMS_TITLE' => 'Items',
+
+  // Manage Items Phrases
+  'MANAGE_ITEMS' => 'Manage Items',
+  'ITEM_ID' => 'ID',
+  'MANAGE_ITEM_NAME' => 'Name',
+  'MANAGE_ITEM_DESC' => 'Description',
+  'MANAGE_ITEM_PRICE' => 'Price',
+  'MANAGE_ITEM_COUNTRY' => 'Country',
+  'MANAGE_ITEM_STATUS' => 'Status',
+  'MANAGE_ITEM_CAT' => 'Category',
+  'MANAGE_ITEM_MEMBER' => 'Member',
+  'MANAGE_ITEM_DATE' => 'Registered',
+  'MANAGE_ITEM_CONTROL' => 'Control',
+  'ADD_ITEM' => 'Add Item',
+  // Add Items Phrases 
+  'ADD_ITEMS_PAGE' => 'Add Item',
+  'ITEM_NAME' => 'Item Name',
+  'ITEM_NAME_PLACEHOLDER' => 'Item Name Must Be Specific',
+  'ITEM_DESCRIPTION' => 'Item Description',
+  'ITEM_DESC_PLACEHOLDER' => 'Describe Your Item',
+  'ITEM_PRICE' => 'Item Price',
+  'ITEM_PRICE_PLACEHOLDER' => 'Enter Your Item Price',
+  'ITEM_COUNTRY' => 'Item Country',
+  'ITEM_COUNTRY_PLACEHOLDER' => 'Item Made In',
+  'ITEM_STATUS' => 'Item Status',
+  'NEW_OPT' => 'New',
+  'LIKE_NEW_OPT' => 'Like New',
+  'USED_OPT' => 'Used',
+  'OLD_OPT' => 'Old',
+  'CHOOSE_MEMBER' => 'Choose Member',
+  'CHOOSE_CATEGORY' => 'Choose Category',
+
+  // Insert Items Phrases
+  'INSERT_ITEM' => 'Insert Item',
+  'MEMBER_EMPTY' => 'Member Can\'t Be Empty',
+  'CATEGORY_EMPTY' => 'Category Can\'t Be Empty',
+  'ITEM_NAME_EMPTY' => 'Item Name Can\'t Be Empty',
+  'ITEM_NAME_LESS' => 'Item Name Can\'t Be Less Than 4 Characters',
+  'ITEM_NAME_MORE' => 'Item Name Can\'t Be More Than 30 Characters',
+  'ITEM_DESC_EMPTY' => 'Item Description Can\'t Be Empty',
+  'ITEM_PRICE_EMPTY' => 'Item Price Can\'t Be Empty',
+  'ITEM_COUNTRY_EMPTY' => 'Item Country Can\'t Be Empty',
+  'ITEM_STATUS_EMPTY' => 'Choose Your Item Status',
+  'INSERT_ITEM_SUCCESS' => 'Item Inserted Successfully',
+
+  // Edit Items Phrases
+  'EDIT_ITEM' => 'Edit Item',
+
+  // Update Items Phrases
+  'UPDATE_ITEM' => 'Update Item',
+  'UPDATE_ITEM_NAME_SUCCESS' => 'Item Name Updated Successfully',
+  'UPDATE_DESCRIPTION_SUCCESS' => 'Item Description Updated Successfully',
+  'UPDATE_PRICE_SUCCESS' => 'Item Price Updated Successfully',
+  'UPDATE_COUNTRY_SUCCESS' => 'Item Country Updated Successfully',
+  'UPDATE_STATUS_SUCCESS' => 'Item Status Updated Successfully',
+  'UPDATE_MEMBER_SUCCESS' => 'Item Member Updated Successfully',
+  'UPDATE_CATEGORY_SUCCESS' => 'Item Category Updated Successfully',
+
+  // Delete Items Phrases
+  'DELETE_ITEM' => 'Delete Item',
+  'DELETE_ITEM_CONFIRMATION' => 'Are You Sure You Want To Delete This Item?',
+  'DELETE_ITEM_SUCCESS' => 'Deleted Successfully',
+
+  // Approve Items Phrases
+  'APPROVE_MEMBER_CONFIRMATION' => 'Are You Sure You Want To Approve This Item?',
+  'APPROVE_BTN' => 'Approve',
+  'APPROVE_ITEM' => 'Approve Item',
+  'APPROVE_ITEM_SUCCESS' => 'Item Approved Successfully',
+
+  /* End Items Phrases */
 
   // Warning Phrases
   'DIRECT_LINK' => 'You can not access this page directly',
-  'ID_NOT_FOUND_WARNING' => 'This UserID is not found',
+  'ID_NOT_FOUND_WARNING' => 'This ID Is Not Found',
   );
 
   return $lang[$phrase];

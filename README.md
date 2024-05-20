@@ -45,8 +45,8 @@ Contributions to improve the system are welcome. Please submit a pull request de
 
 ## Acknowledgments
 
-- **Mosaab Abdelkawy**: Backend Developer, for ensuring robust server-side operations and secure database management.
-- **Amira Metwally**: Frontend Developer, for crafting an intuitive and responsive user interface.
+- **Mosaab Abdelkawy**: Full Stack Engineer, for ensuring robust server-side operations and secure database management.
+- **Amira Metwally**: Frontend Engineer, for crafting an intuitive and responsive user interface.
 
 ## github:
 

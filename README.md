@@ -11,6 +11,7 @@ This project is a user-friendly yet robust content management system created to 
 - **Page Management**: Manage static pages directly from the dashboard.
 - **Item Management**: Handle products or services with detailed information.
 - **Security Measures**: Protect against SQL injection and ensure data integrity.
+- **Multilingual Support**: Offers seamless experience across multiple languages.
 
 ## Technology Stack
 

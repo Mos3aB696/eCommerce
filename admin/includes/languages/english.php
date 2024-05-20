@@ -20,6 +20,7 @@ function lang($phrase)
   'CATEGORIES' => 'Categories',
   'ITEMS' => 'Items',
   'MEMBERS' => 'Members',
+  'COMMENTS' => 'Comments',
   'STATISTICS' => 'Statistics',
   'LOGS' => 'Logs',
   'EDIT_PROFILE' => 'Edit Profile',

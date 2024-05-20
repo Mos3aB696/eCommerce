@@ -28,7 +28,7 @@ if (isset($_SESSION['user_name'])):
     endif;
 
     // Define allowed columns and order directions
-    $allowedColumns = ['user_id', 'user_name', 'email', 'ordering', 'full_name', 'date'];
+    $allowedColumns = ['user_id', 'user_name', 'email', 'ordering', 'full_name', 'add_date'];
     $allowedOrders = ['ASC', 'DESC'];
 
     // Sanitize and validate the input
@@ -66,7 +66,7 @@ if (isset($_SESSION['user_name'])):
                 <option value="full_name" <?= ($sort_col == 'full_name') ? 'selected' : ''; ?>>
                   <?= lang('FULLNAME_MANAGE') ?>
                 </option>
-                <option value="date" <?= ($sort_col == 'date') ? 'selected' : ''; ?>>
+                <option value="date" <?= ($sort_col == 'add_date') ? 'selected' : ''; ?>>
                   <?= lang('DATE_MANAGE') ?>
                 </option>
               </select>
@@ -107,7 +107,7 @@ if (isset($_SESSION['user_name'])):
                 echo "<td>" . $row['user_name'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
                 echo "<td>" . $row['full_name'] . "</td>";
-                echo "<td>" . $row['date'] . "</td>";
+                echo "<td>" . $row['add_date'] . "</td>";
                 echo "<td>
                         <a href='?do=Edit&id=" . $row['user_id'] . "' class='btn btn-success control_field'> <i class='fa fa-edit'></i> </a>
                         <a href='?do=Delete&id=" . $row['user_id'] . "'

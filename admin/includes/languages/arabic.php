@@ -21,6 +21,7 @@ function lang($phrase)
   'CATEGORIES' => 'الاقسام',
   'ITEMS' => 'المنتجات',
   'MEMBERS' => 'الاعضاء',
+  'COMMENTS' => 'التعليقات',
   'STATISTICS' => 'الاحصائيات',
   'LOGS' => 'السجلات',
   'EDIT_PROFILE' => 'تعديل البروفايل',

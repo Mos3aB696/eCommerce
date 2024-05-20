@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-This project is a simple yet powerful content management system designed to streamline the management of websites. It allows administrators to efficiently manage categories, members, and pages, making it ideal for blogs, forums, and e-commerce sites.
+This project is a user-friendly yet robust content management system created to simplify website management. It enables administrators to efficiently organize categories,items,members and pages, making it a perfect solution for blogs, forums, and e-commerce websites.
 
 ## Features
 
-- **User Management**: Add, edit, and delete members with ease.
+- **User Management**: Add, edit,approve and delete members with ease.
 - **Category Management**: Create, modify, and remove categories.
 - **Page Management**: Manage static pages directly from the dashboard.
 - **Item Management**: Handle products or services with detailed information.
@@ -24,35 +24,35 @@ This project is a simple yet powerful content management system designed to stre
 - **HTML/CSS/JavaScript**: Core technologies for building the user interface.
 - **Bootstrap**: Responsive framework for consistent layout and design.
 
-## Installation
-
-1. Ensure you have PHP and MySQL installed on your server.
-2. Clone the repository to your local machine or server.
-   git clone https://github.com/Mos3aB696/eCommerce.git
-
-## Usage
-
-After setting up, you can access the dashboard through the URL provided by the development server. From there, you can manage categories, members, pages, and items according to your needs.
-
 ## Contributing
 
 Contributions to improve the system are welcome. Please submit a pull request detailing the changes you propose.
 
 ## Screenshots
 
-![dashbord](https://github.com/Mos3aB696/eCommerce/blob/main/docs/dashborad.png)
+**Dashboard**
+![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/dashborad.png)
+
+**Categories**
+![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/categories.png)
+
+**Items**
+![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/items.png)
+
+**Members**
+![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/members.png)
 
 ## Acknowledgments
 
-- **Amira Metwally**: Frontend Developer, for crafting an intuitive and responsive user interface.
 - **Mosaab Abdelkawy**: Backend Developer, for ensuring robust server-side operations and secure database management.
+- **Amira Metwally**: Frontend Developer, for crafting an intuitive and responsive user interface.
 
 ## github:
 
-- [Amira's GitHub](https://github.com/Amirametwally)
 - [Mosaab's GitHub](https://github.com/Mos3aB696)
+- [Amira's GitHub](https://github.com/Amirametwally)
 
 ## LinkedIn:
 
-- [Amira's LinkedIn](https://www.linkedin.com/in/amira-metwally-16b3731b4)
 - [Mosaab's LinkedIn](https://www.linkedin.com/in/mosaab-abdelkawy-4a4021241/)
+- [Amira's LinkedIn](https://www.linkedin.com/in/amira-metwally-16b3731b4)

@@ -27,7 +27,8 @@
             href="members.php"><?= lang("MEMBERS") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?= lang("COMMENTS") ?></a>
+          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/comments.php' ? 'active' : '') ?>"
+            href="comments.php"><?= lang("COMMENTS") ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><?= lang("STATISTICS") ?></a>

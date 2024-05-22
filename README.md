@@ -32,28 +32,23 @@ Contributions to improve the system are welcome. Please submit a pull request de
 ## Screenshots
 
 **Dashboard**
+
 ![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/dashborad.png)
 
 **Categories**
+
 ![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/categories.png)
 
 **Items**
+
 ![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/items.png)
 
 **Members**
+
 ![dashboard](https://github.com/Mos3aB696/eCommerce/blob/main/docs/members.png)
 
 ## Acknowledgments
 
-- **Mosaab Abdelkawy**: Full Stack Engineer, for ensuring robust server-side operations and secure database management.
-- **Amira Metwally**: Frontend Engineer, for crafting an intuitive and responsive user interface.
-
-## github:
-
-- [Mosaab's GitHub](https://github.com/Mos3aB696)
-- [Amira's GitHub](https://github.com/Amirametwally)
-
 ## LinkedIn:
 
 - [Mosaab's LinkedIn](https://www.linkedin.com/in/mosaab-abdelkawy-4a4021241/)
-- [Amira's LinkedIn](https://www.linkedin.com/in/amira-metwally-16b3731b4)

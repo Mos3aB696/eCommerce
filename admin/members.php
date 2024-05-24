@@ -218,7 +218,7 @@ if (isset($_SESSION['user_name'])):
       else:
         // Prepare The Insert Query
         $stmt = $connect->prepare("INSERT INTO
-        users (user_name, pass, email, full_name, reg_status,date)
+        users (user_name, pass, email, full_name, reg_status,add_date)
         VALUES (?, ?, ?, ?, 1,now())");
         // Execute The Query
         $stmt->execute(array($username, $hashPassword, $email, $fullname));

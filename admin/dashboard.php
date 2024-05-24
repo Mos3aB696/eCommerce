@@ -39,7 +39,7 @@ if (isset($_SESSION['user_name'])):
         <div class="col-lg-3">
           <div class="stat st-comments">
             <?= lang("TOTLE_COMMENTS") ?>
-            <span>3500</span>
+            <span><a href="comments.php?do=Manage"><?= countItem('comment_id', 'comments') ?></a></span>
           </div>
         </div>
       </div>

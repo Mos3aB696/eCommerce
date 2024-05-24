@@ -196,6 +196,7 @@ ul .user_ul li {
 .home-stat .row .stat span a {
   text-decoration: none;
   cursor: pointer;
+  user-select: none;
   /* color: #fff; */
 }
 
@@ -326,7 +327,7 @@ input::placeholder {
 .main-table .btn i.fa {
   margin: 0;
 }
-@media (max-width: 991px) {
+@media (max-width: 1200px) {
   .main-table .btn:not(:last-child) {
     margin-bottom: 2px;
   }

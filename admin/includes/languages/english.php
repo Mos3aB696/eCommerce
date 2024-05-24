@@ -251,6 +251,26 @@ function lang($phrase)
 
   /* End Items Phrases */
 
+  /* Start Comments Phrases */
+
+  // Manage Comments Phrases
+  'MANAGE_COMMENTS' => 'Manage Comments',
+  'COMMENT_ID_MANAGE' => 'ID',
+  'COMMENT_CONTENT_MANAGE' => 'Comment',
+  'COMMENT_ITEM_MANAGE' => 'Item',
+  'COMMENT_USER_MANAGE' => 'Member',
+  'COMMENT_DATE_MANAGE' => 'Registered',
+  'COMMENT_CONTROL_MANAGE' => 'Control',
+
+
+
+
+
+  // Approve Comments Phrases
+  'ACTIVATE_MEMBER_COMMENT_SUCCESS' => 'Comment Approved Successfully',
+
+  /* End Comments Phrases */
+
   // Warning Phrases
   'DIRECT_LINK' => 'You can not access this page directly',
   'ID_NOT_FOUND_WARNING' => 'This ID Is Not Found',

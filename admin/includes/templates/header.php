@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Using CDN In Bootstrap 5 Is Better Than Downloading The Files -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Add Bootstrap library -->
+  <link rel="stylesheet" href="<?= $css; ?>bootstrap.min.css">
+  <!-- Add fontawesome library -->
   <link rel="stylesheet" href="<?= $css; ?>font-awesome.min.css">
+  <!-- Add My CSS File -->
   <link rel="stylesheet" href="<?= $css; ?>backend.css">
-
   <title><?php getTitle() ?></title>
 </head>
 

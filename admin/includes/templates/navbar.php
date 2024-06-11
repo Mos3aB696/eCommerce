@@ -15,23 +15,23 @@
             * $_SERVER["REQUEST_URI"] => To Get The Current URL
             * PHP_URL_PATH => To Get The Path Of The URL
           -->
-          <a class="nav-link <?= (parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == '/categories.php' ? ' active' : '') ?>"
+          <a class="nav-link <?= (parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) == '/admin/categories.php' ? 'active' : '') ?>"
             href="categories.php"><?= lang("CATEGORIES") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/items.php' ? 'active' : '') ?>"
+          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/admin/items.php' ? 'active' : '') ?>"
             href="items.php"><?= lang("ITEMS") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/members.php' ? 'active' : '') ?>"
+          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/admin/members.php' ? 'active' : '') ?>"
             href="members.php"><?= lang("MEMBERS") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/comments.php' ? 'active' : '') ?>"
+          <a class="nav-link <?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/admin/comments.php' ? 'active' : '') ?>"
             href="comments.php"><?= lang("COMMENTS") ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><?= lang("STATISTICS") ?></a>
+          <a class="nav-link" href="statistics.php"><?= lang("STATISTICS") ?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><?= lang("LOGS") ?></a>
@@ -57,5 +57,5 @@
 
 <?php
 // echo '<pre>';
-// print_r(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
+// print_r(parse_url($_SERVER["REQUEST_URI"]));
 // echo '</pre>';

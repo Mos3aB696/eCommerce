@@ -8,7 +8,7 @@ if (isset($_SESSION['user_name'])):
   // Include Required Files
   include ('init.php');
 
-  $limit = 5; // Number Of Latest Users
+  $limit = 4; // Number Of Latest Users
   $latestUsers = getLatest('*', 'users', 'user_id', $limit); // Latest Users Array
 
   $latestItems = getLatest('*', 'items', 'item_id', $limit); // Latest Items Array
@@ -53,12 +53,13 @@ if (isset($_SESSION['user_name'])):
           <div class="panel panel-default">
             <div class="panel-heading">
               <i class="fa fa-users"></i>
-              <?= lang("LATEST") . ' ' . $limit . ' ' . lang("MEMBERS") ?>
+              <?= lang("LATEST_MEMBERS") ?>
             </div>
             <div class="panel-body list-group">
               <?php
               foreach ($latestUsers as $user):
-                echo '<a href="members.php?do=Edit&id=' . $user['user_id'] . '"class="list-group-item list-group-item-action  list-items" >' . $user['user_name'] . '</a>';
+                echo '<a href="members.php?do=Edit&id=' . $user['user_id'] .
+                  '"class="list-group-item list-group-item-action  list-items" >' . $user['user_name'] . '</a>';
               endforeach;
               ?>
             </div>
@@ -73,8 +74,59 @@ if (isset($_SESSION['user_name'])):
             <div class="panel-body list-group">
               <?php
               foreach ($latestItems as $item):
-                echo '<a href="items.php?do=Edit&id=' . $item['item_id'] . '"class="list-group-item list-group-item-action  list-items" >' . $item['item_name'] . '</a>';
+                echo '<a href="items.php?do=Edit&id=' . $item['item_id'] .
+                  '"class="list-group-item list-group-item-action  list-items" >' . $item['item_name'] . '</a>';
               endforeach;
+              ?>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default mb-4">
+            <div class="panel-heading">
+              <i class="fa fa-comments"></i>
+              <?= lang('LATEST_COMMENTS') ?>
+            </div>
+            <div class="panel-body">
+              <?php
+              $stmt = $connect->prepare("SELECT
+                                      comments.*,
+                                      users.user_name AS user
+                                    FROM
+                                      comments
+                                    INNER JOIN
+                                      users
+                                    ON
+                                      users.user_id = comments.user_connect
+                                    ORDER BY
+                                      comment_id 
+                                    DESC
+                                    LIMIT $limit");
+              $stmt->execute();
+              $comments = $stmt->fetchAll();
+              if (!empty($comments)):
+                foreach ($comments as $comment):
+                  if ($comment['comment_status'] == 0):
+                    echo '<div class="comment-box opacity-75 ">';
+                    echo '<a href="members.php?do=Edit&id=' . $comment['user_connect'] .
+                      '"class="member-name list-group-item list-group-item-action">' . $comment['user'] . '</a>';
+                    echo '<a href="comments.php?do=Approve&id=' . $comment['comment_id'] .
+                      '" class="member-comment list-group-item list-group-item-action">' . $comment['comment_content'] . '</a>';
+                    echo '</div>';
+                  else:
+                    echo '<div class="comment-box ">';
+                    echo '<a href="members.php?do=Edit&id=' . $comment['user_connect'] .
+                      '"class="member-name list-group-item list-group-item-action">' . $comment['user'] . '</a>';
+                    echo '<a href="comments.php?do=Edit&id=' . $comment['comment_id'] .
+                      '" class="member-comment list-group-item list-group-item-action">' . $comment['comment_content'] . '</a>';
+                    echo '</div>';
+                  endif;
+                endforeach;
+              else:
+                echo '<div class="alert alert-info">There\'s No Comments To Show</div>';
+              endif;
               ?>
             </div>
           </div>

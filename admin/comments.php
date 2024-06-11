@@ -19,9 +19,6 @@ if (isset($_SESSION['user_name'])):
 
   // Start Manage Page
   if ($do == 'Manage'):
-
-    // Check If The User Not Approved Yet
-
     // Define allowed columns and order directions
     $allowedColumns = ['comment_id', 'comment_content', 'item_connect', 'user_connect', 'add_date'];
     $allowedOrders = ['ASC', 'DESC'];
@@ -84,7 +81,7 @@ if (isset($_SESSION['user_name'])):
                 <option value="user_connect" <?= ($sort_col == 'user_connect') ? 'selected' : ''; ?>>
                   <?= lang('COMMENT_USER_MANAGE') ?>
                 </option>
-                <option value="date" <?= ($sort_col == 'add_date') ? 'selected' : ''; ?>>
+                <option value="add_date" <?= ($sort_col == 'add_date') ? 'selected' : ''; ?>>
                   <?= lang('DATE_MANAGE') ?>
                 </option>
               </select>
@@ -127,9 +124,10 @@ if (isset($_SESSION['user_name'])):
                 echo "<td>" . $row['user_name'] . "</td>";
                 echo "<td>" . $row['add_date'] . "</td>";
                 echo "<td>
-                        <a href='?do=Edit&id=" . $row['comment_id'] . "' class='btn btn-success control_field'> <i class='fa fa-edit'></i> </a>
+                        <a href='?do=Edit&id=" . $row['comment_id'] .
+                  "' class='btn btn-success control_field'> <i class='fa fa-edit'></i> </a>
                         <a href='?do=Delete&id=" . $row['comment_id'] . "'
-                          onclick='return confirm(\"" . lang("DELETE_MEMBER_CONFIRMATION") . "\")'
+                          onclick='return confirm(\"" . lang("DELETE_COMMENT_CONFIRMATION") . "\")'
                           class='btn btn-danger control_field'> <i class='fa fa-trash'></i></a> ";
                 if ($row['comment_status'] == 0):
                   echo "<a href='?do=Approve&id=" . $row['comment_id'] . "'
@@ -151,8 +149,8 @@ if (isset($_SESSION['user_name'])):
     // Check If Get Request commentid Is Numeric & Get The Integer Value Of It
     $commentid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
     // Prepare The Statement To Execute It [1]
-    $stmt = $connect->prepare('SELECT * FROM comments WHERE comment_id = ? LIMIT 1');
-    $stmt->execute(array($commentid)); // Execute The Statement [2]
+    $stmt = $connect->prepare('SELECT * FROM comments WHERE comment_id = ?');
+    $stmt->execute([$commentid]); // Execute The Statement [2]
     $row = $stmt->fetch(); // Fetch The Data [3]
     $rowCount = $stmt->rowCount(); // Get The Count Of The Rows [4]
 
@@ -162,40 +160,54 @@ if (isset($_SESSION['user_name'])):
           <h1><?= lang("EDIT_COMMENTS") ?></h1>
           <form action="?do=Update" method="POST">
             <input type="hidden" name="commentid" value="<?= $commentid ?>">
-            <!-- Start Username -->
+            <!-- Start Edit Comment -->
             <div class="mb-3">
               <label for="comment_content" class="form-label"><?= lang("EDIT_COMMENT") ?></label>
               <div class="input-wrapper">
                 <input type="text" class="form-control" id="comment_content" name="comment_content" autocomplete="off"
-                  value="<?= $row['comment_content'] ?>" Required>
+                  placeholder="<?= lang("EDIT_COMMENT_PLACDHODER") ?>" value="<?= $row['comment_content'] ?>" Required>
               </div>
             </div>
-            <!-- End Username -->
-            <!-- Start Password -->
+            <!-- End Edit Comment -->
+            <!-- Start item -->
             <div class="mb-3">
-              <label for="password" class="form-label"><?= lang("EDIT_PASS") ?></label>
-              <input type="password" class="form-control" id="password" name="newpassword" autocomplete="new-password"
-                placeholder="<?= lang("PASS_MESSAGE") ?>">
+              <label for="item" class="form-label"><?= lang("COMMENT_ITEM_MANAGE") ?></label>
+              <select class="form-select" name="item" id="item">
+                <?php
+                $stmt = $connect->prepare('SELECT * FROM items');
+                $stmt->execute();
+                $items = $stmt->fetchAll();
+                foreach ($items as $item):
+                  echo "<option value='" . $item['item_id'] . "'";
+                  if ($row['item_connect'] == $item['item_id']):
+                    echo 'selected';
+                  endif;
+                  echo ">" . $item['item_name'] . "</option>";
+                endforeach;
+                ?>
+              </select>
             </div>
-            <!-- End Password -->
-            <!-- Start Email -->
-            <div class="mb-3 input-container">
-              <label for="email" class="form-label"><?= lang("EDIT_EMAIL") ?></label>
-              <div class="input-wrapper">
-                <input type="email" class="form-control" id="email" name="email" autocomplete="off"
-                  value="<?= $row['email'] ?>" Required>
-              </div>
+            <!-- End item -->
+            <!-- Start Member -->
+            <div class="mb-3">
+              <label for="member" class="form-label"><?= lang("COMMENT_USER_MANAGE") ?></label>
+              <select class="form-select" name="member" id="member">
+                <?php
+                $stmt = $connect->prepare('SELECT * FROM users');
+                $stmt->execute();
+                $users = $stmt->fetchAll();
+                foreach ($users as $user):
+                  echo "<option value='" . $user['user_id'] . "'";
+                  if ($row['user_connect'] == $user['user_id']):
+                    echo 'selected';
+                  endif;
+                  echo ">" . $user['user_name'] . "</option>";
+                endforeach;
+                ?>
+              </select>
             </div>
-            <!-- End Email -->
+            <!-- End Member -->
             <!-- Start Full Name -->
-            <div class="mb-3">
-              <label for="fullname" class="form-label"><?= lang("EDIT_FULL_NAME") ?></label>
-              <div class="input-wrapper">
-                <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off"
-                  value="<?= $row['full_name'] ?>" Required>
-              </div>
-            </div>
-            <!-- End Full Name -->
             <button type="submit" class="btn btn-primary  "> <i class='fa fa-edit'></i> <?= lang("UPDATE_BTN") ?></button>
             <!-- Submit Button -->
 
@@ -210,98 +222,77 @@ if (isset($_SESSION['user_name'])):
     echo "<div class='container'>";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'):
-      echo "<h1>" . lang("UPDATE_MEMBER") . "</h1>";
+      echo "<h1>" . lang("UPDATE_COMMENT") . "</h1>";
       // Get The Variables From The Form
-      $userid = $_POST['userid']; // The Id Sanitized In Line 190
-      $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-      $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-      $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
-
-      // Password Trick
-      $pass = empty($_POST['newpassword']) ? $_POST['oldpassword'] : sha1($_POST['newpassword']);
+      $commentid = $_POST['commentid']; // The Id Sanitized In Line 190
+      $comment_content = filter_input(INPUT_POST, 'comment_content', FILTER_SANITIZE_STRING);
+      $item = filter_input(INPUT_POST, 'item', FILTER_SANITIZE_NUMBER_INT);
+      $member = filter_input(INPUT_POST, 'member', FILTER_SANITIZE_NUMBER_INT);
 
       // Check Form Validation
       $formErrors = array();
-      // Check If Username Is Exist In Database Or Not
-      $check = editCheck('user_name', 'users', $username, 'user_id', $userid);
-      // Check Username
-      if (empty($username)):
-        $formErrors[] = lang("USERNAME_EMPTY");
-      elseif ($check > 0):
-        $formErrors[] = lang("USER_EXIST");
-      elseif (strlen($username) < 4):
-        $formErrors[] = lang("USERNAME_LESS");
-      elseif (strlen($username) > 20):
-        $formErrors[] = lang("USERNAME_MORE");
-      endif;
-      // Check Email
-      if (empty($email)):
-        $formErrors[] = lang("EMAIL_EMPTY");
-      endif;
-      // Check Full Name
-      if (empty($fullname)):
-        $formErrors[] = lang("FULLNAME_EMPTY");
+      if (empty($comment_content)):
+        $formErrors[] = lang("COMMENT_CONTENT_EMPTY");
       endif;
 
       if (!empty($formErrors)):
         redirectFuncError($formErrors, 'back', 5);
       else:
         // Get Old Data To Compare It With The New Data To Check If The User Change The Username Or Email, etc...
-        $oldValues = $connect->prepare('SELECT user_name, pass ,email, full_name FROM users WHERE user_id = ?');
-        $oldValues->execute(array($userid));
+        $oldValues = $connect->prepare('SELECT * FROM comments WHERE comment_id = ?');
+        $oldValues->execute(array($commentid));
         $oldData = $oldValues->fetch();
 
         // Create Array Contain Success Messages
         $successMessages = array();
 
-        // Check If The Username Is Updated
-        if ($username !== $oldData['user_name']):
-          $successMessages[] = lang("UPDATE_USERNAME_SUCCESS");
+        // Check If The Comment Is Updated
+        if ($comment_content !== $oldData['comment_content']):
+          $successMessages[] = lang("UPDATE_COMMENT_SUCCESS");
         endif;
 
-        // Check If The Password Is Updated
-        if ($pass !== $oldData['pass']):
-          $successMessages[] = lang("UPDATE_PASS_SUCCESS");
+        // Check If The Item Is Updated
+        if ($item != $oldData['item_connect']):
+          $successMessages[] = lang("COMMENT_UPDATE_ITEM_SUCCESS");
         endif;
 
-        // Check If The Email Is Updated
-        if ($email !== $oldData['email']):
-          $successMessages[] = lang("UPDATE_EMAIL_SUCCESS");
-        endif;
-
-        // Check If The Full Name Is Updated
-        if ($fullname !== $oldData['full_name']):
-          $successMessages[] = lang("UPDATE_FULLNAME_SUCCESS");
+        // Check If The Member Is Updated
+        if ($member != $oldData['user_connect']):
+          $successMessages[] = lang("COMMENT_UPDATE_MEMBER_SUCCESS");
         endif;
 
         // Prepare The Update Query
-        $stmt = $connect->prepare('UPDATE users SET user_name = ?, email = ?, full_name = ?, pass = ? WHERE user_id = ?');
+        $stmt = $connect->prepare('UPDATE
+                                      comments
+                                    SET
+                                      comment_content = ?, item_connect = ?, user_connect = ?
+                                    WHERE
+                                      comment_id = ?');
         // Execute The Query
-        $stmt->execute(array($username, $email, $fullname, $pass, $userid));
+        $stmt->execute(array($comment_content, $item, $member, $commentid));
         // Echo Success Message
-
         redirectFuncSuccess($successMessages, 'comments.php');
 
       endif;
 
     else:
-      redirectFuncError(lang("DIRECT_LINK"), 'comments.php', 5);
+      redirectFuncError(lang("DIRECT_LINK"), 'comments.php');
     endif;
 
   elseif ($do == 'Delete'): // Delete Page
     echo "<div class='container'>";
-    // Check If Get Request userid Is Numeric & Get The Integer Value Of It
-    $userid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
+    // Check If Get Request commentid Is Numeric & Get The Integer Value Of It
+    $commentid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
 
-    $check = checkItem('user_id', 'users', $userid);
+    $check = checkItem('comment_id', 'comments', $commentid);
 
     if ($check > 0):
-      echo '<h1>' . lang("DELETE_MEMBER") . '</h1>';
+      echo '<h1>' . lang("DELETE_COMMENT") . '</h1>';
       // Get The Username Of The User
-      $username = getName('user_name', 'users', 'user_id', $userid);
-      $stmt = $connect->prepare('DELETE FROM users WHERE user_id = ?'); // Prepare The Delete Query
-      $stmt->execute(array($userid)); // Execute The Query
-      redirectFuncSuccess($username . ' ' . lang("DELETE_MEMBER_SUCCESS"), 'comments.php');
+      $username = getNameByCommentId($commentid);
+      $stmt = $connect->prepare('DELETE FROM comments WHERE comment_id = ?'); // Prepare The Delete Query
+      $stmt->execute(array($commentid)); // Execute The Query
+      redirectFuncSuccess($username . ' ' . lang("DELETE_COMMENT_SUCCESS"), 'comments.php');
     else:
       redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'comments.php');
     endif;
@@ -320,7 +311,7 @@ if (isset($_SESSION['user_name'])):
       // Get The User ID
       $stmt = $connect->prepare('UPDATE comments SET comment_status = 1 WHERE comment_id = ?'); // Prepare The Update Query
       $stmt->execute(array($commentid)); // Execute The Query
-      redirectFuncSuccess(getName('user_name', 'users', 'user_id', $commentid) . ' ' . lang("ACTIVATE_MEMBER_COMMENT_SUCCESS"));
+      redirectFuncSuccess(getNameByCommentId($commentid) . ' ' . lang("ACTIVATE_MEMBER_COMMENT_SUCCESS"), 'back');
     else:
       redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'comments.php');
     endif;

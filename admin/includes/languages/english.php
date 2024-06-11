@@ -33,8 +33,9 @@ function lang($phrase)
   'PENDING_MEMBERS' => 'Pending Members',
   'TOTLE_ITEMS' => 'Total Items',
   'TOTLE_COMMENTS' => 'Total Comments',
-  'LATEST' => 'Latest',
+  'LATEST_MEMBERS' => 'Latest Members',
   'LATEST_ITEMS' => 'Latest Items',
+  'LATEST_COMMENTS' => 'Latest Comments',
   /* End Dashboard Phrases */
 
   /* Start Members Phrases */
@@ -252,7 +253,6 @@ function lang($phrase)
   /* End Items Phrases */
 
   /* Start Comments Phrases */
-
   // Manage Comments Phrases
   'MANAGE_COMMENTS' => 'Manage Comments',
   'COMMENT_ID_MANAGE' => 'ID',
@@ -262,9 +262,22 @@ function lang($phrase)
   'COMMENT_DATE_MANAGE' => 'Registered',
   'COMMENT_CONTROL_MANAGE' => 'Control',
 
+  // Edit Comments Phrases
+  'EDIT_COMMENTS' => 'Edit Comment',
+  'EDIT_COMMENT' => 'Comment',
+  'EDIT_COMMENT_PLACDHODER' => 'Edit Your Comment',
 
+  // Update Comments Phrases
+  'UPDATE_COMMENT' => 'Update Comment',
+  'COMMENT_CONTENT_EMPTY' => 'Comment Can\'t Be Empty',
+  'UPDATE_COMMENT_SUCCESS' => 'Comment Updated Successfully',
+  'COMMENT_UPDATE_ITEM_SUCCESS' => 'Item Updated Successfully',
+  'COMMENT_UPDATE_MEMBER_SUCCESS' => 'Member Updated Successfully',
 
-
+  // Delete Comments Phrases
+  'DELETE_COMMENT' => 'Delete Comment',
+  'DELETE_COMMENT_CONFIRMATION' => 'Are You Sure You Want To Delete This Comment?',
+  'DELETE_COMMENT_SUCCESS' => 'Comment Deleted Successfully',
 
   // Approve Comments Phrases
   'ACTIVATE_MEMBER_COMMENT_SUCCESS' => 'Comment Approved Successfully',

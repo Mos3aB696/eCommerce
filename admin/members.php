@@ -66,7 +66,7 @@ if (isset($_SESSION['user_name'])):
                 <option value="full_name" <?= ($sort_col == 'full_name') ? 'selected' : ''; ?>>
                   <?= lang('FULLNAME_MANAGE') ?>
                 </option>
-                <option value="date" <?= ($sort_col == 'add_date') ? 'selected' : ''; ?>>
+                <option value="add_date" <?= ($sort_col == 'add_date') ? 'selected' : ''; ?>>
                   <?= lang('DATE_MANAGE') ?>
                 </option>
               </select>

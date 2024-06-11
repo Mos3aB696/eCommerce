@@ -202,6 +202,32 @@ function getName($column, $table, $colId, $id)
 
 /**
  * [v.1.0]
+ * getNameByCommentId Function => Get Username By Comment ID
+ * Return Username
+ * $commentid = The Comment ID You Want To Get The Username
+ * Example: getNameByCommentId(1)
+ */
+
+function getNameByCommentId($commentid)
+{
+  global $connect;
+  $stmt = $connect->prepare('SELECT
+                                users.user_name
+                              FROM
+                                users
+                              INNER JOIN
+                                comments
+                              ON 
+                                comments.user_connect = users.user_id
+                              WHERE
+                                comment_id = ?');
+
+  $stmt->execute([$commentid]);
+  return $stmt->fetchColumn();
+}
+
+/**
+ * [v.1.0]
  * getLatest Function => Get Latest Items From Database
  * Return Latest Items
  * $column = The Column You Want To Select
@@ -217,4 +243,27 @@ function getLatest($column, $table, $order, $limit = 5)
   $stmt = $connect->prepare("SELECT $column FROM $table ORDER BY $order DESC LIMIT $limit");
   $stmt->execute();
   return $stmt->fetchAll();
+}
+
+/**
+ * [v.1.0]
+ * findMissingKeysInArabic Function => Find Missing Keys In Arabic Array
+ * Return Missing Keys
+ * $englishArray = English Array
+ * $arabicArray = Arabic Array
+ * Example: findMissingKeysInArabic($englishArray, $arabicArray)
+ * Note: This Function Is Used To Find Missing Keys In Arabic Array
+ * 
+ */
+function findMissingKeysInArabic($englishArray, $arabicArray)
+{
+  $missingKeys = [];
+
+  foreach ($englishArray as $key => $value) {
+    if (!array_key_exists($key, $arabicArray)) {
+      $missingKeys[] = $key;
+    }
+  }
+
+  return $missingKeys;
 }

@@ -35,8 +35,9 @@ function lang($phrase)
   'PENDING_MEMBERS' => 'الاعضاء المعلقين',
   'TOTLE_ITEMS' => 'اجمالي المنتجات',
   'TOTLE_COMMENTS' => 'اجمالي التعليقات',
-  'LATEST' => 'اخر',
+  'LATEST_MEMBERS' => 'اخر الاعضاء',
   'LATEST_ITEMS' => 'اخر المنتجات',
+  'LATEST_COMMENTS' => 'اخر التعليقات',
   // End Dashboard Phrases
 
   // Start Members Phrases
@@ -108,6 +109,8 @@ function lang($phrase)
 
   // Start Categories Phrases
 
+  'CATEGORIES_TITLE' => 'الاقسام',
+
   // Manage Categories Phrases
   'MANAGE_CAT' => 'اداره الاقسام',
   'MANAGE_CAT_ID' => 'ID',
@@ -178,12 +181,16 @@ function lang($phrase)
   // End Categories Phrases
 
   /* Start Items Phrases */
+
+  'ITEMS_TITLE' => 'Items',
   // Manage Items Phrases
   'MANAGE_ITEMS' => 'اداره المنتجات',
   'ITEM_ID' => 'ID',
   'MANAGE_ITEM_NAME' => 'اسم المنتج',
   'MANAGE_ITEM_DESC' => 'الوصف',
   'MANAGE_ITEM_PRICE' => 'السعر',
+  'MANAGE_ITEM_COUNTRY' => 'البلد',
+  'MANAGE_ITEM_STATUS' => 'الحاله',
   'MANAGE_ITEM_DATE' => 'تاريخ الاضافه',
   'MANAGE_ITEM_CAT' => 'القسم',
   'MANAGE_ITEM_MEMBER' => 'المستخدم',
@@ -221,6 +228,9 @@ function lang($phrase)
   'ITEM_STATUS_EMPTY' => 'اختر حاله المنتج',
   'INSERT_ITEM_SUCCESS' => 'تم اضافه المنتج بنجاح',
 
+  // Edit Items Phrases
+  'EDIT_ITEM' => 'Edit Item',
+
   // Update Items Phrases
   'UPDATE_ITEM' => 'تحديث المنتج',
   'UPDATE_ITEM_NAME_SUCCESS' => 'تم تحديث اسم المنتج بنجاح',
@@ -242,6 +252,39 @@ function lang($phrase)
   'APPROVE_ITEM' => 'تفعيل المنتج',
   'APPROVE_ITEM_SUCCESS' => 'تم تفعيل المنتج بنجاح',
   /* End Items Phrases */
+
+  /* Start Comments Phrases */
+  // Manage Comments Phrases
+  'MANAGE_COMMENTS' => 'اداره التعليقات',
+  'COMMENT_ID_MANAGE' => 'ID',
+  'COMMENT_CONTENT_MANAGE' => 'التعليق',
+  'COMMENT_ITEM_MANAGE' => 'المنتج',
+  'COMMENT_USER_MANAGE' => 'العضو',
+  'COMMENT_DATE_MANAGE' => 'تاريخ الاضافه',
+  'COMMENT_CONTROL_MANAGE' => 'التحكم',
+
+  // Edit Comments Phrases
+  'EDIT_COMMENTS' => 'تعديل التعليق',
+  'EDIT_COMMENT' => 'التعليق',
+  'EDIT_COMMENT_PLACDHODER' => 'اكتب تعليقك هنا',
+
+  // Update Comments Phrases
+  'UPDATE_COMMENT' => 'تحديث التعليق',
+  'COMMENT_CONTENT_EMPTY' => 'التعليق لا يمكن ان يكون فارغ',
+  'UPDATE_COMMENT_SUCCESS' => 'تم تحديث التعليق بنجاح',
+  'COMMENT_UPDATE_ITEM_SUCCESS' => 'تم تحديث المنتج بنجاح',
+  'COMMENT_UPDATE_MEMBER_SUCCESS' => 'تم تحديث العضو بنجاح',
+
+  // Delete Comments Phrases
+  'DELETE_COMMENT' => 'حذف التعليق',
+  'DELETE_COMMENT_CONFIRMATION' => 'هل  انت متاكد  من    حذف هذا التعليق؟',
+  'DELETE_COMMENT_SUCCESS' => 'تم حذف تعليق',
+
+  // Approve Comments Phrases
+  'ACTIVATE_MEMBER_COMMENT_SUCCESS' => 'Comment Approved Successfully',
+
+  /* End Comments Phrases */
+
 
 
   // Warning Phrases

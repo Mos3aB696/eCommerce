@@ -392,19 +392,66 @@ if (isset($_SESSION['user_name'])):
             <button type="submit" class="btn btn-primary mb-5  "> <i class="fa fa-edit"></i>
               <?= lang('UPDATE_BTN') ?></button>
           </form>
-        </div>
+          <?php
+          // Get The Data From The Database
+          $stmt = $connect->prepare("SELECT
+                                        comments.*,
+                                        users.user_name
+                                      FROM
+                                        comments
+                                      INNER JOIN
+                                        users
+                                      ON
+                                        comments.user_connect = users.user_id
+                                      WHERE
+                                        item_connect = ?");
+          $stmt->execute(array($itemid));
+          $rows = $stmt->fetchAll();
 
+          if (!empty($rows)):
+            ?>
+            <h2> <?= $item['item_name'] ?> </h2>
+            <div class="table-responsive mb-5">
+              <table class="main-table text-center table table-striped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <td><?= lang("COMMENT_CONTENT_MANAGE") ?></td>
+                    <td><?= lang("COMMENT_USER_MANAGE") ?></td>
+                    <td><?= lang("CONTROL_MANAGE") ?></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach ($rows as $row):
+                    echo "<tr>";
+                    echo "<td>" . $row['comment_content'] . "</td>";
+                    echo "<td>" . $row['user_name'] . "</td>";
+                    echo "<td>
+                        <a href='comments.php?do=Edit&id=" . $row['comment_id'] . "' class='btn btn-success control_field'> <i class='fa fa-edit'></i> </a>
+                        <a href='comments.php?do=Delete&id=" . $row['comment_id'] . "'
+                          onclick='return confirm(\"" . lang("DELETE_COMMENT_CONFIRMATION") . "\")'
+                          class='btn btn-danger control_field'> <i class='fa fa-trash'></i></a> ";
+                    if ($row['comment_status'] == 0):
+                      echo "<a href='comments.php?do=Approve&id=" . $row['comment_id'] . "'
+                            onclick='return confirm(\"" . lang("ACTIVATE_MEMBER_CONFIRMATION") . "\")'
+                            class='btn btn-info control_field'> <i class='fa fa-check'></i></a>";
+                    endif;
+                    echo "</td>";
+                    echo "</tr>";
+                  endforeach;
+                  ?>
+                </tbody>
+              </table>
+            </div>
+          <?php endif; ?>
+        </div>
         <?php
     else:
       redirectFuncError(lang("ID_NOT_FOUND_WARNING"), 'items.php');
     endif;
-
-
     // End Edit Page
   elseif ($do == 'Update'): // Update Categories Page
-
     echo "<div class='container'>";
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST'):
       echo "<h1>" . lang("UPDATE_ITEM") . "</h1>";
       // Get Variables From The Form And Filter Them

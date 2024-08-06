@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2024 at 01:14 PM
--- Server version: 8.0.36
--- PHP Version: 8.3.6
+-- Generation Time: Jun 23, 2024 at 10:38 PM
+-- Server version: 8.0.37
+-- PHP Version: 8.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `cat_id` smallint NOT NULL,
+  `cat_id` int NOT NULL,
   `cat_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `cat_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `ordering` int DEFAULT NULL COMMENT 'To Ordring Categories As You Want',
@@ -65,7 +65,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` smallint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

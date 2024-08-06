@@ -4,15 +4,15 @@ $pageTitle = 'Dashboard';
 
 session_start();
 // Check If The User Is Logged In
-if (isset($_SESSION['user_name'])):
+if (isset($_SESSION['admin_name'])) :
   // Include Required Files
-  include ('init.php');
+  include('init.php');
 
   $limit = 4; // Number Of Latest Users
   $latestUsers = getLatest('*', 'users', 'user_id', $limit); // Latest Users Array
 
   $latestItems = getLatest('*', 'items', 'item_id', $limit); // Latest Items Array
-  ?>
+?>
 
   <div class="home-stat">
     <div class="container dash-container text-center">
@@ -57,10 +57,14 @@ if (isset($_SESSION['user_name'])):
             </div>
             <div class="panel-body list-group">
               <?php
-              foreach ($latestUsers as $user):
-                echo '<a href="members.php?do=Edit&id=' . $user['user_id'] .
-                  '"class="list-group-item list-group-item-action  list-items" >' . $user['user_name'] . '</a>';
-              endforeach;
+              if (!empty($latestUsers)) :
+                foreach ($latestUsers as $user) :
+                  echo '<a href="members.php?do=Edit&id=' . $user['user_id'] .
+                    '"class="list-group-item list-group-item-action  list-items" >' . $user['user_name'] . '</a>';
+                endforeach;
+              else :
+                echo '<div class="alert alert-info">There\'s No Members To Show</div>';
+              endif;
               ?>
             </div>
           </div>
@@ -73,10 +77,14 @@ if (isset($_SESSION['user_name'])):
             </div>
             <div class="panel-body list-group">
               <?php
-              foreach ($latestItems as $item):
-                echo '<a href="items.php?do=Edit&id=' . $item['item_id'] .
-                  '"class="list-group-item list-group-item-action  list-items" >' . $item['item_name'] . '</a>';
-              endforeach;
+              if (!empty($latestItems)) :
+                foreach ($latestItems as $item) :
+                  echo '<a href="items.php?do=Edit&id=' . $item['item_id'] .
+                    '"class="list-group-item list-group-item-action  list-items" >' . $item['item_name'] . '</a>';
+                endforeach;
+              else :
+                echo '<div class="alert alert-info">There\'s No Items To Show</div>';
+              endif;
               ?>
             </div>
           </div>
@@ -106,16 +114,16 @@ if (isset($_SESSION['user_name'])):
                                     LIMIT $limit");
               $stmt->execute();
               $comments = $stmt->fetchAll();
-              if (!empty($comments)):
-                foreach ($comments as $comment):
-                  if ($comment['comment_status'] == 0):
+              if (!empty($comments)) :
+                foreach ($comments as $comment) :
+                  if ($comment['comment_status'] == 0) :
                     echo '<div class="comment-box opacity-75 ">';
                     echo '<a href="members.php?do=Edit&id=' . $comment['user_connect'] .
                       '"class="member-name list-group-item list-group-item-action">' . $comment['user'] . '</a>';
                     echo '<a href="comments.php?do=Approve&id=' . $comment['comment_id'] .
                       '" class="member-comment list-group-item list-group-item-action">' . $comment['comment_content'] . '</a>';
                     echo '</div>';
-                  else:
+                  else :
                     echo '<div class="comment-box ">';
                     echo '<a href="members.php?do=Edit&id=' . $comment['user_connect'] .
                       '"class="member-name list-group-item list-group-item-action">' . $comment['user'] . '</a>';
@@ -124,7 +132,7 @@ if (isset($_SESSION['user_name'])):
                     echo '</div>';
                   endif;
                 endforeach;
-              else:
+              else :
                 echo '<div class="alert alert-info">There\'s No Comments To Show</div>';
               endif;
               ?>
@@ -135,11 +143,11 @@ if (isset($_SESSION['user_name'])):
     </div>
   </div>
 
-  <?php
+<?php
 
   include $temp . ('footer.php');
 
-else:
+else :
   header('Location: index.php');
   exit();
 endif;

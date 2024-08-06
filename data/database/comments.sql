@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 24, 2024 at 08:44 AM
--- Server version: 8.0.36
--- PHP Version: 8.3.7
+-- Generation Time: Jun 23, 2024 at 10:38 PM
+-- Server version: 8.0.37
+-- PHP Version: 8.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comments` (
   `comment_id` int NOT NULL COMMENT 'Comment Id',
-  `comment_content` text COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Comment Content',
+  `comment_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Comment Content',
   `comment_status` tinyint DEFAULT '0' COMMENT 'Based On It, The Comment Appear Or Disappear On Website',
   `add_date` date DEFAULT NULL COMMENT 'Comment Date Modified',
   `item_connect` int DEFAULT NULL COMMENT 'Refer To Item Id',
@@ -41,12 +41,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment_content`, `comment_status`, `add_date`, `item_connect`, `user_connect`) VALUES
-(1, 'Thank You Very Much', 1, '2024-05-23', 9, 1),
-(2, 'Nice Product', 1, '2024-05-23', 10, 70),
-(3, 'Not Bad, It\'s Work ', 1, '2024-05-23', 13, 1),
-(6, 'Nice phone, Good bettery health', 0, '2024-05-24', 18, 65),
-(7, 'Nice Phone, With a Good Camera', 0, '2024-05-23', 15, 53),
-(8, 'Nice Phone', 0, '2024-05-23', 15, 39);
+(9, 'good item', 1, '2024-06-27', 3, 69),
+(10, 'nice phone', 1, '2024-06-19', 2, 53);
 
 --
 -- Indexes for dumped tables
@@ -68,7 +64,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT COMMENT 'Comment Id', AUTO_INCREMENT=9;
+  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT COMMENT 'Comment Id', AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

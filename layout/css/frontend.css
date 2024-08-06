@@ -1,0 +1,235 @@
+:root {
+  --main-color: #008dde;
+  --second-color: #006ba8;
+  --border-radius: 15px;
+  --main-padding: 15px 30px;
+  --transition-duration: 0.3s;
+}
+/* Start Main Rules */
+body {
+  background-color: #f4f4f4;
+  /* Arabic File */
+  /* direction: rtl; */
+}
+/* End Main Rules */
+
+/* Start Gloabal Customization */
+/* Arabic File */
+.asterisk {
+  position: absolute;
+  top: 50%;
+  /* Edit It In Arabic Style */
+  right: 10px;
+  transform: translateY(-40%);
+  color: red;
+  font-size: 18px;
+  -webkit-transform: translateY(-40%);
+  -moz-transform: translateY(-40%);
+  -ms-transform: translateY(-40%);
+  -o-transform: translateY(-40%);
+}
+
+h1,
+h2 {
+  color: #008dde;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  padding: 30px;
+}
+h1 {
+  font-size: 50px;
+}
+/* End Gloabal Customization */
+
+/* Start Custom Bootstrap */
+/* Start navbar */
+
+.upper-bar {
+  background-color: var(--main-color);
+  color: #fff !important;
+  padding: 2px 0;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+/* .upper-bar:hover {
+  background-color: #f4f4f4;
+  color: var(--main-color) !important;
+} */
+/* .upper-bar:hover a {
+  color: var(--main-color);
+} */
+.upper-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  font-weight: bold;
+}
+.upper-bar .container .dropdown{
+  margin: 0;
+}
+.upper-bar .container .dropdown .dropdown-toggle {
+  padding: 0;
+}
+.upper-bar a {
+  color: #fff;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+
+a.navbar-brand {
+  color: var(--main-color);
+  font-weight: bold;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+a.navbar-brand:hover {
+  color: var(--second-color);
+}
+
+div.collapse {
+  justify-content: end;
+}
+.nav-item a {
+  padding: 5px;
+  margin-right: 5px;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+
+.nav-item a.active {
+  background-color: var(--main-color);
+  color: #fff !important;
+  font-weight: bold;
+}
+/* .nav-item:hover a {
+  background-color: var(--main-color);
+  color: #fff;
+} */
+li.dropdown {
+  margin-right: 40px;
+}
+
+.navbar-nav a.user_name {
+  color: #008dde !important;
+  transition: all var(--transition-duration) ease-in-out;
+  font-weight: bold;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+
+.navbar-nav a.user_name:hover {
+  color: var(--second-color) !important;
+}
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+    top: 48px;
+    margin: 0;
+  }
+}
+ul.user_ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul .user_ul li {
+  margin: 0;
+  padding: 0;
+}
+.user_ul li .user_options {
+  transition: all var(--transition-duration) ease-in-out;
+  padding: 5px 10px;
+  color: var(--main-color);
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+.user_ul li .user_options:hover {
+  color: #fff;
+  background-color: var(--main-color);
+}
+/* End navbar */
+
+/* Start Login */
+.login-page form {
+  max-width: 350px;
+  margin: 100px auto;
+}
+.login-page form h3 {
+  color: var(--main-color);
+  font-weight: bold;
+}
+.login-page form .form-group {
+  position: relative;
+  margin-bottom: 7px;
+}
+.login-page form .form-group input {
+  background: #e5e5e5;
+}
+.login-page form button,
+.login-page form a {
+  font-weight: bold;
+  transition: all var(--transition-duration) ease-in-out;
+  -webkit-transition: all var(--transition-duration) ease-in-out;
+  -moz-transition: all var(--transition-duration) ease-in-out;
+  -ms-transition: all var(--transition-duration) ease-in-out;
+  -o-transition: all var(--transition-duration) ease-in-out;
+}
+.login-page form .signup-btn {
+  background-color: #42b72a;
+  border: none;
+}
+.login-page form .signup-btn:hover {
+  background-color: #36a420;
+}
+/* End Login */
+
+/* Start Signup */
+
+/* End Signup */
+
+/* Start Category Page */
+
+.row .item-box {
+  position: relative;
+  margin-bottom: 10px;
+}
+.row .item-box .item-price {
+  position: absolute;
+  left: 0;
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 3px 5px;
+  font-weight: bold;
+  top: 8px;
+}
+
+/* End Category Page */
+
+/* Start Profile */
+.custom-profile {
+  margin-bottom: 20px;
+}
+.custom-profile .card {
+  border: 1px solid #008dde;
+}
+/* End Profile */
+
+/* End Custom Bootstrap */

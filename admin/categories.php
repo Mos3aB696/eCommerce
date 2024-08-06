@@ -11,14 +11,14 @@ ob_start(); // Output Buffering Start
 session_start();
 $pageTitle = 'Categories';
 
-if (isset($_SESSION['user_name'])):
+if (isset($_SESSION['admin_name'])) :
   include 'init.php'; // Include The Init File
 
   $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
 
 
   // Start Manage Page
-  if ($do == 'Manage'): // Manage Categories Page 
+  if ($do == 'Manage') : // Manage Categories Page 
 
     // Define allowed columns and order directions
     $allowedColumns = ['cat_id', 'cat_name', 'cat_description', 'ordering', 'visibility', 'allow_comment', 'allow_ads'];
@@ -37,7 +37,7 @@ if (isset($_SESSION['user_name'])):
     $stmt = $connect->prepare("SELECT * FROM categories ORDER BY $sort_col $sort_order");
     $stmt->execute();
     $rows = $stmt->fetchAll();
-    ?>
+?>
     <div class="container cat-container">
       <h1><?= lang("MANAGE_CAT") ?></h1>
       <div class="container ">
@@ -99,7 +99,7 @@ if (isset($_SESSION['user_name'])):
           </thead>
           <tbody>
             <?php
-            foreach ($rows as $row):
+            foreach ($rows as $row) :
               echo '<tr>';
               echo '<th scope="row">' . $row['cat_id'] . '</th>';
               echo '<td>' . $row['cat_name'] . '</td>';
@@ -134,9 +134,10 @@ if (isset($_SESSION['user_name'])):
     </div>
 
 
-    <?php
-    // End Manage Page
-  elseif ($do == 'Add'): // Add Categories Page ?>
+  <?php
+  // End Manage Page
+  elseif ($do == 'Add') : // Add Categories Page 
+  ?>
 
     <div class="container add-container">
       <h1><?= lang('ADD_CAT_PAGE') ?></h1>
@@ -144,22 +145,19 @@ if (isset($_SESSION['user_name'])):
         <div class="mb-3">
           <label class="form-label" for="category-name"><?= lang('CAT_NAME') ?></label>
           <div class="input-wrapper">
-            <input type="text" class="form-control" id="category-name" name="category-name"
-              placeholder="<?= lang('CAT_NAME_PLACEHOLDER') ?>" required>
+            <input type="text" class="form-control" id="category-name" name="category-name" placeholder="<?= lang('CAT_NAME_PLACEHOLDER') ?>" required>
           </div>
         </div>
         <div class="mb-3">
           <label class="form-label" for="category-description"><?= lang('CAT_DESCRIPTION') ?></label>
           <div class="input-wrapper">
-            <input type="text" class="form-control" id="category-description" name="category-description"
-              placeholder="<?= lang('CAT_DESC_PLACEHOLDER') ?>" required>
+            <input type="text" class="form-control" id="category-description" name="category-description" placeholder="<?= lang('CAT_DESC_PLACEHOLDER') ?>" required>
           </div>
         </div>
         <div class="mb-3">
           <label class="form-label" for="category-order"><?= lang('CAT_ORDER') ?></label>
           <div class="input-wrapper">
-            <input type="number" class="form-control" id="category-order" name="category-order"
-              placeholder="<?= lang('CAT_ORDER_PLACEHOLDER') ?>">
+            <input type="number" class="form-control" id="category-order" name="category-order" placeholder="<?= lang('CAT_ORDER_PLACEHOLDER') ?>">
           </div>
         </div>
         <div class="mb-3">
@@ -187,12 +185,12 @@ if (isset($_SESSION['user_name'])):
       </form>
     </div>
     <?php
-    // End Add Page
-  elseif ($do == 'Insert'): // Insert Categories Page
+  // End Add Page
+  elseif ($do == 'Insert') : // Insert Categories Page
 
     echo "<div class='container'>";
     // Check If The User Coming From A Request
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'):
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') :
       echo '<h1>' . lang('INSERT_CAT') . '</h1>';
 
       // Get Variables From The Form
@@ -208,24 +206,24 @@ if (isset($_SESSION['user_name'])):
       $check = checkItem('cat_name', 'categories', $categoryName);
 
       // Check Data Validation
-      if (empty($categoryName)):
+      if (empty($categoryName)) :
         $formErrors[] = lang("CAT_NAME_EMPTY");
-      elseif (strlen($categoryName) < 4):
+      elseif (strlen($categoryName) < 4) :
         $formErrors[] = lang("CAT_NAME_LESS");
-      elseif (strlen($categoryName) > 30):
+      elseif (strlen($categoryName) > 30) :
         $formErrors[] = lang("CAT_NAME_MORE");
       endif;
-      if ($check > 0):
+      if ($check > 0) :
         $formErrors[] = lang("CAT_EXISTS");
       endif;
-      if (empty($categoryDesc)):
+      if (empty($categoryDesc)) :
         $formErrors[] = lang("CAT_DESC_EMPTY");
       endif;
 
 
-      if (!empty($formErrors)):
+      if (!empty($formErrors)) :
         redirectFuncError($formErrors, 'back', 5);
-      else:
+      else :
         // Check If Category Order Is Empty
         if ($categoryOrder == '') {
           $categoryOrder = NULL;
@@ -244,7 +242,7 @@ if (isset($_SESSION['user_name'])):
     endif;
     // End Insert Page
     echo "</div>";
-  elseif ($do == 'Edit'): // Edit Categories Page
+  elseif ($do == 'Edit') : // Edit Categories Page
 
     // Check If Get Request catid Is Numeric & Get The Integer Value Of It
     $catId = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
@@ -253,7 +251,7 @@ if (isset($_SESSION['user_name'])):
     $stmt->execute(array($catId));
     $row = $stmt->fetch();
     $rowCount = $stmt->rowCount();
-    if ($rowCount > 0): ?>
+    if ($rowCount > 0) : ?>
 
       <div class="container edit-container">
         <h1><?= lang("EDIT_CAT") ?></h1>
@@ -262,23 +260,19 @@ if (isset($_SESSION['user_name'])):
           <div class="mb-3">
             <label class="form-label" for="category-name"><?= lang('CAT_NAME') ?></label>
             <div class="input-wrapper">
-              <input type="text" class="form-control" id="category-name" name="category-name" value="<?= $row['cat_name'] ?>"
-                required autocomplete='off' placeholder='<?= lang("CAT_NAME_PLACEHOLDER") ?>'>
+              <input type="text" class="form-control" id="category-name" name="category-name" value="<?= $row['cat_name'] ?>" required autocomplete='off' placeholder='<?= lang("CAT_NAME_PLACEHOLDER") ?>'>
             </div>
           </div>
           <div class="mb-3">
             <label class="form-label" for="category-description"><?= lang('CAT_DESCRIPTION') ?></label>
             <div class="input-wrapper">
-              <input type="text" class="form-control" id="category-description" name="category-description"
-                value="<?= $row['cat_description'] ?>" required autocomplete='off'
-                placeholder="<?= lang("CAT_DESC_PLACEHOLDER") ?>">
+              <input type="text" class="form-control" id="category-description" name="category-description" value="<?= $row['cat_description'] ?>" required autocomplete='off' placeholder="<?= lang("CAT_DESC_PLACEHOLDER") ?>">
             </div>
           </div>
           <div class="mb-3">
             <label class="form-label" for="category-order"><?= lang('CAT_ORDER') ?></label>
             <div class="input-wrapper">
-              <input type="number" class="form-control" id="category-order" name="category-order"
-                value="<?= $row['ordering'] ?>" placeholder="<?= lang('CAT_ORDER_PLACEHOLDER') ?>">
+              <input type="number" class="form-control" id="category-order" name="category-order" value="<?= $row['ordering'] ?>" placeholder="<?= lang('CAT_ORDER_PLACEHOLDER') ?>">
             </div>
           </div>
           <div class="mb-3">
@@ -306,15 +300,15 @@ if (isset($_SESSION['user_name'])):
         </form>
       </div>
 
-      <?php
-    else:
+<?php
+    else :
       redirectFuncError(lang("ID_NOT_FOUND_WARNING"));
     endif;
 
-    // End Edit Page
-  elseif ($do == 'Update'): // Update Categories Page
+  // End Edit Page
+  elseif ($do == 'Update') : // Update Categories Page
     echo '<div class="container">';
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'):
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') :
       echo '<h1>' . lang("UPDATE_CAT_PAGE") . '</h1>';
       // Get The Variables Values
       $catId = filter_input(INPUT_POST, 'catid', FILTER_SANITIZE_NUMBER_INT); // Filtered Above Line 217
@@ -331,23 +325,23 @@ if (isset($_SESSION['user_name'])):
       // Check Data Validation
       $formErrors = array();
       $check = editCheck('cat_name', 'categories', $catName, 'cat_id', $catId);
-      if (empty($catName)):
+      if (empty($catName)) :
         $formErrors[] = lang("CAT_NAME_EMPTY");
-      elseif ($check > 0):
+      elseif ($check > 0) :
         $formErrors[] = lang("CAT_EXISTS");
-      elseif (strlen($catName) < 4):
+      elseif (strlen($catName) < 4) :
         $formErrors[] = lang("CAT_NAME_LESS");
-      elseif (strlen($catName) > 30):
+      elseif (strlen($catName) > 30) :
         $formErrors[] = lang("CAT_NAME_MORE");
       endif;
-      if (empty($catDescription)):
+      if (empty($catDescription)) :
         $formErrors[] = lang("CAT_DESC_EMPTY");
       endif;
 
 
-      if (!empty($formErrors)):
+      if (!empty($formErrors)) :
         redirectFuncError($formErrors, 'back');
-      else:
+      else :
 
         // Get Old Values From Database
         $stmt = $connect->prepare("SELECT * FROM categories WHERE cat_id = ?");
@@ -358,22 +352,22 @@ if (isset($_SESSION['user_name'])):
         $successMsg = array();
 
         // Check The Changes
-        if ($catName !== $oldData['cat_name']):
+        if ($catName !== $oldData['cat_name']) :
           $successMsg[] = lang('UPDATE_CAT_NAME');
         endif;
-        if ($catDescription !== $oldData['cat_description']):
+        if ($catDescription !== $oldData['cat_description']) :
           $successMsg[] = lang('UPDATE_CAT_DESC');
         endif;
-        if ($catOrder != $oldData['ordering']):
+        if ($catOrder != $oldData['ordering']) :
           $successMsg[] = lang('UPDATE_CAT_ORDER');
         endif;
-        if ($catVisibility != $oldData['visibility']):
+        if ($catVisibility != $oldData['visibility']) :
           $successMsg[] = lang("UPDATE_CAT_VISIBILITY");
         endif;
-        if ($catComment != $oldData['allow_comment']):
+        if ($catComment != $oldData['allow_comment']) :
           $successMsg[] = lang("UPDATE_CAT_COMMENT");
         endif;
-        if ($catAds != $oldData['allow_ads']):
+        if ($catAds != $oldData['allow_ads']) :
           $successMsg[] = lang('UPDATE_CAT_ADS');
         endif;
 
@@ -403,33 +397,33 @@ if (isset($_SESSION['user_name'])):
 
       endif;
 
-    else:
+    else :
       redirectFuncError(lang('DIRECT_LINK'), 'back');
     endif;
     echo '</div>';
-    // End Update Page
-  elseif ($do == 'Delete'): // Delete Categories Page
+  // End Update Page
+  elseif ($do == 'Delete') : // Delete Categories Page
 
     echo '<div class="container">';
     $catId = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
     $check = checkItem('cat_id', 'categories', $catId);
 
-    if ($check > 0):
+    if ($check > 0) :
       echo '<h1>' . lang('DELETE_CAT') . '</h1>';
       $stmt = $connect->prepare('DELETE FROM categories WHERE cat_id = ?');
       $stmt->execute(array($catId));
       redirectFuncSuccess(getName("cat_name", "categories", "cat_id", $catId) . ' ' . lang('DELETE_CAT_SUCCESS'), 'categories.php');
-    else:
+    else :
       redirectFuncError(lang('ID_NOT_FOUND_WARNING'));
     endif;
     echo '</div>';
 
-    // End Delete Page
+  // End Delete Page
   endif;
 
 
   include $temp . 'footer.php'; // Include The Footer File
-else:
+else :
   header('Location: index.php'); // Redirect To Index Page
   exit();
 endif;

@@ -24,6 +24,7 @@ function lang($phrase)
   'COMMENTS' => 'التعليقات',
   'STATISTICS' => 'الاحصائيات',
   'LOGS' => 'السجلات',
+  'VISIT_SHOP' => 'زياره المتجر',
   'EDIT_PROFILE' => 'تعديل البروفايل',
   'SETTINGS' => 'الاعدادات',
   'LOGOUT' => 'تسجيل الخروج',

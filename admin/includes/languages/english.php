@@ -23,6 +23,7 @@ function lang($phrase)
   'COMMENTS' => 'Comments',
   'STATISTICS' => 'Statistics',
   'LOGS' => 'Logs',
+  'VISIT_SHOP' => 'Visit Shop',
   'EDIT_PROFILE' => 'Edit Profile',
   'SETTINGS' => 'Settings',
   'LOGOUT' => 'Logout',

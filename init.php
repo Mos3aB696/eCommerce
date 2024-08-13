@@ -9,7 +9,7 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-include 'admin/db_connect.php';
+include "./admin/db_connect.php";
 
 $sessionUser = '';
 if (isset($_SESSION['user_name'])) :
@@ -18,8 +18,8 @@ endif;
 
 // Routes
 $temp = 'includes/templates/'; // Template Directory
-$lang = 'includes/languages/'; // Languages Directory
-$func = 'includes/functions/'; // Functions Directory
+$lang = 'admin/includes/languages/'; // Languages Directory
+$func = 'admin/includes/functions/'; // Functions Directory
 $css = 'layout/css/'; // CSS Directory
 $js = 'layout/js/'; // JS Directory
 

@@ -2,6 +2,7 @@
 session_start();
 $noNavBar = '';
 $pageTitle = 'Admin Login';
+global $connect;
 // Check If The User Is Logged In And Redirect To Dashboard Page Automatically
 
 if (isset($_SESSION['admin_name'])) :
@@ -49,16 +50,16 @@ endif;
   <h3 class="text-center"><?= lang("ADMIN_LOGIN") ?></h3>
   <input
     class="form-control"
-    id="username" type="text" 
-    name="username" 
-    placeholder="<?= lang("ADMIN_USER") ?>" 
+    id="username" type="text"
+    name="username"
+    placeholder="<?= lang("ADMIN_USER") ?>"
     autocomplete="off">
   <input
-    class="form-control" 
-    id="password" 
-    type="password" 
-    name="password" 
-    placeholder="<?= lang("ADMIN_PASS") ?>" 
+    class="form-control"
+    id="password"
+    type="password"
+    name="password"
+    placeholder="<?= lang("ADMIN_PASS") ?>"
     autocomplete=" new-password">
   <input class="btn btn-primary btn-block" type="submit" value="<?= lang('LOG_BTN') ?>" />
 </form>

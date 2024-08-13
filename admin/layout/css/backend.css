@@ -15,6 +15,9 @@ body {
 
 /* Start Gloabal Customization */
 /* Arabic File */
+.input-wrapper {
+  position: relative;
+}
 .asterisk {
   position: absolute;
   top: 50%;
@@ -354,10 +357,6 @@ input::placeholder {
   font-size: 14px;
 }
 /* End Member Page */
-
-.input-wrapper {
-  position: relative;
-}
 
 /* Start Manage Page */
 

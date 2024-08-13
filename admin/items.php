@@ -10,6 +10,7 @@
 ob_start(); // Output Buffering Start
 session_start();
 $pageTitle = 'Items';
+global $connect;
 
 if (isset($_SESSION['admin_name'])) :
   include 'init.php'; // Include The Init File
@@ -223,7 +224,7 @@ if (isset($_SESSION['admin_name'])) :
           </div>
 
           <button type="submit" class="btn btn-primary mb-5  "> <i class="fa fa-plus"></i>
-            <?= lang('ADD_CAT_BTN') ?></button>
+            <?= lang('ADD_ITEM_BTN') ?></button>
         </form>
       </div>
       <?php
@@ -236,10 +237,10 @@ if (isset($_SESSION['admin_name'])) :
         // Get Variables From The Form And Filter Them
         $member = filter_input(INPUT_POST, 'member', FILTER_SANITIZE_NUMBER_INT);
         $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT);
-        $itemName = filter_input(INPUT_POST, 'item-name', FILTER_SANITIZE_STRING);
-        $itemDesc = filter_input(INPUT_POST, 'item-description', FILTER_SANITIZE_STRING);
+        $itemName = strip_tags($_POST['item-name']);
+        $itemDesc = strip_tags($_POST['item-description']);
         $itemPrice = filter_input(INPUT_POST, 'item-price', FILTER_SANITIZE_NUMBER_INT);
-        $itemCountry = filter_input(INPUT_POST, 'item-country', FILTER_SANITIZE_STRING);
+        $itemCountry = strip_tags($_POST['item-country']);
         $itemStatus = filter_input(INPUT_POST, 'item-status', FILTER_SANITIZE_NUMBER_INT);
 
         $formErrors = array();
@@ -280,7 +281,7 @@ if (isset($_SESSION['admin_name'])) :
                   (:zname, :zdesc, :zprice, :zcountry, :zstatus, now(), :zcat, :zuser)");
           // Execute The Query
           $stmt->execute(
-            array(
+            [
               'zname' => $itemName,
               'zdesc' => $itemDesc,
               'zprice' => $itemPrice,
@@ -288,7 +289,7 @@ if (isset($_SESSION['admin_name'])) :
               'zstatus' => $itemStatus,
               'zcat' => $category,
               'zuser' => $member
-            )
+            ]
           );
           redirectFuncSuccess($itemName . ' ' . lang('INSERT_ITEM_SUCCESS'), 'items.php');
         endif;
@@ -303,7 +304,7 @@ if (isset($_SESSION['admin_name'])) :
       $itemid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
       // Prepare The Statement To Execute It [1]
       $stmt = $connect->prepare('SELECT * FROM items WHERE item_id = ?');
-      $stmt->execute(array($itemid)); // Execute The Statement [2]
+      $stmt->execute([$itemid]); // Execute The Statement [2]
       $item = $stmt->fetch(); // Fetch The Data [3]
       $rowCount = $stmt->rowCount(); // Get The Count Of The Rows [4]
 
@@ -451,13 +452,13 @@ if (isset($_SESSION['admin_name'])) :
         $itemid = filter_input(INPUT_POST, 'itemid', FILTER_SANITIZE_NUMBER_INT);
         $member = filter_input(INPUT_POST, 'member', FILTER_SANITIZE_NUMBER_INT);
         $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT);
-        $itemName = filter_input(INPUT_POST, 'item-name', FILTER_SANITIZE_STRING);
-        $itemDesc = filter_input(INPUT_POST, 'item-description', FILTER_SANITIZE_STRING);
+        $itemName = strip_tags($_POST['item-name']);
+        $itemDesc = strip_tags($_POST['item-description']);
         $itemPrice = filter_input(INPUT_POST, 'item-price', FILTER_SANITIZE_NUMBER_INT);
-        $itemCountry = filter_input(INPUT_POST, 'item-country', FILTER_SANITIZE_STRING);
+        $itemCountry = strip_tags($_POST['item-country']);
         $itemStatus = filter_input(INPUT_POST, 'item-status', FILTER_SANITIZE_NUMBER_INT);
 
-        $formErrors = array();
+        $formErrors = [];
 
         if ($member == 0) :
           $formErrors[] = lang('MEMBER_EMPTY');

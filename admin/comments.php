@@ -13,7 +13,8 @@ $pageTitle = 'Comments';
 // Check If The User Is Logged In
 if (isset($_SESSION['admin_name'])) :
   // Include Required Files
-  include('init.php');
+  include 'init.php';
+  global $connect;
 
   $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
 

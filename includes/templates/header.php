@@ -26,7 +26,7 @@
           <?= $_SESSION['user_name']; ?>
         </a>
         <ul class="dropdown-menu user_ul">
-          <li><a class="dropdown-item user_options" href="profile.php">My Profile</a></li>
+          <li><a class="dropdown-item user_options" href="profile.php"><?= lang("PROFILE") ?></a></li>
           <li><a class="dropdown-item user_options" href="logout.php"><?= lang("LOGOUT") ?></a></li>
         </ul>
       </li>

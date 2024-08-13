@@ -1,4 +1,83 @@
 <?php
+// ========================================
+// == Front Functions
+// ========================================
+
+/**
+ * [v.1.0]
+ * getCat Function => Get All Categories From Database
+ * Return All Categories
+ * Note: This Function Is Used To Get All Categories From Database
+ */
+function getCat()
+{
+  global $connect;
+  $stmt = $connect->prepare("SELECT * FROM categories ORDER BY cat_id ASC");
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
+
+/**
+ * [v.2.0]
+ * getItem Function => Get All Items From Database
+ * Return All Items
+ * Note: This Function Is Used To Get All Items From Database
+ */
+function getItem($where, $value)
+{
+  global $connect;
+  $stmt = $connect->prepare("SELECT
+                                * 
+                              FROM  
+                                items 
+                              WHERE 
+                                $where = ? 
+                              AND
+                                item_approve = 1
+                              ORDER BY
+                                item_id DESC");
+  $stmt->execute([$value]);
+  return $stmt->fetchAll();
+}
+
+/**
+ * [v.1.0]
+ * checkUserStatus Function => Check If The User Is Not Activated
+ * Return 1 If The User Is Not Activated
+ * Return 0 If The User Is Activated
+ */
+function checkUserStatus($user)
+{
+  global $connect;
+  $stmt = $connect->prepare("SELECT
+                                user_name, reg_status
+                              FROM
+                                users
+                              WHERE
+                                user_name = ?
+                              AND
+                                reg_status = 0");
+  $stmt->execute([$user]);
+  return $stmt->rowCount();
+}
+
+
+function printErrors()
+{
+  global $formErrors;
+  foreach ($formErrors as $error) :
+    echo "<div class='errors alert alert-danger mb-2'>";
+    echo "{$error}<br>";
+    echo "</div>";
+  endforeach;
+}
+
+
+
+// ========================================
+// == Backend Functions
+// ========================================
 
 /**
  * [v.1.0]
@@ -85,13 +164,13 @@ function redirectFuncError($error, $url = 'dashboard.php', $seconds = 3)
       $url = $_SERVER['HTTP_REFERER'];
       $frindlyUrl = 'Previous Page';
 
-      // If Previous Page Is Not Set Redirect To Dashboard
+    // If Previous Page Is Not Set Redirect To Dashboard
     else:
       $url = 'dashboard.php';
       $frindlyUrl = 'Dashboard';
     endif;
 
-    // Redirect To Specific Page If The Link Is Not Back
+  // Redirect To Specific Page If The Link Is Not Back
   else:
     $frindlyUrl = ucfirst($basename);
   endif;
@@ -137,13 +216,13 @@ function redirectFuncSuccess($msg, $url = 'dashboard.php', $seconds = 3)
       $url = $_SERVER['HTTP_REFERER'];
       $frindlyUrl = 'Previous Page';
 
-      // If Previous Page Is Not Set Redirect To Dashboard
+    // If Previous Page Is Not Set Redirect To Dashboard
     else:
       $url = 'dashboard.php';
       $frindlyUrl = 'Dashboard';
     endif;
 
-    // Redirect To Specific Page If The Link Is Not Back
+  // Redirect To Specific Page If The Link Is Not Back
   else:
     $frindlyUrl = ucfirst($basename);
   endif;
@@ -266,4 +345,27 @@ function findMissingKeysInArabic($englishArray, $arabicArray)
   }
 
   return $missingKeys;
+}
+
+
+// ========================================
+// == Genral Functions
+// ========================================
+
+/**
+ * Summary of logout
+ * Function Handle Logout Sessions
+ * @return never
+ */
+function logout()
+{
+  session_start(); // Start The Session
+  if (isset($_SESSION['user_name'])):
+    unset($_SESSION['user_name']);
+  elseif (isset($_SESSION['admin_name'])):
+    unset($_SESSION['admin_name']);
+  endif;
+  session_destroy(); // Destroy The Session
+  header('Location: index.php'); // Redirect To Index Page
+  exit();
 }

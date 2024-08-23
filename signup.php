@@ -74,7 +74,7 @@ endif;
   <div class="container">
     <!-- Signup Form -->
     <form id="signupForm" action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-      <h3 class="text-center sing-up"><?= lang('USER_SIGNUP') ?></h3>
+      <h2 class="text-center sing-up"><?= lang('USER_SIGNUP') ?></h2>
       <div class="form-group">
         <input pattern=".{4,20}" title="User Name Must Be 4 - 20 Characters" id="username" type="text" class="form-control" placeholder="<?= lang('USERNAME') ?>" name="username" required>
         <span id="username-error"></span>

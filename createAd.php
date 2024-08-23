@@ -74,9 +74,7 @@ if (isset($_SESSION['user_name'])) :
           <select class="form-select" name="category" id="category">
             <option value="0">...</option>
             <?php
-            $stmt = $connect->prepare("SELECT * FROM categories");
-            $stmt->execute();
-            $cats = $stmt->fetchAll();
+            $cats = getFrom('categories', 'cat_id');
             foreach ($cats as $cat) :
               echo "<option value='" . $cat['cat_id'] . "'>" . $cat['cat_name'] . "</option>";
             endforeach;
@@ -87,8 +85,8 @@ if (isset($_SESSION['user_name'])) :
           <label class="form-label" for="item-name"><?= lang('ITEM_NAME') ?></label>
           <div class="input-wrapper">
             <input
-              pattern=".{4,20}"
-              title="Item name must be between 4 - 20 characters"
+              pattern=".{4,30}"
+              title="Item name must be between 4 - 30 characters"
               type="text"
               class="form-control"
               id="item-name"
@@ -141,8 +139,8 @@ if (isset($_SESSION['user_name'])) :
         </div>
         <div class="mb-3">
           <label class="form-label" for="item-status"><?= lang('ITEM_STATUS') ?></label>
-          <select class="form-select" name="item-status" id="item-status">
-            <option value="0">...</option>
+          <select class="form-select" name="item-status" id="item-status" required>
+            <option value="">...</option>
             <option value="1"><?= lang("NEW_OPT") ?></option>
             <option value="2"><?= lang("LIKE_NEW_OPT") ?></option>
             <option value="3"><?= lang("USED_OPT") ?></option>

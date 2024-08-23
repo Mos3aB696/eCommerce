@@ -133,7 +133,7 @@ if (isset($_SESSION['admin_name'])) :
                   endif;
                 endforeach;
               else :
-                echo '<div class="alert alert-info">There\'s No Comments To Show</div>';
+                echo '<div class="alert alert-info m-0">' . lang('NO_COMMENTS') . '</div>';
               endif;
               ?>
             </div>

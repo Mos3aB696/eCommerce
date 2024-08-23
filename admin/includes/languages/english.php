@@ -46,6 +46,12 @@ function lang($phrase)
     // Create New AD Phrases
     'CREATE_ITEM' => 'ADD ITEM',
 
+    // Show Item Page Phrases
+    'ADD_COMMENT' => 'Add Comment',
+    'ADDED_COMMENT' => 'Comment Added (^_^)',
+    'EMPTY_COMMENT' => 'Comment Can\'t Be Empty 😡',
+
+
     // ====================================================
     // =============== BackEnd Phrases ===============
     // ====================================================
@@ -236,11 +242,11 @@ function lang($phrase)
     'MANAGE_ITEM_NAME' => 'Name',
     'MANAGE_ITEM_DESC' => 'Description',
     'MANAGE_ITEM_PRICE' => 'Price',
-    'MANAGE_ITEM_COUNTRY' => 'Country',
+    'MANAGE_ITEM_COUNTRY' => 'Country Made',
     'MANAGE_ITEM_STATUS' => 'Status',
     'MANAGE_ITEM_CAT' => 'Category',
-    'MANAGE_ITEM_MEMBER' => 'Member',
-    'MANAGE_ITEM_DATE' => 'Registered',
+    'MANAGE_ITEM_MEMBER' => 'Added By',
+    'MANAGE_ITEM_DATE' => 'Added Date',
     'MANAGE_ITEM_CONTROL' => 'Control',
     'ADD_ITEM' => 'Add Item',
     // Add Items Phrases 
@@ -338,7 +344,7 @@ function lang($phrase)
 
     // Warning Phrases
     'DIRECT_LINK' => 'You can not access this page directly',
-    'ID_NOT_FOUND_WARNING' => 'This ID Is Not Found',
+    'ID_NOT_FOUND_WARNING' => 'There is no such id',
   ];
 
   return $lang[$phrase];

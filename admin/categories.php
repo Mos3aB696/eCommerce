@@ -194,8 +194,8 @@ if (isset($_SESSION['admin_name'])) :
       echo '<h1>' . lang('INSERT_CAT') . '</h1>';
 
       // Get Variables From The Form
-      $categoryName = filter_input(INPUT_POST, 'category-name', FILTER_SANITIZE_STRING);
-      $categoryDesc = filter_input(INPUT_POST, 'category-description', FILTER_SANITIZE_STRING);
+      $categoryName = strip_tags($_POST['category-name']);
+      $categoryDesc = strip_tags($_POST['category-description']);
       $categoryOrder = filter_input(INPUT_POST, 'category-order', FILTER_SANITIZE_NUMBER_INT);
       $categoryVisable = filter_input(INPUT_POST, 'category-visable', FILTER_SANITIZE_NUMBER_INT);
       $categoryComment = filter_input(INPUT_POST, 'category-comment', FILTER_SANITIZE_NUMBER_INT);

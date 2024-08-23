@@ -42,9 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateTime() {
     let now = new Date();
     let hours = now.getHours();
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
-    let Am_Pm = hours <= 12 ? "PM" : "AM";
     let minutes =
       now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
     let seconds =
@@ -72,10 +69,21 @@ document.addEventListener("DOMContentLoaded", function () {
       ":" +
       minutes +
       ":" +
-      seconds +
-      " " +
-      Am_Pm;
+      seconds;
   }
 
   setInterval(updateTime, 1000); // Update every second
+
+  /**
+   * Check The Description Lenght
+   * If It More Than 30 Charchers => Shows Only First 30 Charachers Ends With (...)
+   * If Not => Show It As It
+   */
+  let descriptions = document.querySelectorAll(".check-description-length");
+  descriptions.forEach((description) => {
+    if (description.textContent.length > 30) {
+      description.textContent =
+        description.textContent.substring(0, 30) + " ...";
+    }
+  });
 });

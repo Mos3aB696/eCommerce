@@ -53,14 +53,16 @@ endif;
     id="username" type="text"
     name="username"
     placeholder="<?= lang("ADMIN_USER") ?>"
-    autocomplete="off">
+    autocomplete="off"
+    required>
   <input
     class="form-control"
     id="password"
     type="password"
     name="password"
     placeholder="<?= lang("ADMIN_PASS") ?>"
-    autocomplete=" new-password">
+    autocomplete=" new-password"
+    required>
   <input class="btn btn-primary btn-block" type="submit" value="<?= lang('LOG_BTN') ?>" />
 </form>
 <?php include $temp . ('footer.php'); ?>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2024 at 10:38 PM
--- Server version: 8.0.37
--- PHP Version: 8.3.8
+-- Generation Time: Aug 23, 2024 at 11:24 AM
+-- Server version: 8.0.39
+-- PHP Version: 8.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,8 +43,10 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_description`, `ordering`, `visibility`, `allow_comment`, `allow_ads`) VALUES
 (1, 'Laptops', 'Laptops Category', NULL, 0, 0, 0),
-(2, 'Ipad', 'Ipad Category', 1, 1, 0, 0),
-(3, 'I-Phone', 'i-phone category', 2, 0, 1, 1);
+(2, 'iPad', 'Ipad Category', 1, 1, 0, 0),
+(3, 'Phones', 'i-phone category', 2, 0, 0, 1),
+(5, 'Hand Made', 'Hand Made', NULL, 0, 0, 0),
+(6, 'Cars', 'This is Cars Category', NULL, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -65,7 +67,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

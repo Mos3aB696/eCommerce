@@ -37,7 +37,7 @@ endif;
 <div class="login-page">
   <div class="container">
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST" id="loginForm">
-      <h3 class="text-center"><?= lang('USER_LOGIN') ?></h3>
+      <h2 class="text-center"><?= lang('USER_LOGIN') ?></h2>
       <div class="form-group">
         <input type="text" class="form-control" name="username" placeholder="<?= lang('USERNAME') ?>" required>
       </div>

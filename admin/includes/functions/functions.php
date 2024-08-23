@@ -4,19 +4,19 @@
 // ========================================
 
 /**
- * [v.1.0]
- * getCat Function => Get All Categories From Database
- * Return All Categories
- * Note: This Function Is Used To Get All Categories From Database
+ * [v.2.0]
+ * getFrom Function => Get Any Data From Any Table Database
+ * Return All Data
+ * Note: This Function Is Used To Get Any Data From Any Table In Database
  */
-function getCat()
+function getFrom($table, $orderBy, $order = 'ASC', $item_approve = NULL)
 {
   global $connect;
-  $stmt = $connect->prepare("SELECT * FROM categories ORDER BY cat_id ASC");
+  $stmt = $item_approve == NULL ? $connect->prepare("SELECT * FROM $table ORDER BY $orderBy $order")
+    : $connect->prepare("SELECT * FROM $table WHERE item_approve = 1 ORDER BY $orderBy $order");
   $stmt->execute();
   return $stmt->fetchAll();
 }
-
 
 /**
  * [v.2.0]
@@ -24,8 +24,9 @@ function getCat()
  * Return All Items
  * Note: This Function Is Used To Get All Items From Database
  */
-function getItem($where, $value)
+function getItem($where, $value, $approve = NULL)
 {
+  $approveItem = $approve == NULL ? 'AND item_approve = 1' : '';
   global $connect;
   $stmt = $connect->prepare("SELECT
                                 * 
@@ -33,8 +34,7 @@ function getItem($where, $value)
                                 items 
                               WHERE 
                                 $where = ? 
-                              AND
-                                item_approve = 1
+                                $approveItem
                               ORDER BY
                                 item_id DESC");
   $stmt->execute([$value]);
@@ -201,7 +201,7 @@ function redirectFuncSuccess($msg, $url = 'dashboard.php', $seconds = 3)
   global $successMsg;
 
   if (!is_array($msg)):
-    $msg = array($msg);
+    $msg = [$msg];
   endif;
 
   $successMsg = $msg;

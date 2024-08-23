@@ -180,15 +180,7 @@ ul .user_ul li {
   -ms-transition: all var(--transition-duration) ease-in-out;
   -o-transition: all var(--transition-duration) ease-in-out;
 }
-/* .home-stat .row .st-pending:hover {
-  background-color: #2ecc71;
-}
-.home-stat .row .st-items {
-  background-color: #e05c00;
-}
-.home-stat .row .st-comments {
-  background-color: #9152b0;
-} */
+
 
 .home-stat .row .stat span {
   display: block;

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2024 at 10:38 PM
--- Server version: 8.0.37
--- PHP Version: 8.3.8
+-- Generation Time: Aug 23, 2024 at 11:24 AM
+-- Server version: 8.0.39
+-- PHP Version: 8.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,8 +41,15 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `comment_content`, `comment_status`, `add_date`, `item_connect`, `user_connect`) VALUES
-(9, 'good item', 1, '2024-06-27', 3, 69),
-(10, 'nice phone', 1, '2024-06-19', 2, 53);
+(9, 'good item', 1, '2024-06-27', 3, 1),
+(10, 'nice phone', 1, '2024-06-19', 2, 54),
+(11, 'Nice Laptop', 1, '2024-08-06', 4, 79),
+(12, 'Prefect For Programming', 1, '2024-08-05', 3, 79),
+(36, 'nice laptop', 1, '2024-08-16', 10, 1),
+(39, 'The New Generation of M3 Is Really Really Wonderful ', 1, '2024-08-16', 10, 69),
+(40, '\"I love using my iPad daily for work and watching videos.\"', 1, '2024-08-16', 6, 54),
+(42, 'Nice Sporting Car\r\n', 1, '2024-08-20', 19, 1),
+(43, 'Nice Phone For Recording Reels', 1, '2024-08-20', 14, 54);
 
 --
 -- Indexes for dumped tables
@@ -64,7 +71,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT COMMENT 'Comment Id', AUTO_INCREMENT=11;
+  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT COMMENT 'Comment Id', AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables

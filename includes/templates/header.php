@@ -19,18 +19,18 @@
       <?php
       // Check If The User Is Logged In
       if (isset($_SESSION['user_name'])) :
-        ?>
+      ?>
         <li class="navbar-nav dropdown">
-        <a class="nav-link dropdown-toggle active " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <!-- To Display Admin Name If There Are More Than One Admin -->
-          <?= $_SESSION['user_name']; ?>
-        </a>
-        <ul class="dropdown-menu user_ul">
-          <li><a class="dropdown-item user_options" href="profile.php"><?= lang("PROFILE") ?></a></li>
-          <li><a class="dropdown-item user_options" href="logout.php"><?= lang("LOGOUT") ?></a></li>
-        </ul>
-      </li>
-      <?php
+          <a class="nav-link dropdown-toggle active " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- To Display Admin Name If There Are More Than One Admin -->
+            <?= $_SESSION['user_name']; ?>
+          </a>
+          <ul class="dropdown-menu user_ul">
+            <li><a class="dropdown-item user_options" href="profile.php"><?= lang("PROFILE") ?></a></li>
+            <li><a class="dropdown-item user_options" href="logout.php"><?= lang("LOGOUT") ?></a></li>
+          </ul>
+        </li>
+        <?php
         // echo $_SESSION['user_name'];
         // Check If The User Is Not Activated
         $user_status = checkUserStatus($sessionUser);
@@ -39,7 +39,7 @@
         endif;
       else :
         // If The User Is Not Logged In Show The Link To Login Page
-      ?>
+        ?>
         <a class="text-decoration-none" href="login.php">
           <?= lang('SIGNUP_LOGIN') ?>
         </a>
@@ -57,7 +57,7 @@
       <div class="collapse navbar-collapse " id="navbarNavDropdown">
         <ul class="navbar-nav">
           <?php
-          $categories = getCat();
+          $categories = getFrom('categories', 'cat_id');
           foreach ($categories as $category) :
             echo
             "<li class='nav-item'>

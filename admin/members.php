@@ -13,9 +13,9 @@ $pageTitle = 'Members';
 // Check If The User Is Logged In
 if (isset($_SESSION['admin_name'])) :
   // Include Required Files
-  include('init.php');
+  include 'init.php';
 
-  $do = isset($_GET['do']) ? $_GET['do'] : 'Manage';
+  $do = $_GET['do'] ?? 'Manage';
 
   // Start Manage Page
   if ($do == 'Manage') :
@@ -32,8 +32,8 @@ if (isset($_SESSION['admin_name'])) :
     $allowedOrders = ['ASC', 'DESC'];
 
     // Sanitize and validate the input
-    $sort_col = isset($_GET['sort_col']) ? $_GET['sort_col'] : 'user_id';
-    $sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'ASC';
+    $sort_col = $_GET['sort_col'] ?? 'user_id';
+    $sort_order = $_GET['sort_order'] ?? 'ASC';
 
     // Check if the input values are allowed
     if (!in_array($sort_col, $allowedColumns) || !in_array($sort_order, $allowedOrders)) {
@@ -175,14 +175,14 @@ if (isset($_SESSION['admin_name'])) :
       if ($_SERVER['REQUEST_METHOD'] == 'POST') :
         echo "<h1>" . lang("INSERT_MEMBER") . "</h1>";
         // Get The Variables From The Form && Make Sanitize For The Data For Security Reasons
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $username = strip_tags($_POST['username']);
         $password = $_POST['password'];
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
+        $fullname = strip_tags($_POST['fullname']);
         $hashPassword = sha1($password);
 
         // Check Form Validation
-        $formErrors = array();
+        $formErrors = [];
         // Check Username
         $check = checkItem('user_name', 'users', $username);
         if ($check > 0) :
@@ -232,7 +232,7 @@ if (isset($_SESSION['admin_name'])) :
       $userid = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
       // Prepare The Statement To Execute It [1]
       $stmt = $connect->prepare('SELECT * FROM users WHERE user_id = ? LIMIT 1');
-      $stmt->execute(array($userid)); // Execute The Statement [2]
+      $stmt->execute([$userid]); // Execute The Statement [2]
       $row = $stmt->fetch(); // Fetch The Data [3]
       $rowCount = $stmt->rowCount(); // Get The Count Of The Rows [4]
 
@@ -290,15 +290,14 @@ if (isset($_SESSION['admin_name'])) :
         echo "<h1>" . lang("UPDATE_MEMBER") . "</h1>";
         // Get The Variables From The Form
         $userid = $_POST['userid']; // The Id Sanitized In Line 190
-        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $username = strip_tags($_POST['username']);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
-
+        $fullname = strip_tags($_POST['fullname']);
         // Password Trick
         $pass = empty($_POST['newpassword']) ? $_POST['oldpassword'] : sha1($_POST['newpassword']);
 
         // Check Form Validation
-        $formErrors = array();
+        $formErrors = [];
         // Check If Username Is Exist In Database Or Not
         $check = editCheck('user_name', 'users', $username, 'user_id', $userid);
         // Check Username

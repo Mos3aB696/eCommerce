@@ -92,6 +92,7 @@ if (isset($_SESSION['admin_name'])) :
             <thead>
               <tr>
                 <td><?= lang("ID_MANAGE") ?></td>
+                <td><?= lang("AVATAR_MANAGE") ?></td>
                 <td><?= lang("USERNAME_MANAGE") ?></td>
                 <td><?= lang("EMAIL_MANAGE") ?></td>
                 <td><?= lang("FULLNAME_MANAGE") ?></td>
@@ -102,8 +103,15 @@ if (isset($_SESSION['admin_name'])) :
             <tbody>
               <?php
               foreach ($rows as $row) :
-                echo "<tr>";
+                echo "<tr class='custom-row'>";
                 echo "<td>" . $row['user_id'] . "</td>";
+                echo "<td>";
+                if (!empty($row['user_image'])) :
+                  echo "<img src='../uploads/userImage/" . $row['user_image'] . "' alt='unknown' />";
+                else :
+                  echo "<img src='../uploads/userImage/default.jpg' alt='unknown' />";
+                endif;
+                echo "</td>";
                 echo "<td>" . $row['user_name'] . "</td>";
                 echo "<td>" . $row['email'] . "</td>";
                 echo "<td>" . $row['full_name'] . "</td>";
@@ -125,19 +133,29 @@ if (isset($_SESSION['admin_name'])) :
             </tbody>
           </table>
         </div>
-        <a href='?do=Add' class='btn btn-primary mb-5  '> <i class="fa fa-plus"> </i> <?= lang(("ADD_MEMBER")) ?> </a>
+        <a href='?do=Add' class='btn btn-primary mb-5'> <i class="fa fa-plus"> </i> <?= lang("ADD_MEMBER") ?> </a>
       </div>
 
     <?php elseif ($do == 'Add') : // Add Page 
     ?>
       <div class="container add-container">
         <h1><?= lang("ADD_MEMBER") ?></h1>
-        <form action="members.php?do=Insert" method="POST">
+        <form action="members.php?do=Insert" method="POST" enctype="multipart/form-data">
           <!-- Start Username -->
           <div class="mb-3">
             <label for="username" class="form-label"><?= lang("ADD_USER") ?></label>
             <div class="input-wrapper">
-              <input type="text" class="form-control" id="username" name="username" autocomplete="off" required placeholder="<?= lang("ADD_USER_PLACEHOLDER") ?>">
+              <input
+                pattern=".{4,20}"
+                title="<?= lang("USERNAME_LENGTH") ?>"
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                autocomplete="off"
+                required
+                placeholder="<?= lang("ADD_USER_PLACEHOLDER") ?>"
+                autocomplete="off">
             </div>
           </div>
           <!-- End Username -->
@@ -145,7 +163,15 @@ if (isset($_SESSION['admin_name'])) :
           <div class="mb-3">
             <label for="password" class="form-label"><?= lang("ADD_PASS") ?></label>
             <div class="input-wrapper">
-              <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" required placeholder="<?= lang("ADD_PASS_PLACEHOLDER") ?>">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                minlength="4"
+                name="password"
+                autocomplete="new-password"
+                required
+                placeholder="<?= lang("ADD_PASS_PLACEHOLDER") ?>">
             </div>
           </div>
           <!-- End Password -->
@@ -153,7 +179,15 @@ if (isset($_SESSION['admin_name'])) :
           <div class="mb-3 input-container">
             <label for="email" class="form-label"><?= lang("ADD_EMAIL") ?></label>
             <div class="input-wrapper">
-              <input type="email" class="form-control" id="email" name="email" autocomplete="off" required placeholder="<?= lang("ADD_EMAIL_PLACEHOLDER") ?>">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                autocomplete="off"
+                required
+                placeholder="<?= lang("ADD_EMAIL_PLACEHOLDER") ?>"
+                autocomplete="off">
             </div>
           </div>
           <!-- End Email -->
@@ -161,12 +195,37 @@ if (isset($_SESSION['admin_name'])) :
           <div class="mb-3">
             <label for="fullname" class="form-label"><?= lang("ADD_FULL_NAME") ?></label>
             <div class="input-wrapper">
-              <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off" required placeholder="<?= lang("ADD_FULL_PLACEHOLDER") ?>">
+              <input
+                pattern=".{4,20}"
+                title="<?= lang("FULLNAME_LENGTH") ?>"
+                type="text"
+                class="form-control"
+                id="fullname"
+                name="fullname"
+                autocomplete="off"
+                required
+                placeholder="<?= lang("ADD_FULL_PLACEHOLDER") ?>">
             </div>
           </div>
           <!-- End Full Name -->
-          <button type="submit" class="btn btn-primary  "> <i class='fa fa-plus'>
-            </i> <?= lang("ADD_MEMBER_BTN") ?></button> <!-- Submit Button -->
+          <!-- Start User Image Filed -->
+          <div class="mb-3">
+            <label for="fullname" class="form-label"><?= lang("ADD_AVATAR") ?></label>
+            <div class="input-wrapper">
+              <input
+                type="file"
+                class="form-control"
+                id="userImage"
+                name="userImage"
+                autocomplete="off"
+                required>
+            </div>
+          </div>
+          <!-- End User Image Filed -->
+          <!-- Start Submit Button -->
+          <button type="submit" class="btn btn-primary"> <i class='fa fa-plus'>
+            </i> <?= lang("ADD_MEMBER_BTN") ?></button>
+          <!-- End Submit Button -->
         </form>
       </div>
       <?php
@@ -174,6 +233,18 @@ if (isset($_SESSION['admin_name'])) :
     elseif ($do == "Insert") :
       if ($_SERVER['REQUEST_METHOD'] == 'POST') :
         echo "<h1>" . lang("INSERT_MEMBER") . "</h1>";
+
+        // Upload Variables
+
+        $imageName = $_FILES['userImage']['name'];
+        $imageSize = $_FILES['userImage']['size'];
+        $imageTmp = $_FILES['userImage']['tmp_name'];
+        $imageType = $_FILES['userImage']['type'];
+        $allowedExtensions = ["jpeg", "jpg", "png"];
+
+        // Get Image Extension
+        $imageExtension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
+
         // Get The Variables From The Form && Make Sanitize For The Data For Security Reasons
         $username = strip_tags($_POST['username']);
         $password = $_POST['password'];
@@ -190,14 +261,14 @@ if (isset($_SESSION['admin_name'])) :
         endif;
         if (empty($username)) :
           $formErrors[] = lang("USERNAME_EMPTY");
-        elseif (strlen($username) < 4) :
-          $formErrors[] = lang("USERNAME_LESS");
-        elseif (strlen($username) > 20) :
-          $formErrors[] = lang("USERNAME_MORE");
+        elseif (strlen($username) < 4 || strlen($username) > 20) :
+          $formErrors[] = lang("USERNAME_LENGTH");
         endif;
         // Check Password
         if (empty($password)) :
           $formErrors[] = lang("PASSWORD_EMPTY");
+        elseif (strlen($password) < 4) :
+          $formErrors[] = lang("PASSWORD_LENGTH");
         endif;
         // Check Email
         if (empty($email)) :
@@ -207,20 +278,32 @@ if (isset($_SESSION['admin_name'])) :
         if (empty($fullname)) :
           $formErrors[] = lang("FULLNAME_EMPTY");
         endif;
+        // Check Image Extension
+        if (empty($imageName)):
+          $formErrors[] = lang("IMAGE_EMPTY");
+        elseif (! empty($imageName) && ! in_array($imageExtension, $allowedExtensions)):
+          $formErrors[] = lang("NOT_ALLOWED_EXTENSIONS");
+        elseif ($imageSize > 4194304):
+          $formErrors[] = lang("IMAGE_SIZE");
+        endif;
 
 
         // If Thers Is No Errors Edit The Member In Database
         if (!empty($formErrors)) :
-          redirectFuncError($formErrors, 'back', 5);
+          redirectFuncError($formErrors, 'back');
         else :
-          // Prepare The Insert Query
+          $avatar = rand(0, 1000000) . "_" . $imageName;
+
+          move_uploaded_file($imageTmp, "/mnt/life/Learn-Programming/Back-End/BackEnd_Projects/eCommerce/uploads/userImage/{$avatar}");
+          //Prepare The Insert Query
           $stmt = $connect->prepare("INSERT INTO
-        users (user_name, pass, email, full_name, reg_status,add_date)
-        VALUES (?, ?, ?, ?, 1,now())");
+                                        users (user_name, pass, email, full_name, reg_status,add_date, user_image)
+                                      VALUES 
+                                        (?, ?, ?, ?, 1,now(), ?)");
           // Execute The Query
-          $stmt->execute(array($username, $hashPassword, $email, $fullname));
+          $stmt->execute([$username, $hashPassword, $email, $fullname, $avatar]);
           // Echo Success Message
-          redirectFuncSuccess(($username . ' ' . lang("INSERT_SUCCESS_MESSAGE")), 'members.php');
+          redirectFuncSuccess($username . ' ' . lang("INSERT_SUCCESS_MESSAGE"), 'members.php');
         endif;
       else :
         redirectFuncError(lang("DIRECT_LINK"), 'members.php', 5);
@@ -246,7 +329,14 @@ if (isset($_SESSION['admin_name'])) :
             <div class="mb-3">
               <label for="username" class="form-label"><?= lang("EDIT_USER") ?></label>
               <div class="input-wrapper">
-                <input type="text" class="form-control" id="username" name="username" autocomplete="off" value="<?= $row['user_name'] ?>" Required>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                  autocomplete="off"
+                  value="<?= $row['user_name'] ?>"
+                  Required>
               </div>
             </div>
             <!-- End Username -->
@@ -254,14 +344,27 @@ if (isset($_SESSION['admin_name'])) :
             <div class="mb-3">
               <label for="password" class="form-label"><?= lang("EDIT_PASS") ?></label>
               <input type="hidden" name="oldpassword" class="form-control" value="<?= $row['pass'] ?>">
-              <input type="password" class="form-control" id="password" name="newpassword" autocomplete="new-password" placeholder="<?= lang("PASS_MESSAGE") ?>">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="newpassword"
+                autocomplete="new-password"
+                placeholder="<?= lang("PASS_MESSAGE") ?>">
             </div>
             <!-- End Password -->
             <!-- Start Email -->
             <div class="mb-3 input-container">
               <label for="email" class="form-label"><?= lang("EDIT_EMAIL") ?></label>
               <div class="input-wrapper">
-                <input type="email" class="form-control" id="email" name="email" autocomplete="off" value="<?= $row['email'] ?>" Required>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  autocomplete="off"
+                  value="<?= $row['email'] ?>"
+                  Required>
               </div>
             </div>
             <!-- End Email -->
@@ -269,7 +372,14 @@ if (isset($_SESSION['admin_name'])) :
             <div class="mb-3">
               <label for="fullname" class="form-label"><?= lang("EDIT_FULL_NAME") ?></label>
               <div class="input-wrapper">
-                <input type="text" class="form-control" id="fullname" name="fullname" autocomplete="off" value="<?= $row['full_name'] ?>" Required>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullname"
+                  name="fullname"
+                  autocomplete="off"
+                  value="<?= $row['full_name'] ?>"
+                  Required>
               </div>
             </div>
             <!-- End Full Name -->
@@ -289,7 +399,7 @@ if (isset($_SESSION['admin_name'])) :
       if ($_SERVER['REQUEST_METHOD'] == 'POST') :
         echo "<h1>" . lang("UPDATE_MEMBER") . "</h1>";
         // Get The Variables From The Form
-        $userid = $_POST['userid']; // The Id Sanitized In Line 190
+        $userid = $_POST['userid']; // The Id Sanitized In Line 232
         $username = strip_tags($_POST['username']);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $fullname = strip_tags($_POST['fullname']);
@@ -305,10 +415,8 @@ if (isset($_SESSION['admin_name'])) :
           $formErrors[] = lang("USERNAME_EMPTY");
         elseif ($check > 0) :
           $formErrors[] = lang("USER_EXIST");
-        elseif (strlen($username) < 4) :
-          $formErrors[] = lang("USERNAME_LESS");
-        elseif (strlen($username) > 20) :
-          $formErrors[] = lang("USERNAME_MORE");
+        elseif (strlen($username) < 4 || strlen($username) > 20) :
+          $formErrors[] = lang("USERNAME_LENGTH");
         endif;
         // Check Email
         if (empty($email)) :
@@ -333,6 +441,9 @@ if (isset($_SESSION['admin_name'])) :
           // Check If The Username Is Updated
           if ($username !== $oldData['user_name']) :
             $successMessages[] = lang("UPDATE_USERNAME_SUCCESS");
+            // Nice Trick To Make The Session Username Equal To The New Username
+            $_SESSION['user_naem'] = null;
+            $_SESSION['user_name'] = $username;
           endif;
 
           // Check If The Password Is Updated

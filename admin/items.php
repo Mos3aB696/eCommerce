@@ -124,12 +124,12 @@ if (isset($_SESSION['admin_name'])) :
             <tbody>
               <?php
               foreach ($rows as $row) :
-                echo "<tr>";
+                echo "<tr class='custom-item-row'>";
                 echo "<td>" . $row['item_id'] . "</td>";
                 echo "<td>" . $row['item_name'] . "</td>";
                 echo "<td>" . $row['user_name'] . "</td>";
                 echo "<td>" . $row['cat_name'] . "</td>";
-                echo "<td>" . $row['item_description'] . "</td>";
+                echo "<td class='custom-description'>" . $row['item_description'] . "</td>";
                 echo "<td>$" . $row['item_price'] . "</td>";
                 echo "<td>" . $row['add_date'] . "</td>";
                 echo "<td>

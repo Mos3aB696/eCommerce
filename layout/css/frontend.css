@@ -403,6 +403,10 @@ ul .user_ul li {
   display: flex;
   align-items: center;
   gap: 25px;
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
 }
 .item-info .description span {
   font-weight: bold;

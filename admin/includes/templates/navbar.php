@@ -25,12 +25,7 @@
         <li class="nav-item">
           <a class="nav-link <?= parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == '/admin/comments.php' ? 'active' : '' ?>" href="comments.php"><?= lang("COMMENTS") ?></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="statistics.php"><?= lang("STATISTICS") ?></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><?= lang("LOGS") ?></a>
-        </li>
+
       </ul>
       <li class="navbar-nav dropdown">
         <a class="nav-link dropdown-toggle active user_name" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

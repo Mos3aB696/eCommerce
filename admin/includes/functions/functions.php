@@ -175,7 +175,7 @@ function redirectFuncError($error, $url = 'dashboard.php', $seconds = 3)
     $frindlyUrl = ucfirst($basename);
   endif;
 
-  echo "<div class='container mt-5'>";
+  echo "<div class='container'>";
   // Make Loop On All Errors [1]
   foreach ($formErrors as $err):
     echo "<div class='alert alert-danger'>$err</div>";

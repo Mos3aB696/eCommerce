@@ -103,11 +103,15 @@ function lang($phrase)
 
     // Validation Phrases [Errors]
     'USERNAME_EMPTY' => 'اسم المستخدم لا يمكن ان يكون فارغ',
-    'USERNAME_LESS' => 'اسم المستخدم لا يمكن ان يكون اقل من 4 احرف',
-    'USERNAME_MORE' => 'اسم المستخدم لا يمكن ان يكون اكثر من 20 حرف',
+    'USERNAME_LENGTH' => 'يجب أن يكون اسم المستخدم أكثر من 4 أحرف وأقل من 20 حرفًا',
     'PASSWORD_EMPTY' => 'كلمه المرور لا يمكن ان تكون فارغه',
+    'PASSWORD_LENGTH' => 'يجب أن تكون كلمة المرور أكثر من 4 أحرف',
     'FULLNAME_EMPTY' => 'الاسم الكامل لا يمكن ان يكون فارغ',
     'EMAIL_EMPTY' => 'البريد الالكتروني لا يمكن ان يكون فارغ',
+    'FULLNAME_LENGTH' => 'يجب أن يكون الاسم الكامل أكثر من 4 أحرف وأقل من أو تساوي 30 حرفًا',
+    'IMAGE_EMPTY' => 'لا يمكن أن تكون صورة المستخدم فارغة',
+    'NOT_ALLOWED_EXTENSIONS' => 'هذا الامتداد غير مسموح به',
+    'IMAGE_SIZE' => 'يجب أن يكون حجم الصورة أقل من 4 ميجا بايت',
     // Updating Phrases [Success]
     'UPDATE_MEMBER' => 'تحديث العضو',
     'UPDATE_USERNAME_SUCCESS' => 'تم تحديث اسم المستخدم بنجاح',
@@ -122,6 +126,7 @@ function lang($phrase)
     'ADD_PASS' => 'كلمه المرور',
     'ADD_EMAIL' => 'البريد الالكتروني',
     'ADD_FULL_NAME' => 'الاسم الكامل',
+    'ADD_AVATAR' => 'صورة الملف الشخصي',
     'ADD_MEMBER_BTN' => 'اضافه عضو',
     // Adding Placeholders Phrases
     'ADD_USER_PLACEHOLDER' => 'اسم المستخدم يجب ان يكون فريد',
@@ -136,6 +141,7 @@ function lang($phrase)
     // Manage Members Phrases
     'MANAGE_MEMBERS' => 'اداره الاعضاء',
     'ID_MANAGE' => 'ID',
+    'AVATAR_MANAGE' => 'صوره المستخدم',
     'USERNAME_MANAGE' => 'اسم المستخدم',
     'EMAIL_MANAGE' => 'البريد الالكتروني',
     'FULLNAME_MANAGE' => 'الاسم الكامل',
@@ -343,6 +349,7 @@ function lang($phrase)
     // Warning Phrases
     'ID_NOT_FOUND_WARNING' => 'هذا المستخدم غير موجود',
     'DIRECT_LINK' => 'لا يمكنك الوصول الى هذه الصفحه مباشره',
+    'NO_PERMISSION' => 'ليس لديك الصلاحيه للوصول الى هذه الصفحه',
   ];
 
   return $lang[$phrase];

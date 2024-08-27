@@ -42,9 +42,11 @@ function lang($phrase)
     'USER_REGISTERED' => "Registered",
     'NO_COMMENTS' => "There are no comments yet",
     'NO_ADS' => "There are no ads yet",
+    // Edit User Page Phrases
 
     // Create New AD Phrases
     'CREATE_ITEM' => 'ADD ITEM',
+
 
     // Show Item Page Phrases
     'ADD_COMMENT' => 'Add Comment',
@@ -106,11 +108,15 @@ function lang($phrase)
 
     // Validation Phrases [Errors]
     'USERNAME_EMPTY' => 'Username Can\'t Be Empty',
-    'USERNAME_LESS' => 'Username Can\'t Be Less Than 4 Characters',
-    'USERNAME_MORE' => 'Username Can\'t Be More Than 20 Characters',
+    'USERNAME_LENGTH' => 'Username Must Be More Than 3 Characters And Less Than 20 Characters',
     'PASSWORD_EMPTY' => 'Password Can\'t Be Empty',
+    'PASSWORD_LENGTH' => 'Password Must Be More Than 4 Characters',
     'FULLNAME_EMPTY' => 'Full Name Can\'t Be Empty',
     'EMAIL_EMPTY' => 'Email Can\'t Be Empty',
+    'FULLNAME_LENGTH' => 'Full Name Must Be More Than 4 Characters And Less Than Or Equal 30 Characters',
+    'IMAGE_EMPTY' => 'User Image Can\'t Be Empty',
+    'NOT_ALLOWED_EXTENSIONS' => 'This Extension Not Allowed',
+    'IMAGE_SIZE' => 'Image Size Must Be Less Than 4MB',
     // Updateing Phrases [Success]
     'UPDATE_MEMBER' => 'Update Member',
     'UPDATE_USERNAME_SUCCESS' => 'Username Updated Successfully',
@@ -125,6 +131,7 @@ function lang($phrase)
     'ADD_PASS' => 'Password',
     'ADD_EMAIL' => 'Email',
     'ADD_FULL_NAME' => 'Full Name',
+    'ADD_AVATAR' => 'Profile Image',
     'ADD_MEMBER_BTN' => 'Add Member',
     // Adding Placeholders Phrases
     'ADD_USER_PLACEHOLDER' => 'Username Must Be Unique',
@@ -140,6 +147,7 @@ function lang($phrase)
     // Manage Members Phrases
     'MANAGE_MEMBERS' => 'Manage Members',
     'ID_MANAGE' => 'ID',
+    'AVATAR_MANAGE' => 'Avatar',
     'USERNAME_MANAGE' => 'Username',
     'EMAIL_MANAGE' => 'Email',
     'FULLNAME_MANAGE' => 'Full Name',
@@ -345,6 +353,7 @@ function lang($phrase)
     // Warning Phrases
     'DIRECT_LINK' => 'You can not access this page directly',
     'ID_NOT_FOUND_WARNING' => 'There is no such id',
+    'NO_PERMISSION' => "You Have No Permission To Access This Page (^_*)",
   ];
 
   return $lang[$phrase];

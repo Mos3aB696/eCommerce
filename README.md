@@ -1,8 +1,8 @@
-# E-Commerce Web Application
+# E-Commerce System
 
 ## Overview
 
-This project is a full-fledged **E-Commerce Web Application** designed to simulate the workflow of a typical online store. It includes essential functionalities such as user authentication, product management. The system allows customers to browse and purchase products, while administrators have full control over product management, order tracking, and user data. The application supports multiple languages, enhancing accessibility for a diverse user base.
+This project is a full-fledged **E-Commerce System** designed to simulate the workflow of a typical online store. It includes essential functionalities such as user authentication, product management. The system allows customers to browse and purchase products, while administrators have full control over product management, order tracking, and user data. The application supports multiple languages, enhancing accessibility for a diverse user base.
 
 ## Features
 
